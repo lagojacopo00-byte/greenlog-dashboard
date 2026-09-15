@@ -129,3 +129,26 @@
 .site-footer { border-top: 1px solid var(--line); padding-block: 28px 36px; font-size: 14px; color: var(--muted); }
 .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
 .site-footer a { color: var(--ink-2); display: inline-block; padding-block: 10px; margin-block: -10px; }
+
+/* ---------- lettura a slide verticali (classe aggiunta da pipeline.js) ---------- */
+html.p-slides { scroll-snap-type: y mandatory; }
+.p-slides .site-header { scroll-snap-align: start; }
+/* prima slide: header + passaggi + apertura, alti insieme una schermata */
+.p-slides .p-hero { min-height: calc(100vh - var(--top-h, 140px)); display: flex; align-items: center; padding-block: 32px; }
+.p-slides .p-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 64px; scroll-snap-align: start; }
+/* ultima slide: passaggio precedente/successivo + footer */
+.p-slides .pager { min-height: calc(100vh - var(--foot-h, 90px)); display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
+.p-slides .site-footer { scroll-snap-align: end; }
+
+.slide-dots { position: fixed; right: clamp(12px, 1.4vw, 24px); top: 50%; transform: translateY(-50%); z-index: 20; }
+.slide-dots ol { list-style: none; margin: 0; padding: 8px 6px; display: grid; gap: 2px; background: rgba(251, 251, 250, 0.86); backdrop-filter: blur(6px); border: 1px solid var(--line); border-radius: 999px; }
+.slide-dots a { position: relative; display: grid; place-items: center; width: 22px; height: 30px; border-radius: 999px; }
+.slide-dots i { display: block; width: 8px; height: 8px; border-radius: 4px; background: var(--line-strong); transition: height 260ms var(--ease-out), background-color 160ms var(--ease-out); }
+.slide-dots a:hover i { background: var(--ink-2); }
+.slide-dots a[aria-current="true"] i { height: 22px; background: var(--brand); }
+.slide-dots .lbl {
+  position: absolute; right: calc(100% + 12px); top: 50%; transform: translate(4px, -50%);
+  white-space: nowrap; background: var(--ink); color: #fff; font-size: 13px; line-height: 1; padding: 7px 10px; border-radius: 6px;
+  opacity: 0; pointer-events: none; transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.slide-dots a:hover .lbl, .slide-dots a:focus-visible .lbl { opacity: 1; transform: translate(0, -50%); }
