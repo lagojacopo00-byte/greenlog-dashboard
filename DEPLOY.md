@@ -8,6 +8,13 @@ Due strade. Scegli in base a quanto deve vivere il sito.
 
 `site/` è già un sito statico completo e funzionante. Nessuna build, nessuna dipendenza npm.
 
+Online su GitHub Pages: https://lagojacopo00-byte.github.io/greenlog-dashboard/
+- `/` presentazione del progetto
+- `/dashboard.html` la dashboard (`#sintesi`, `#flotta`, `#costi`, `#clienti` aprono la scheda)
+- `/brand.html` identità visiva
+
+Lo screenshot in `site/assets/dashboard-sintesi.jpg` non si aggiorna con i dati: se la dashboard cambia aspetto, rigeneralo.
+
 **Vincolo unico:** va servito via HTTP, non aperto con doppio clic. Con `file://` i `fetch` dei JSON vengono bloccati dal browser e vedi la card d'errore rossa.
 
 ### Provalo in locale
@@ -47,11 +54,11 @@ I JSON in `site/data/` contengono **nomi clienti, ricavi e potenziale annuo**. P
 
 Ha senso se servono login, più clienti, dati live o integrazione con altri sistemi. Il `README.md` è la specifica completa: token, layout di ogni grafico, logica di calcolo, trappole sui dati.
 
-Stack che consiglierei, ma decidi tu: **Next.js + Recharts o visx**, con le query SQL delle view spostate in API route e i JSON sostituiti da chiamate al DB. La classe `Component` in fondo a `site/index.html` è la fonte da cui leggere la logica: ogni aggregato è lì, in JavaScript leggibile.
+Stack che consiglierei, ma decidi tu: **Next.js + Recharts o visx**, con le query SQL delle view spostate in API route e i JSON sostituiti da chiamate al DB. La classe `Component` in fondo a `site/dashboard.html` è la fonte da cui leggere la logica: ogni aggregato è lì, in JavaScript leggibile.
 
 Prompt di partenza per Claude Code, da dare nella cartella scompattata:
 
-> Leggi README.md e site/index.html. Ricostruisci questa dashboard come app Next.js con App Router e TypeScript. Grafici con Recharts. I dati arrivano da MySQL tramite API route che eseguono le stesse view `vw_*`, non da JSON statici. Rispetta esattamente i design token e i testi generati dai dati documentati nel README. Mantieni il cross-filter marca/mezzo, il simulatore e l'annualizzazione descritta.
+> Leggi README.md e site/dashboard.html. Ricostruisci questa dashboard come app Next.js con App Router e TypeScript. Grafici con Recharts. I dati arrivano da MySQL tramite API route che eseguono le stesse view `vw_*`, non da JSON statici. Rispetta esattamente i design token e i testi generati dai dati documentati nel README. Mantieni il cross-filter marca/mezzo, il simulatore e l'annualizzazione descritta.
 
 ---
 

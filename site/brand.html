@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identità visiva | GreenLog</title>
+<meta name="description" content="Logo, colori, tipografia, componenti e tono di voce di GreenLog.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/png" href="./assets/favicon-64.png">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/brand.css">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<style>
+  .site-header { padding-block: 14px; border-bottom: 1px solid var(--line); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .site-header img { height: 56px; width: auto; }
+  .site-header nav { display: flex; align-items: center; gap: 20px; }
+  .back { color: var(--ink-2); text-decoration: none; font-size: 15px; white-space: nowrap; }
+  .back:hover { color: var(--ink); }
+  @media (max-width: 520px) { .site-header .btn { display: none; } }
+
+  .intro { padding-block: clamp(48px, 7vw, 88px) clamp(40px, 5vw, 56px); }
+  .intro h1 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; margin: 16px 0 18px; }
+  .intro p { color: var(--ink-2); max-width: 60ch; margin: 0; font-size: 1.1rem; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 22px 0 0; padding: 0; font-size: 15px; }
+  .toc a { color: var(--ink-2); display: inline-block; padding-block: 10px; }
+
+  .block { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--line); }
+  .block > .wrap > h2 { font-size: clamp(1.7rem, 2.8vw, 2.2rem); letter-spacing: -0.02em; font-weight: 600; margin: 0 0 12px; line-height: 1.15; }
+  .block > .wrap > p.sub { color: var(--ink-2); margin: 0 0 clamp(32px, 5vw, 48px); max-width: 62ch; }
+
+  /* logo */
+  .logo-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px; }
+  .logo-stage { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); display: grid; place-items: center; padding: clamp(40px, 7vw, 88px) 24px; position: relative; }
+  .logo-stage img { width: min(100%, 351px); }
+  .clearspace { position: relative; padding: 28px; outline: 1px dashed #9fcbb0; outline-offset: -1px; }
+  .clearspace::before { content: "x"; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); font: 12px/1 var(--mono); color: var(--brand-ink); }
+  .logo-stage figcaption { position: absolute; left: 20px; bottom: 16px; font-size: 14px; color: var(--muted); }
+  .logo-side { display: grid; gap: 16px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px; }
+  .fact h3 { margin: 0 0 6px; font-size: 1rem; font-weight: 600; }
+  .fact p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .fact .sizes { display: flex; align-items: end; gap: 24px; margin-top: 18px; }
+  .fact .sizes figure { margin: 0; display: grid; gap: 8px; justify-items: start; }
+  .fact .sizes figcaption { font: 12px/1 var(--mono); color: var(--muted); }
+  .fact .downloads { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+  .donts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+  .dont { margin: 0; }
+  .dont .box { height: 148px; border: 1px solid var(--line); border-radius: var(--r-card); display: grid; place-items: center; background: var(--surface); overflow: hidden; }
+  .dont img { width: 130px; }
+  .dont figcaption { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
+  .dont figcaption b { color: #9F2F2D; font-weight: 600; }
+  .dont .stretch img { transform: scaleX(1.45); }
+  .dont .recolor img { filter: hue-rotate(150deg) saturate(1.4); }
+  .dont .dark { background: #0d1317; border-color: #0d1317; }
+  .dont .busy { background: url("./assets/dashboard-sintesi.jpg") 30% 40% / 320% auto; }
+  @media (max-width: 900px) { .logo-grid { grid-template-columns: minmax(0, 1fr); } .donts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* colori */
+  .swatches { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+  .sw { grid-column: span 3; border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; background: var(--surface); }
+  .sw.big { grid-column: span 6; }
+  .sw .chip { height: 112px; display: flex; align-items: end; padding: 14px 16px; font: 500 13px/1 var(--mono); }
+  .sw.big .chip { height: 168px; font: 600 28px/1 var(--sans); }
+  .sw .meta { padding: 14px 16px 16px; display: grid; gap: 2px; }
+  .sw .meta b { font-weight: 600; font-size: 15px; }
+  .sw .meta code { font: 13px/1.4 var(--mono); color: var(--ink-2); }
+  .sw .meta span { font-size: 14px; color: var(--muted); }
+  @media (max-width: 900px) { .sw, .sw.big { grid-column: span 6; } }
+  @media (max-width: 520px) { .sw, .sw.big { grid-column: span 12; } }
+
+  .rule { margin-top: 24px; padding: 18px 22px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-card); color: var(--ink-2); max-width: 78ch; font-size: 15px; }
+  .rule strong { color: var(--ink); }
+
+  /* tipografia */
+  .type-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .specimen { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: clamp(24px, 3vw, 36px); }
+  .specimen .name { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .specimen .aa { color: var(--ink); font-size: clamp(4rem, 9vw, 6.5rem); line-height: 1; letter-spacing: -0.04em; font-weight: 600; margin: 0 0 18px; }
+  .specimen.mono .aa { font-family: var(--mono); font-weight: 500; letter-spacing: -0.02em; }
+  .specimen p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .scale { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); overflow-x: auto; }
+  .scale table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  .scale td { padding: 16px 24px; vertical-align: baseline; }
+  .scale tr + tr td { border-top: 1px solid var(--line); }
+  .scale td:first-child { width: 170px; font: 12.5px/1.4 var(--mono); color: var(--muted); }
+  .scale td:last-child { width: 180px; font: 12.5px/1.4 var(--mono); color: var(--muted); text-align: right; }
+  @media (max-width: 760px) { .type-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  /* componenti */
+  .comp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .comp { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px; display: grid; gap: 18px; align-content: start; }
+  .comp h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .comp .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .comp p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .comp .num { font-size: 2.6rem; color: var(--brand-ink); }
+  @media (max-width: 900px) { .comp-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  /* voce */
+  .voice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .voice article { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 24px; }
+  .voice h3 { margin: 0 0 14px; font-size: 1.05rem; font-weight: 600; }
+  .voice .say, .voice .avoid { margin: 0; padding: 12px 14px; border-radius: 6px; font-size: 15px; }
+  .voice .say { background: var(--brand-tint); color: var(--ink); }
+  .voice .avoid { background: #F6F2F2; color: var(--ink-2); margin-top: 8px; }
+  .voice .avoid s { text-decoration-color: #c9a3a3; }
+  .voice .lbl { display: block; font: 500 11.5px/1 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; text-decoration: none; }
+  .voice .say .lbl { color: var(--brand-ink); }
+  .voice .avoid .lbl { color: #9F2F2D; }
+  @media (max-width: 760px) { .voice { grid-template-columns: minmax(0, 1fr); } }
+
+  .site-footer { border-top: 1px solid var(--line); padding-block: 32px 40px; font-size: 14px; color: var(--muted); }
+  .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+  .site-footer a { color: var(--ink-2); display: inline-block; padding-block: 10px; margin-block: -10px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" aria-label="GreenLog, torna alla presentazione"><img src="./assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <nav aria-label="Principale">
+      <a class="back" href="./"><span aria-hidden="true">←</span> Il progetto</a>
+      <a class="btn btn-primary btn-sm" href="./dashboard.html">Apri la dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenuto">
+  <section class="intro">
+    <div class="wrap">
+      <p class="eyebrow">Linee guida</p>
+      <h1>Identità visiva di GreenLog</h1>
+      <p>Le regole per usare logo, colori e caratteri in modo coerente su sito, dashboard, slide e documenti del progetto. Tutti i valori sono anche nel file <code>assets/brand.css</code>.</p>
+      <ul class="toc">
+        <li><a href="#logo">Logo</a></li>
+        <li><a href="#colori">Colori</a></li>
+        <li><a href="#tipografia">Tipografia</a></li>
+        <li><a href="#componenti">Componenti</a></li>
+        <li><a href="#voce">Tono di voce</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="logo" aria-labelledby="logo-t">
+    <div class="wrap">
+      <h2 id="logo-t">Logo</h2>
+      <p class="sub">Il logo si usa così com'è: camion, scritta GREENLOG con la O a ingranaggio e foglia, payoff Data &amp; Logistics Solutions. Sempre su fondo chiaro.</p>
+
+      <div class="logo-grid">
+        <figure class="logo-stage reveal">
+          <div class="clearspace"><img src="./assets/greenlog-logo.png" alt="Logo GreenLog con l'area di rispetto tratteggiata" width="351" height="216"></div>
+          <figcaption>Area di rispetto: su ogni lato, almeno l'altezza della scritta GREENLOG.</figcaption>
+        </figure>
+        <div class="logo-side">
+          <div class="fact reveal" style="--d: 60ms">
+            <h3>Dimensioni</h3>
+            <p>Sotto i 160px di larghezza il payoff non si legge più. Per favicon e icone si usa solo il camion.</p>
+            <div class="sizes">
+              <figure><img src="./assets/greenlog-logo.png" alt="" width="160" height="99"><figcaption>160px, minimo</figcaption></figure>
+              <figure><img src="./assets/apple-touch-icon.png" alt="" width="56" height="56" style="border:1px solid var(--line);border-radius:12px"><figcaption>icona</figcaption></figure>
+              <figure><img src="./assets/favicon-64.png" alt="" width="32" height="32"><figcaption>favicon</figcaption></figure>
+            </div>
+          </div>
+          <div class="fact reveal" style="--d: 120ms">
+            <h3>File</h3>
+            <p>PNG con fondo trasparente, ritagliati dal logo originale.</p>
+            <div class="downloads">
+              <a class="btn btn-secondary btn-sm" href="./assets/greenlog-logo.png" download>Logo PNG</a>
+              <a class="btn btn-secondary btn-sm" href="./assets/apple-touch-icon.png" download>Icona 180px</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="donts">
+        <figure class="dont reveal"><div class="box stretch"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> deformarlo o cambiarne le proporzioni.</figcaption></figure>
+        <figure class="dont reveal" style="--d: 50ms"><div class="box recolor"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> ricolorarlo: il verde è parte del marchio.</figcaption></figure>
+        <figure class="dont reveal" style="--d: 100ms"><div class="box dark"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> su fondi scuri: il verde perde contrasto.</figcaption></figure>
+        <figure class="dont reveal" style="--d: 150ms"><div class="box busy"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> sopra immagini o grafici.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="colori" aria-labelledby="colori-t">
+    <div class="wrap">
+      <h2 id="colori-t">Colori</h2>
+      <p class="sub">Un solo colore di marca, il verde del logo, su una base di neutri chiari. Il colore segnala azioni e risultati, non decora.</p>
+
+      <div class="swatches">
+        <div class="sw big reveal"><div class="chip" style="background:#238A51;color:#fff">Aa</div><div class="meta"><b>Verde GreenLog</b><code>#238A51</code><span>Il verde del logo. Per superfici, icone e grafici. Non per testo piccolo: 4,35:1 su bianco.</span></div></div>
+        <div class="sw big reveal" style="--d: 60ms"><div class="chip" style="background:#1A6B3F;color:#fff">Aa</div><div class="meta"><b>Verde testo</b><code>#1A6B3F</code><span>Bottoni, link e cifre in evidenza. 6,52:1 su bianco. Hover <code>#145633</code>.</span></div></div>
+        <div class="sw reveal"><div class="chip" style="background:#EEF5F0;color:#1A6B3F">Aa</div><div class="meta"><b>Verde tenue</b><code>#EEF5F0</code><span>Fondo di riquadri e tag.</span></div></div>
+        <div class="sw reveal" style="--d: 40ms"><div class="chip" style="background:#17201B;color:#fff">Aa</div><div class="meta"><b>Inchiostro</b><code>#17201B</code><span>Titoli e testo. 16,7:1</span></div></div>
+        <div class="sw reveal" style="--d: 80ms"><div class="chip" style="background:#454E49;color:#fff">Aa</div><div class="meta"><b>Testo secondario</b><code>#454E49</code><span>Paragrafi e didascalie. 8,6:1</span></div></div>
+        <div class="sw reveal" style="--d: 120ms"><div class="chip" style="background:#69716C;color:#fff">Aa</div><div class="meta"><b>Testo tenue</b><code>#69716C</code><span>Etichette e note. 4,85:1</span></div></div>
+        <div class="sw reveal"><div class="chip" style="background:#FBFBFA;color:#17201B;border-bottom:1px solid #E4E7E3">Aa</div><div class="meta"><b>Fondo pagina</b><code>#FBFBFA</code><span>Base di tutte le pagine.</span></div></div>
+        <div class="sw reveal" style="--d: 40ms"><div class="chip" style="background:#FFFFFF;color:#17201B;border-bottom:1px solid #E4E7E3">Aa</div><div class="meta"><b>Superficie</b><code>#FFFFFF</code><span>Riquadri e cornici.</span></div></div>
+        <div class="sw reveal" style="--d: 80ms"><div class="chip" style="background:#F3F5F2;color:#17201B;border-bottom:1px solid #E4E7E3">Aa</div><div class="meta"><b>Fascia</b><code>#F3F5F2</code><span>Sezioni da staccare.</span></div></div>
+        <div class="sw reveal" style="--d: 120ms"><div class="chip" style="background:#E4E7E3;color:#17201B">Aa</div><div class="meta"><b>Filetto</b><code>#E4E7E3</code><span>Bordi 1px. Marcato <code>#C9CFCA</code>.</span></div></div>
+      </div>
+
+      <p class="rule reveal"><strong>Stato di lavorazione.</strong> Per "in sviluppo" si usa l'ambra: testo <code>#8A5A00</code> su <code>#FBF1DA</code>. Niente rossi, blu o viola nell'interfaccia. La dashboard oggi usa ancora un tema scuro con un verde più chiaro (<code>#4fc98c</code>), scelto per il contrasto sul nero: allinearla al fondo chiaro è un passo aperto.</p>
+    </div>
+  </section>
+
+  <section class="block" id="tipografia" aria-labelledby="tipo-t">
+    <div class="wrap">
+      <h2 id="tipo-t">Tipografia</h2>
+      <p class="sub">Due caratteri della stessa famiglia, IBM Plex, gratuiti su Google Fonts. Sono gli stessi della dashboard.</p>
+
+      <div class="type-grid">
+        <div class="specimen reveal">
+          <p class="name">IBM Plex Sans, 400 500 600</p>
+          <p class="aa">Aa</p>
+          <p>Titoli, testo, bottoni e cifre grandi. Le cifre usano sempre numeri tabellari, così le colonne restano allineate.</p>
+        </div>
+        <div class="specimen mono reveal" style="--d: 60ms">
+          <p class="name">IBM Plex Mono, 400 500</p>
+          <p class="aa">Aa</p>
+          <p>Etichette, identificativi come <code>TRK00042</code>, nomi di tabelle e codice. Mai per paragrafi o per cifre in corpo grande.</p>
+        </div>
+      </div>
+
+      <div class="scale reveal">
+        <table>
+          <tbody>
+            <tr><td>Titolo pagina</td><td style="font-size:3rem;font-weight:600;letter-spacing:-0.03em;line-height:1.05">Dati che decidono</td><td>40-60px, 600, -0,03em</td></tr>
+            <tr><td>Titolo sezione</td><td style="font-size:2.2rem;font-weight:600;letter-spacing:-0.02em;line-height:1.15">Sette domande</td><td>29-38px, 600, -0,02em</td></tr>
+            <tr><td>Titolo riquadro</td><td style="font-size:1.3rem;font-weight:600">Quanto possiamo risparmiare?</td><td>18-22px, 600</td></tr>
+            <tr><td>Testo</td><td>Portando ogni camion alla media di marca si recuperano 27 mila euro l'anno.</td><td>17px, 400, interlinea 1,6</td></tr>
+            <tr><td>Cifra in evidenza</td><td class="display-num" style="font-size:2.8rem;color:var(--brand-ink)">170.820</td><td>36-52px, 500, tabellare</td></tr>
+            <tr><td>Etichetta</td><td><span class="eyebrow">Aggiornato 14/09/2026</span></td><td>Mono 12-13px, maiuscolo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="componenti" aria-labelledby="comp-t">
+    <div class="wrap">
+      <h2 id="comp-t">Componenti</h2>
+      <p class="sub">Forme sobrie: raggio 6px per i bottoni, 10px per i riquadri, pillola solo per i tag. Nessuna ombra: i livelli si separano con fondi e filetti.</p>
+
+      <div class="comp-grid">
+        <div class="comp reveal">
+          <h3>Bottoni</h3>
+          <div class="row"><a class="btn btn-primary" href="./dashboard.html">Apri la dashboard</a></div>
+          <div class="row"><a class="btn btn-secondary" href="./#pipeline">Come è fatta</a></div>
+          <p>Un solo bottone pieno per pagina e per azione. Le etichette dicono cosa succede, in due o tre parole.</p>
+        </div>
+        <div class="comp reveal" style="--d: 60ms">
+          <h3>Tag di stato</h3>
+          <div class="row"><span class="tag tag-green">Pronto</span><span class="tag tag-amber">In sviluppo</span></div>
+          <p>Solo per uno stato reale di lavorazione, mai come decorazione.</p>
+        </div>
+        <div class="comp reveal" style="--d: 120ms">
+          <h3>Cifra con didascalia</h3>
+          <div><span class="num display-num">55,7%</span><p style="margin-top:6px">delle consegne arriva in orario.</p></div>
+          <p>Il numero da solo non basta: la didascalia dice cosa misura, in formato italiano.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="voce" aria-labelledby="voce-t">
+    <div class="wrap">
+      <h2 id="voce-t">Tono di voce</h2>
+      <p class="sub">GreenLog parla a chi deve decidere su una flotta. Frasi brevi, numeri veri, limiti dichiarati.</p>
+
+      <div class="voice">
+        <article class="reveal">
+          <h3>Prima il dato, poi l'aggettivo</h3>
+          <p class="say"><span class="lbl">Sì</span>Solo il 56% delle consegne arriva in orario.</p>
+          <p class="avoid"><span class="lbl">No</span><s>Performance di consegna migliorabili.</s></p>
+        </article>
+        <article class="reveal" style="--d: 60ms">
+          <h3>Numeri in formato italiano</h3>
+          <p class="say"><span class="lbl">Sì</span>€27k l'anno, 170.820 consegne, 55,7%</p>
+          <p class="avoid"><span class="lbl">No</span><s>$27K/yr, 170,820 deliveries, 55.7%</s></p>
+        </article>
+        <article class="reveal">
+          <h3>I limiti si dicono</h3>
+          <p class="say"><span class="lbl">Sì</span>Il KPI misura il ricavo, non il margine: mancano i costi per cliente.</p>
+          <p class="avoid"><span class="lbl">No</span><s>Redditività completa di ogni cliente.</s></p>
+        </article>
+        <article class="reveal" style="--d: 60ms">
+          <h3>Verbi concreti, niente slogan</h3>
+          <p class="say"><span class="lbl">Sì</span>Una view SQL per ogni KPI.</p>
+          <p class="avoid"><span class="lbl">No</span><s>Soluzioni innovative basate sui dati.</s></p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>GreenLog, project work dell'Academy Data Engineering.</span>
+    <a href="./">Torna al progetto</a>
+  </div>
+</footer>
+
+<script src="./assets/site.js" defer></script>
+</body>
+</html>

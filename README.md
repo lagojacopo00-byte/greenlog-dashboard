@@ -11,15 +11,15 @@ Dashboard web per GreenLog (trasporto merci su strada, committente ItalLogistic)
 6. Le consegne arrivano in orario? (`vw_puntualita_consegne`)
 7. Quali clienti rendono meno del potenziale? (`vw_redditivita_cliente`)
 
-La tesi editoriale della dashboard — visibile nella home — è che **il risparmio non è nel carburante ma nelle attese ai magazzini e nei mezzi fermi**: la flotta consuma già in modo omogeneo (scostamento massimo ~0,2%), mentre la puntualità media è bassa e l'attesa media al carico è di decine di minuti.
+La tesi editoriale della dashboard — visibile nella home — è che **il risparmio non è nel carburante ma nelle attese ai magazzini e nei mezzi fermi**: la flotta consuma già in modo omogeneo (scostamento massimo ~1%), mentre la puntualità media è bassa e l'attesa media al carico è di decine di minuti.
 
 ## About the Design Files
-`site/index.html` **è un design di riferimento in HTML**, non codice di produzione da estendere indefinitamente. Funziona: si apre in un browser, carica i JSON e disegna grafici SVG/DOM interattivi senza alcuna dipendenza esterna oltre `support.js` (runtime incluso) e i font Google.
+`site/dashboard.html` **è un design di riferimento in HTML**, non codice di produzione da estendere indefinitamente. Funziona: si apre in un browser, carica i JSON e disegna grafici SVG/DOM interattivi senza alcuna dipendenza esterna oltre `support.js` (runtime incluso) e i font Google.
 
 Per il deploy hai quindi **due strade legittime**, descritte in `DEPLOY.md`:
 
 - **A — pubblicare il bundle così com'è.** È un sito statico completo. Zero build, zero framework. Corretto se l'obiettivo è "mettere online la dashboard entro oggi".
-- **B — ricostruirla nel codebase target** (React/Next, Vue, quello che userai). Corretto se la dashboard deve diventare un prodotto con autenticazione, più utenti, dati live. In quel caso questo README è la specifica: colori, tipografia, layout e logica di ogni grafico sono documentati sotto, e la logica di calcolo è leggibile nella classe `Component` in fondo a `index.html`.
+- **B — ricostruirla nel codebase target** (React/Next, Vue, quello che userai). Corretto se la dashboard deve diventare un prodotto con autenticazione, più utenti, dati live. In quel caso questo README è la specifica: colori, tipografia, layout e logica di ogni grafico sono documentati sotto, e la logica di calcolo è leggibile nella classe `Component` in fondo a `dashboard.html`.
 
 Non copiare `support.js` in un progetto React: è il runtime del prototipo. In un codebase reale i grafici si rifanno con la libreria già in uso (Recharts, visx, D3, ECharts), replicando i valori qui documentati.
 
@@ -51,7 +51,7 @@ Quattro schede in una singola pagina, commutate da stato client (`state.tab`), s
 - **Domanda 04 — simulatore**: due slider nativi (`accent-color: #4fc98c`).
   - *Mezzi portati alla media*: 0–100 step 5, default 100.
   - *Prezzo gasolio*: 0,60–2,20 €/L step 0,05, default = prezzo medio reale dai dati.
-  - Output: risparmio annuo, litri non bruciati, CO₂ evitata (2,68 kg/L). **I valori delle view coprono tutto l'archivio** (~24 mesi): la dashboard divide per `anni = mesiArchivio / 12` per esporre cifre annue e cita il totale di periodo nella nota. Replicare questa annualizzazione, altrimenti i numeri risultano gonfiati.
+  - Output: risparmio annuo, litri non bruciati, CO₂ evitata (2,68 kg/L). **I valori delle view coprono tutto l'archivio** (36 mesi, gen 2022 - dic 2024): la dashboard divide per `anni = mesiArchivio / 12` per esporre cifre annue e cita il totale di periodo nella nota. Replicare questa annualizzazione, altrimenti i numeri risultano gonfiati.
   - Bottone "RIPRISTINA DATI REALI" riporta gli slider ai valori del database (`state.simCop = null`, `state.simPrezzo = null`).
 
 ### 4. Clienti & Consegne (`tab: "clienti"`)
@@ -132,7 +132,11 @@ Le view fanno tutto il calcolo lato database; la dashboard non ricalcola KPI, li
 ## Files
 | File | Cosa contiene |
 | --- | --- |
-| `site/index.html` | La dashboard completa: markup, stili inline, classe `Component` con tutta la logica di calcolo e disegno |
+| `site/index.html` | Pagina di presentazione del progetto (fondo chiaro, identità in `DESIGN.md`). Legge alcuni JSON per mostrare i numeri aggiornati |
+| `site/brand.html` | Linee guida pubbliche: logo, colori, tipografia, componenti, tono di voce |
+| `site/dashboard.html` | La dashboard completa: markup, stili inline, classe `Component` con tutta la logica di calcolo e disegno. `dashboard.html#costi` apre direttamente una scheda |
+| `site/assets/` | Logo, favicon, screenshot della dashboard, `brand.css` (token condivisi) e `site.js` (entrate allo scroll) |
+| `DESIGN.md` | Il sistema visivo delle pagine di presentazione |
 | `site/support.js` | Runtime del prototipo (template + rendering). Solo per la strada A |
 | `site/data/*.json` | Le dieci esportazioni delle view + `manifest.json` |
 | `pipeline/export_views.py` | Esportatore DB → JSON |
