@@ -1,0 +1,86 @@
+name: Aggiorna i dati della dashboard
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # ogni notte alle 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Controlla i secret del database
+        id: secrets
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+        run: |
+          if [ -z "$DB_HOST" ]; then
+            echo "::warning::Secret DB_* non configurati: aggiornamento saltato."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.secrets.outputs.ok == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.secrets.outputs.ok == 'true'
+        with:
+          python-version: "3.12"
+
+      - if: steps.secrets.outputs.ok == 'true'
+        run: pip install pymysql python-dotenv
+
+      - name: Certificato Aiven
+        if: steps.secrets.outputs.ok == 'true'
+        env:
+          DB_CA_PEM: ${{ secrets.DB_CA_PEM }}
+        run: printf '%s' "$DB_CA_PEM" > pipeline/ca.pem
+
+      - name: Esporta le view in JSON
+        if: steps.secrets.outputs.ok == 'true'
+        working-directory: pipeline
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_SSL_CA: ca.pem
+        run: python export_views.py
+
+      - name: Sposta i JSON nel sito
+        if: steps.secrets.outputs.ok == 'true'
+        run: |
+          mkdir -p site/data
+          cp pipeline/data/*.json site/data/
+          rm -f pipeline/ca.pem
+
+      - name: Commit se qualcosa è cambiato
+        id: commit
+        if: steps.secrets.outputs.ok == 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add site/data
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Dati aggiornati: $(date -u +%Y-%m-%d)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: export
+    if: needs.export.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml

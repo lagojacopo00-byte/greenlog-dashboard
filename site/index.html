@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0d1317; }
+  * { box-sizing: border-box; }
+  a { color: #4fc98c; text-decoration: none; }
+  a:hover { color: #7edcae; text-decoration: underline; }
+  input[type="range"] { accent-color: #4fc98c; width: 100%; }
+  ::selection { background: #4fc98c; color: #0d1317; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#0d1317;color:#e8eef0;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.5;text-wrap:pretty">
+
+  <header style="position:sticky;top:0;z-index:30;background:rgba(13,19,23,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #223038">
+    <div style="max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px;min-width:0">
+        <div style="width:11px;height:11px;border-radius:50%;background:#4fc98c;flex:none"></div>
+        <div style="min-width:0">
+          <div style="font-weight:700;font-size:17px;letter-spacing:-0.01em">GreenLog</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;letter-spacing:0.04em">{{ statusLabel }}</div>
+        </div>
+      </div>
+      <nav style="display:flex;flex-wrap:wrap;gap:6px">
+        <button onClick="{{ goSintesi }}" style="{{ tabSintesi }}">Sintesi</button>
+        <button onClick="{{ goFlotta }}" style="{{ tabFlotta }}">Flotta</button>
+        <button onClick="{{ goCosti }}" style="{{ tabCosti }}">Costi &amp; Risparmi</button>
+        <button onClick="{{ goClienti }}" style="{{ tabClienti }}">Clienti &amp; Consegne</button>
+      </nav>
+    </div>
+  </header>
+
+  <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+  <div style="border-bottom:1px solid #223038;background:#111a1f">
+    <div style="max-width:1280px;margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;letter-spacing:0.08em;flex:none">MARCA</span>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <sc-for list="{{ makeChips }}" as="m" hint-placeholder-count="5">
+          <button onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.name }} <span style="opacity:0.6">{{ m.n }}</span></button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ truckSel }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ clearTruck }}" style="background:#1c2b33;border:1px solid #4fc98c;color:#e8eef0;border-radius:20px;padding:6px 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;cursor:pointer">{{ truckSel }} ✕</button>
+      </sc-if>
+      <sc-if value="{{ anyFilter }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ clearAll }}" style="margin-left:auto;background:none;border:1px solid #38505c;color:#93a4ad;border-radius:7px;padding:6px 12px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer">AZZERA</button>
+      </sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <main style="max-width:1280px;margin:0 auto;padding:32px 24px 90px">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:70px 0;text-align:center;color:#7f939d;font-family:'IBM Plex Mono',monospace;font-size:14px">Carico le view dal database…</div>
+    </sc-if>
+
+    <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px solid #6b3a3a;background:#1d1214;border-radius:10px;padding:26px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e08f8f;letter-spacing:0.08em;margin-bottom:8px">DATI NON RAGGIUNGIBILI</div>
+        <div style="color:#d9c2c2;font-size:15px">{{ err }}</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSintesi }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Sintesi">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em;margin-bottom:14px">{{ periodo }}</div>
+        <h1 style="margin:0 0 14px;font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-0.02em;max-width:26ch">{{ titolo }}</h1>
+        <p style="margin:0 0 30px;color:#b6c4ca;font-size:17px;max-width:70ch">{{ sommario }}</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:34px">
+          <sc-for list="{{ kpiCards }}" as="c" hint-placeholder-count="4">
+            <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:20px">
+              <div style="color:#93a4ad;font-size:14px;margin-bottom:10px">{{ c.label }}</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:500;letter-spacing:-0.02em;color:{{ c.color }}">{{ c.value }}</div>
+              <div style="color:#7f939d;font-size:13px;margin-top:5px">{{ c.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-bottom:18px">
+          <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+              <h2 style="margin:0;font-size:19px;font-weight:600">Consumo medio della flotta</h2>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7f939d">L/100 km</span>
+            </div>
+            <p style="margin:0 0 20px;color:#93a4ad;font-size:14px">{{ trendNota }}</p>
+            <div style="position:relative;height:210px;margin-bottom:12px">
+              <svg viewBox="0 0 1000 210" preserveAspectRatio="none" style="width:100%;height:210px;display:block;overflow:visible">
+                <polyline points="{{ trendGrid1 }}" stroke="#1d2a31" stroke-width="1" fill="none" vector-effect="non-scaling-stroke"></polyline>
+                <polyline points="{{ trendGrid2 }}" stroke="#1d2a31" stroke-width="1" fill="none" vector-effect="non-scaling-stroke"></polyline>
+                <polyline points="{{ trendGrid3 }}" stroke="#1d2a31" stroke-width="1" fill="none" vector-effect="non-scaling-stroke"></polyline>
+                <polyline points="{{ trendArea }}" fill="#4fc98c" fill-opacity="0.1" stroke="none"></polyline>
+                <polyline points="{{ trendPoints }}" stroke="#4fc98c" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"></polyline>
+              </svg>
+              <sc-for list="{{ trendDots }}" as="d" hint-placeholder-count="0">
+                <div onMouseEnter="{{ d.onEnter }}" onMouseLeave="{{ d.onLeave }}" style="position:absolute;left:{{ d.left }};top:{{ d.top }};width:24px;height:24px;margin:-12px 0 0 -12px;display:flex;align-items:center;justify-content:center;cursor:default">
+                  <span style="width:{{ d.size }};height:{{ d.size }};border-radius:50%;background:#4fc98c;border:2px solid #0d1317"></span>
+                </div>
+              </sc-for>
+              <sc-if value="{{ trendTip }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;left:{{ trendTipLeft }};top:{{ trendTipTop }};transform:translate(-50%,-140%);background:#0b1114;border:1px solid #4fc98c;border-radius:7px;padding:8px 11px;white-space:nowrap;pointer-events:none;z-index:5">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ trendTip.mese }}</div>
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;color:#4fc98c">{{ trendTip.val }}</div>
+                </div>
+              </sc-if>
+              <div style="position:absolute;left:0;top:-5px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ trendMax }}</div>
+              <div style="position:absolute;left:0;bottom:-5px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ trendMin }}</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">
+              <sc-for list="{{ trendLabels }}" as="l" hint-placeholder-count="0">
+                <span style="white-space:nowrap">{{ l.label }}</span>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
+            <h2 style="margin:0 0 4px;font-size:19px;font-weight:600">Stato della flotta</h2>
+            <p style="margin:0 0 22px;color:#93a4ad;font-size:14px">{{ statoNota }}</p>
+            <div style="display:flex;height:16px;border-radius:8px;overflow:hidden;margin-bottom:22px;gap:2px">
+              <sc-for list="{{ statoSegs }}" as="s" hint-placeholder-count="3">
+                <div style="width:{{ s.w }};background:{{ s.color }}"></div>
+              </sc-for>
+            </div>
+            <div style="display:grid;gap:14px">
+              <sc-for list="{{ statoRows }}" as="s" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:12px minmax(0,1fr) auto auto;gap:12px;align-items:center">
+                  <span style="width:10px;height:10px;border-radius:2px;background:{{ s.color }}"></span>
+                  <span style="font-size:15px">{{ s.label }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:15px;color:#e8eef0">{{ s.n }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#7f939d;min-width:52px;text-align:right">{{ s.pct }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid #223038;color:#93a4ad;font-size:14px">{{ statoCommento }}</div>
+          </div>
+        </div>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
+          <h2 style="margin:0 0 18px;font-size:19px;font-weight:600">Cosa guardare per primo</h2>
+          <div style="display:grid;gap:1px;background:#223038;border:1px solid #223038;border-radius:8px;overflow:hidden">
+            <sc-for list="{{ insights }}" as="i" hint-placeholder-count="3">
+              <div onClick="{{ i.onClick }}" style="background:#121b21;padding:16px 18px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;cursor:pointer" style-hover="background:#16222a">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{ i.color }};letter-spacing:0.06em">{{ i.tag }}</span>
+                <span style="font-size:15px;color:#cfdadf">{{ i.testo }}</span>
+                <span style="color:#7f939d;font-size:13px;white-space:nowrap">{{ i.vai }} →</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isFlotta }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Flotta">
+        <h1 style="margin:0 0 8px;font-size:29px;font-weight:700;letter-spacing:-0.02em">Flotta</h1>
+        <p style="margin:0 0 34px;color:#93a4ad;max-width:66ch">Chi consuma più della propria marca, dove si perde capacità. Clicca un mezzo: il filtro vale per tutta la pagina.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;margin-bottom:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em">DOMANDA 01</span>
+          <h2 style="margin:0;font-size:20px;font-weight:600">Quali mezzi consumano più del previsto?</h2>
+        </div>
+        <p style="margin:0 0 18px;color:#93a4ad;font-size:15px;max-width:74ch">{{ q1Nota }}</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px;margin-bottom:34px">
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <span style="color:#93a4ad;font-size:14px">{{ q1Count }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7f939d">vw_consumo_previsto</span>
+          </div>
+          <div style="display:grid;gap:11px">
+            <sc-for list="{{ q1Rows }}" as="r" hint-placeholder-count="10">
+              <div onClick="{{ r.onClick }}" style="display:grid;grid-template-columns:minmax(0,1fr) 78px;gap:16px;align-items:center;cursor:pointer;opacity:{{ r.dim }}">
+                <div>
+                  <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:6px;font-size:14px">
+                    <span><span style="font-family:'IBM Plex Mono',monospace">{{ r.id }}</span> <span style="color:#7f939d">{{ r.make }}</span></span>
+                    <span style="color:#7f939d;font-family:'IBM Plex Mono',monospace;font-size:13px">{{ r.reale }} vs {{ r.previsto }}</span>
+                  </div>
+                  <div style="height:9px;background:#0d1317;border-radius:5px;overflow:hidden;display:flex;justify-content:{{ r.just }}">
+                    <div style="height:100%;width:{{ r.w }};background:{{ r.color }};border-radius:5px"></div>
+                  </div>
+                </div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:16px;text-align:right;color:{{ r.color }}">{{ r.pct }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;margin-bottom:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em">DOMANDA 02</span>
+          <h2 style="margin:0;font-size:20px;font-weight:600">Dove perdiamo efficienza?</h2>
+        </div>
+        <p style="margin:0 0 18px;color:#93a4ad;font-size:15px;max-width:74ch">Utilizzo medio contro ore di fermo. In basso a destra i mezzi sani; in alto a sinistra quelli che stanno fermi e non rendono. Il diametro è il costo di manutenzione.</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px;margin-bottom:34px">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:20px">
+            <div style="position:relative;height:340px;border-left:1px solid #2a3b44;border-bottom:1px solid #2a3b44;margin:0 0 0 46px">
+              <sc-for list="{{ scatterGrid }}" as="g" hint-placeholder-count="0">
+                <div style="position:absolute;left:0;right:0;top:{{ g.top }};border-top:1px dashed #1d2a31"></div>
+              </sc-for>
+              <sc-for list="{{ scatterYLabels }}" as="l" hint-placeholder-count="0">
+                <div style="position:absolute;right:100%;top:{{ l.top }};transform:translateY(-50%);padding-right:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;white-space:nowrap">{{ l.label }}</div>
+              </sc-for>
+              <sc-for list="{{ scatterDots }}" as="d" hint-placeholder-count="0">
+                <div onMouseEnter="{{ d.onEnter }}" onMouseLeave="{{ d.onLeave }}" onClick="{{ d.onClick }}" style="position:absolute;left:{{ d.left }};top:{{ d.top }};width:{{ d.size }};height:{{ d.size }};margin-left:{{ d.off }};margin-top:{{ d.off }};border-radius:50%;background:{{ d.color }};border:1px solid {{ d.border }};cursor:pointer;opacity:{{ d.dim }}"></div>
+              </sc-for>
+              <sc-if value="{{ scatterTip }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;left:{{ scatterTipLeft }};top:{{ scatterTipTop }};transform:translate(-50%,-145%);background:#0b1114;border:1px solid #4fc98c;border-radius:7px;padding:9px 12px;white-space:nowrap;pointer-events:none;z-index:6">
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#e8eef0;margin-bottom:3px">{{ scatterTip.id }}</div>
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#93a4ad">{{ scatterTip.r1 }}</div>
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#93a4ad">{{ scatterTip.r2 }}</div>
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#93a4ad">{{ scatterTip.r3 }}</div>
+                </div>
+              </sc-if>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-left:46px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">
+              <sc-for list="{{ scatterXLabels }}" as="l" hint-placeholder-count="0">
+                <span>{{ l.label }}</span>
+              </sc-for>
+            </div>
+            <div style="margin-left:46px;color:#7f939d;font-size:13px;font-family:'IBM Plex Mono',monospace">utilizzo medio % →</div>
+          </div>
+        </div>
+
+        <sc-if value="{{ truckSel }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#151e24;border:1px solid #4fc98c;border-radius:10px;padding:22px">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+              <h2 style="margin:0;font-size:20px;font-weight:600">{{ truckSel }} — storia mensile</h2>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7f939d">{{ detailMeta }}</span>
+            </div>
+            <p style="margin:0 0 22px;color:#93a4ad;font-size:14px">{{ detailNota }}</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px">
+              <sc-for list="{{ detailKpi }}" as="k" hint-placeholder-count="0">
+                <div style="background:#111a1f;border:1px solid #223038;border-radius:8px;padding:14px">
+                  <div style="color:#93a4ad;font-size:13px;margin-bottom:6px">{{ k.label }}</div>
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;color:{{ k.color }}">{{ k.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:2px;height:150px">
+              <sc-for list="{{ detailBars }}" as="b" hint-placeholder-count="0">
+                <div onMouseEnter="{{ b.onEnter }}" onMouseLeave="{{ b.onLeave }}" style="flex:1 1 0;min-width:0;height:{{ b.h }};background:{{ b.color }};border-radius:2px 2px 0 0;position:relative;cursor:default">
+                  <sc-if value="{{ b.tip }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;bottom:100%;left:50%;transform:translate(-50%,-6px);background:#0b1114;border:1px solid #4fc98c;border-radius:6px;padding:7px 10px;white-space:nowrap;z-index:5;pointer-events:none">
+                      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ b.mese }}</div>
+                      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4fc98c">{{ b.val }}</div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">
+              <span>{{ detailFrom }}</span>
+              <span>consumo L/100 km per mese</span>
+              <span>{{ detailTo }}</span>
+            </div>
+          </div>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isCosti }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Costi e Risparmi">
+        <h1 style="margin:0 0 8px;font-size:29px;font-weight:700;letter-spacing:-0.02em">Costi &amp; Risparmi</h1>
+        <p style="margin:0 0 34px;color:#93a4ad;max-width:66ch">Quanto costa ogni km percorso, e quanto vale portare i mezzi peggiori alla media della loro marca.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;margin-bottom:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em">DOMANDA 03</span>
+          <h2 style="margin:0;font-size:20px;font-weight:600">Su quali mezzi intervenire per primi?</h2>
+        </div>
+        <p style="margin:0 0 18px;color:#93a4ad;font-size:15px;max-width:74ch">Costo totale per km, scomposto in carburante e manutenzione. Ordinati dal più caro.</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px;margin-bottom:34px">
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:18px">
+            <div style="display:flex;gap:18px;flex-wrap:wrap">
+              <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:#93a4ad"><span style="width:10px;height:10px;border-radius:2px;background:#4fc98c"></span>carburante</span>
+              <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:#93a4ad"><span style="width:10px;height:10px;border-radius:2px;background:#e0a458"></span>manutenzione</span>
+            </div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7f939d">vw_priorita_interventi</span>
+          </div>
+          <div style="display:grid;gap:9px">
+            <sc-for list="{{ q3Rows }}" as="r" hint-placeholder-count="12">
+              <div onClick="{{ r.onClick }}" onMouseEnter="{{ r.onEnter }}" onMouseLeave="{{ r.onLeave }}" style="display:grid;grid-template-columns:118px minmax(0,1fr) 92px;gap:14px;align-items:center;cursor:pointer;opacity:{{ r.dim }}">
+                <div style="font-size:13px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="font-family:'IBM Plex Mono',monospace">{{ r.id }}</span></div>
+                <div style="display:flex;height:20px;background:#0d1317;border-radius:3px;overflow:hidden">
+                  <div style="width:{{ r.wf }};background:#4fc98c"></div>
+                  <div style="width:{{ r.wm }};background:#e0a458"></div>
+                </div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:15px;text-align:right">{{ r.cpk }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ q3Tip }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px;padding-top:16px;border-top:1px solid #223038;display:flex;flex-wrap:wrap;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#93a4ad">
+              <span style="color:#e8eef0">{{ q3Tip.id }}</span>
+              <span>{{ q3Tip.make }}</span>
+              <span>{{ q3Tip.km }}</span>
+              <span style="color:#4fc98c">{{ q3Tip.fuel }}</span>
+              <span style="color:#e0a458">{{ q3Tip.maint }}</span>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;margin-bottom:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em">DOMANDA 04</span>
+          <h2 style="margin:0;font-size:20px;font-weight:600">Quanto possiamo risparmiare?</h2>
+        </div>
+        <p style="margin:0 0 18px;color:#93a4ad;font-size:15px;max-width:74ch">{{ simNota }}</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;align-items:start">
+            <div>
+              <div style="margin-bottom:26px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+                  <label for="sim-cop" style="font-size:15px;color:#cfdadf">Mezzi portati alla media</label>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:17px;color:#4fc98c">{{ simCopLabel }}</span>
+                </div>
+                <input id="sim-cop" type="range" min="0" max="100" step="5" value="{{ simCop }}" onChange="{{ onSimCop }}" onInput="{{ onSimCop }}" />
+              </div>
+              <div style="margin-bottom:26px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+                  <label for="sim-prezzo" style="font-size:15px;color:#cfdadf">Prezzo gasolio</label>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:17px;color:#4fc98c">{{ simPrezzoLabel }}</span>
+                </div>
+                <input id="sim-prezzo" type="range" min="60" max="220" step="5" value="{{ simPrezzoRaw }}" onChange="{{ onSimPrezzo }}" onInput="{{ onSimPrezzo }}" />
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;margin-top:6px">{{ simPrezzoNota }}</div>
+              </div>
+              <button onClick="{{ resetSim }}" style="background:none;border:1px solid #38505c;color:#93a4ad;border-radius:7px;padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer">RIPRISTINA DATI REALI</button>
+            </div>
+
+            <div style="display:grid;gap:14px">
+              <sc-for list="{{ simOut }}" as="o" hint-placeholder-count="3">
+                <div style="background:#111a1f;border:1px solid #223038;border-radius:8px;padding:18px">
+                  <div style="color:#93a4ad;font-size:14px;margin-bottom:8px">{{ o.label }}</div>
+                  <div style="font-family:'IBM Plex Mono',monospace;font-size:27px;color:{{ o.color }};letter-spacing:-0.02em">{{ o.value }}</div>
+                  <div style="color:#7f939d;font-size:13px;margin-top:4px">{{ o.note }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isClienti }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Clienti e Consegne">
+        <h1 style="margin:0 0 8px;font-size:29px;font-weight:700;letter-spacing:-0.02em">Clienti &amp; Consegne</h1>
+        <p style="margin:0 0 34px;color:#93a4ad;max-width:66ch">Quanto vale ogni cliente rispetto al suo potenziale, e quanto ci costano le attese ai magazzini.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;margin-bottom:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em">DOMANDA 06</span>
+          <h2 style="margin:0;font-size:20px;font-weight:600">Le consegne arrivano in orario?</h2>
+        </div>
+        <p style="margin:0 0 18px;color:#93a4ad;font-size:15px;max-width:74ch">{{ q6Nota }}</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px;margin-bottom:34px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:26px">
+            <sc-for list="{{ q6Kpi }}" as="k" hint-placeholder-count="3">
+              <div style="background:#111a1f;border:1px solid #223038;border-radius:8px;padding:16px">
+                <div style="color:#93a4ad;font-size:13px;margin-bottom:7px">{{ k.label }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:23px;color:{{ k.color }}">{{ k.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:170px;margin-bottom:10px">
+            <sc-for list="{{ q6Bars }}" as="b" hint-placeholder-count="0">
+              <div onMouseEnter="{{ b.onEnter }}" onMouseLeave="{{ b.onLeave }}" style="flex:1 1 0;min-width:0;height:{{ b.h }};background:{{ b.color }};border-radius:2px 2px 0 0;position:relative;cursor:default">
+                <sc-if value="{{ b.tip }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;bottom:100%;left:50%;transform:translate(-50%,-6px);background:#0b1114;border:1px solid #4fc98c;border-radius:6px;padding:8px 11px;white-space:nowrap;z-index:5;pointer-events:none">
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e8eef0">{{ b.id }}</div>
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4fc98c">{{ b.pct }}</div>
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#93a4ad">{{ b.att }}</div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">
+            <span>{{ q6Worst }}</span>
+            <span>50 magazzini, dal peggiore al migliore</span>
+            <span>{{ q6Best }}</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;margin-bottom:6px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em">DOMANDA 07</span>
+          <h2 style="margin:0;font-size:20px;font-weight:600">Quali clienti rendono meno del loro potenziale?</h2>
+        </div>
+        <p style="margin:0 0 18px;color:#93a4ad;font-size:15px;max-width:74ch">Ricavo effettivo contro potenziale annuo dichiarato. Sopra la diagonale stiamo superando le attese, sotto stiamo lasciando fatturato sul tavolo.</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px;margin-bottom:18px">
+          <div style="position:relative;height:360px;border-left:1px solid #2a3b44;border-bottom:1px solid #2a3b44;margin:0 0 0 62px">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+              <line x1="0" y1="100" x2="100" y2="0" stroke="#38505c" stroke-width="1" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></line>
+            </svg>
+            <sc-for list="{{ custYLabels }}" as="l" hint-placeholder-count="0">
+              <div style="position:absolute;right:100%;top:{{ l.top }};transform:translateY(-50%);padding-right:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;white-space:nowrap">{{ l.label }}</div>
+            </sc-for>
+            <sc-for list="{{ custDots }}" as="d" hint-placeholder-count="0">
+              <div onMouseEnter="{{ d.onEnter }}" onMouseLeave="{{ d.onLeave }}" style="position:absolute;left:{{ d.left }};top:{{ d.top }};width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:{{ d.color }};cursor:default"></div>
+            </sc-for>
+            <sc-if value="{{ custTip }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;left:{{ custTipLeft }};top:{{ custTipTop }};transform:translate(-50%,-145%);background:#0b1114;border:1px solid #4fc98c;border-radius:7px;padding:9px 12px;white-space:nowrap;pointer-events:none;z-index:6">
+                <div style="font-size:13px;color:#e8eef0;margin-bottom:3px">{{ custTip.nome }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#93a4ad">{{ custTip.r1 }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#93a4ad">{{ custTip.r2 }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ custTip.color }}">{{ custTip.r3 }}</div>
+              </div>
+            </sc-if>
+            <div style="position:absolute;left:8px;top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">↑ ricavo effettivo</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin:10px 0 0 62px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">
+            <sc-for list="{{ custXLabels }}" as="l" hint-placeholder-count="0">
+              <span>{{ l.label }}</span>
+            </sc-for>
+          </div>
+          <div style="margin:6px 0 0 62px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">potenziale annuo →</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+          <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
+            <h3 style="margin:0 0 4px;font-size:17px;font-weight:600">Sotto potenziale</h3>
+            <p style="margin:0 0 18px;color:#7f939d;font-size:13px">I dieci clienti col divario più grande da recuperare.</p>
+            <div style="display:grid;gap:12px">
+              <sc-for list="{{ custWorst }}" as="c" hint-placeholder-count="0">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline">
+                  <span style="min-width:0;display:grid;gap:1px">
+                    <span style="font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.nome }}</span>
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ c.id }}</span>
+                  </span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#e07a7a">{{ c.val }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
+            <h3 style="margin:0 0 4px;font-size:17px;font-weight:600">Oltre potenziale</h3>
+            <p style="margin:0 0 18px;color:#7f939d;font-size:13px">Dove il potenziale annuo in anagrafica va rivisto al rialzo.</p>
+            <div style="display:grid;gap:12px">
+              <sc-for list="{{ custBest }}" as="c" hint-placeholder-count="0">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline">
+                  <span style="min-width:0;display:grid;gap:1px">
+                    <span style="font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.nome }}</span>
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ c.id }}</span>
+                  </span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:#4fc98c">{{ c.val }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+  <footer style="border-top:1px solid #223038;background:#111a1f">
+    <div style="max-width:1280px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7f939d">
+      <span>{{ footLeft }}</span>
+      <span>{{ footRight }}</span>
+    </div>
+  </footer>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;topN&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:5,&quot;max&quot;:30,&quot;step&quot;:1,&quot;section&quot;:&quot;Grafici&quot;,&quot;label&quot;:&quot;Righe nelle classifiche&quot;}}">
+const FILES = ["consumo_previsto","efficienza_flotta","priorita_interventi","puntualita_consegne","redditivita_cliente","risparmio_potenziale","stato_flotta","utilizzo_mensile","prezzo_carburante","manifest"];
+
+const MESI = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
+const GREEN = "#4fc98c", AMBER = "#e0a458", RED = "#e07a7a", DIM = "#7f939d";
+
+class Component extends DCLogic {
+  state = {
+    d: null, err: null, tab: "sintesi",
+    make: null, truck: null,
+    hTrend: null, hScatter: null, hQ3: null, hBar: null, hFac: null, hCust: null,
+    simCop: null, simPrezzo: null
+  };
+
+  componentDidMount() {
+    Promise.all(FILES.map(f =>
+      fetch("./data/" + f + ".json").then(r => {
+        if (!r.ok) throw new Error(f + ".json: HTTP " + r.status);
+        return r.json();
+      })
+    )).then(res => {
+      const d = {};
+      FILES.forEach((f, i) => { d[f] = res[i]; });
+      this.setState({ d });
+    }).catch(e => this.setState({ err: e.message + " — la cartella data/ deve stare accanto a questo file." }));
+  }
+
+  // --- formattazione ---
+  n(v, dec) { return (v == null || isNaN(v)) ? "—" : Number(v).toLocaleString("it-IT", { minimumFractionDigits: dec || 0, maximumFractionDigits: dec || 0 }); }
+  eur(v) {
+    if (v == null || isNaN(v)) return "—";
+    const a = Math.abs(v), sg = v < 0 ? "−" : "";
+    if (a >= 1e6) return sg + "€" + this.n(a / 1e6, 2) + " M";
+    if (a >= 1e4) return sg + "€" + this.n(Math.round(a / 1e3)) + "k";
+    return sg + "€" + this.n(a);
+  }
+  mese(iso) {
+    if (!iso) return "";
+    const p = String(iso).split("-");
+    return MESI[Number(p[1]) - 1] + " " + String(p[0]).slice(2);
+  }
+
+  // --- filtri ---
+  makeOf(id) {
+    if (!this._mk) {
+      this._mk = {};
+      (this.state.d.priorita_interventi || []).forEach(r => { this._mk[r.truck_id] = r.make; });
+      (this.state.d.consumo_previsto || []).forEach(r => { if (!this._mk[r.truck_id]) this._mk[r.truck_id] = r.make; });
+    }
+    return this._mk[id];
+  }
+  keep(id) {
+    const s = this.state;
+    if (s.make && this.makeOf(id) !== s.make) return false;
+    if (s.truck && id !== s.truck) return false;
+    return true;
+  }
+  keepMake(id) {
+    const s = this.state;
+    return !s.make || this.makeOf(id) === s.make;
+  }
+
+  tabStyle(k) {
+    const on = this.state.tab === k;
+    return "background:" + (on ? "#1c2b33" : "transparent") + ";border:1px solid " + (on ? GREEN : "#2a3b44") +
+      ";color:" + (on ? "#e8eef0" : "#93a4ad") + ";border-radius:8px;padding:8px 14px;font-size:14px;font-family:inherit;cursor:pointer";
+  }
+
+  renderVals() {
+    const s = this.state;
+    const go = t => () => this.setState({ tab: t, hTrend: null, hScatter: null, hQ3: null, hBar: null, hFac: null, hCust: null });
+    const base = {
+      loading: !s.d && !s.err, err: s.err, ready: !!s.d,
+      isSintesi: !!s.d && s.tab === "sintesi", isFlotta: !!s.d && s.tab === "flotta",
+      isCosti: !!s.d && s.tab === "costi", isClienti: !!s.d && s.tab === "clienti",
+      goSintesi: go("sintesi"), goFlotta: go("flotta"), goCosti: go("costi"), goClienti: go("clienti"),
+      tabSintesi: this.tabStyle("sintesi"), tabFlotta: this.tabStyle("flotta"),
+      tabCosti: this.tabStyle("costi"), tabClienti: this.tabStyle("clienti"),
+      statusLabel: s.d ? "AGGIORNATO " + String(s.d.manifest.generato_il).slice(0, 10).split("-").reverse().join("/") : "CONNESSIONE…"
+    };
+    if (!s.d) return base;
+
+    const d = s.d;
+    const prezzoReale = (d.prezzo_carburante[0] || {}).prezzo_litro_eur || 0;
+    const prezzo = s.simPrezzo == null ? prezzoReale : s.simPrezzo;
+    const risp = d.risparmio_potenziale[0] || {};
+    const cop = s.simCop == null ? 100 : s.simCop;
+    // le view sommano tutto l'archivio: qui ricavo l'ampiezza del periodo per annualizzare
+    const mesiArchivio = Object.keys(d.utilizzo_mensile.reduce((a, r) => { a[r.month] = 1; return a; }, {})).length;
+    const anni = (mesiArchivio / 12) || 1;
+
+    // --- filtri marca ---
+    const byMake = {};
+    d.priorita_interventi.forEach(r => { byMake[r.make] = (byMake[r.make] || 0) + 1; });
+    const makeChips = Object.keys(byMake).sort().map(name => {
+      const on = s.make === name;
+      return {
+        name, n: byMake[name],
+        onClick: () => this.setState({ make: on ? null : name, truck: null }),
+        style: "background:" + (on ? "#1c2b33" : "#141f25") + ";border:1px solid " + (on ? GREEN : "#2a3b44") +
+          ";color:" + (on ? "#e8eef0" : "#93a4ad") + ";border-radius:20px;padding:6px 13px;font-size:13px;font-family:inherit;cursor:pointer"
+      };
+    });
+
+    // --- serie mensile aggregata (filtrata) ---
+    const agg = {};
+    d.utilizzo_mensile.forEach(r => {
+      if (!this.keep(r.truck_id)) return;
+      const m = agg[r.month] || (agg[r.month] = { l: 0, n: 0, u: 0, dt: 0, mc: 0 });
+      m.l += r.average_l_100km; m.u += r.utilization_rate_pct; m.dt += r.downtime_hours; m.mc += r.maintenance_cost_eur; m.n++;
+    });
+    const mesi = Object.keys(agg).sort();
+    const serie = mesi.map(m => ({ month: m, val: agg[m].l / agg[m].n, util: agg[m].u / agg[m].n }));
+    const vals = serie.map(p => p.val);
+    const lo = vals.length ? Math.min.apply(null, vals) : 0, hi = vals.length ? Math.max.apply(null, vals) : 1;
+    const pad = (hi - lo) * 0.25 || 1, yLo = lo - pad, yHi = hi + pad;
+    const px = i => serie.length < 2 ? 500 : (i / (serie.length - 1)) * 1000;
+    const py = v => 210 - ((v - yLo) / (yHi - yLo)) * 210;
+    const trendPoints = serie.map((p, i) => px(i).toFixed(1) + "," + py(p.val).toFixed(1)).join(" ");
+    const grid = f => "0," + (210 * f).toFixed(1) + " 1000," + (210 * f).toFixed(1);
+
+    const trendDots = serie.map((p, i) => ({
+      left: (px(i) / 10).toFixed(2) + "%", top: (py(p.val) / 210 * 100).toFixed(2) + "%",
+      size: s.hTrend === i ? "13px" : "7px",
+      onEnter: () => this.setState({ hTrend: i }), onLeave: () => this.setState({ hTrend: null })
+    }));
+    const ht = s.hTrend != null ? serie[s.hTrend] : null;
+    const step = Math.max(1, Math.ceil(serie.length / 8));
+    const trendLabels = serie.filter((p, i) => i % step === 0).map(p => ({ label: this.mese(p.month) }));
+
+    // --- stato flotta ---
+    const statoMap = { Active: { label: "In servizio", color: GREEN }, Maintenance: { label: "In manutenzione", color: AMBER }, Inactive: { label: "Fermi", color: RED } };
+    const statoRows = d.stato_flotta.map(r => {
+      const m = statoMap[r.status] || { label: r.status, color: DIM };
+      return { label: m.label, color: m.color, n: r.numero_mezzi, pct: this.n(r.pct_flotta, 1) + "%" };
+    });
+    const statoSegs = d.stato_flotta.map(r => ({ w: r.pct_flotta + "%", color: (statoMap[r.status] || { color: DIM }).color }));
+    const fermi = d.stato_flotta.filter(r => r.status !== "Active").reduce((a, r) => a + r.numero_mezzi, 0);
+    const totMezzi = d.stato_flotta.reduce((a, r) => a + r.numero_mezzi, 0);
+
+    // --- q1 consumo ---
+    const q1all = d.consumo_previsto.filter(r => this.keepMake(r.truck_id));
+    const q1sorted = q1all.slice().sort((a, b) => b.scostamento_pct - a.scostamento_pct);
+    const q1 = q1sorted.slice(0, this.props.topN ?? 12);
+    const maxAbs = Math.max.apply(null, q1sorted.map(r => Math.abs(r.scostamento_pct)).concat([0.1]));
+    const q1Rows = q1.map(r => {
+      const pos = r.scostamento_pct >= 0;
+      return {
+        id: r.truck_id, make: r.make,
+        reale: this.n(r.consumo_reale, 2), previsto: this.n(r.previsto, 2) + " L/100km",
+        pct: (pos ? "+" : "") + this.n(r.scostamento_pct, 2) + "%",
+        w: (Math.abs(r.scostamento_pct) / maxAbs * 100).toFixed(1) + "%",
+        color: r.scostamento_pct > maxAbs * 0.6 ? RED : pos ? AMBER : GREEN,
+        just: pos ? "flex-start" : "flex-end",
+        dim: s.truck && s.truck !== r.truck_id ? 0.32 : 1,
+        onClick: () => this.setState({ truck: s.truck === r.truck_id ? null : r.truck_id })
+      };
+    });
+    const spread = q1sorted.length ? q1sorted[0].scostamento_pct - q1sorted[q1sorted.length - 1].scostamento_pct : 0;
+
+    // --- q2 scatter efficienza ---
+    const eff = d.efficienza_flotta.filter(r => this.keepMake(r.truck_id));
+    const xs = eff.map(r => r.utilizzo_medio_pct), ys = eff.map(r => r.ore_fermo_totali), cs = eff.map(r => r.costo_manutenzione_totale);
+    const xLo = Math.floor(Math.min.apply(null, xs) - 1), xHi = Math.ceil(Math.max.apply(null, xs) + 1);
+    const yLo2 = 0, yHi2 = Math.ceil(Math.max.apply(null, ys) / 100) * 100;
+    const cHi = Math.max.apply(null, cs);
+    const scatterDots = eff.map(r => {
+      const on = s.truck === r.truck_id;
+      const sz = 8 + (r.costo_manutenzione_totale / cHi) * 16;
+      return {
+        left: ((r.utilizzo_medio_pct - xLo) / (xHi - xLo) * 100).toFixed(2) + "%",
+        top: (100 - (r.ore_fermo_totali - yLo2) / (yHi2 - yLo2) * 100).toFixed(2) + "%",
+        size: sz.toFixed(1) + "px", off: (-sz / 2).toFixed(1) + "px",
+        color: on ? GREEN : r.utilizzo_medio_pct < 82 ? "rgba(224,122,122,0.55)" : "rgba(79,201,140,0.4)",
+        border: on ? "#0d1317" : "transparent",
+        dim: s.truck && !on ? 0.25 : 1,
+        onEnter: () => this.setState({ hScatter: r.truck_id }), onLeave: () => this.setState({ hScatter: null }),
+        onClick: () => this.setState({ truck: on ? null : r.truck_id })
+      };
+    });
+    const hs = s.hScatter ? eff.find(r => r.truck_id === s.hScatter) : null;
+    const scatterGrid = [0, 25, 50, 75].map(p => ({ top: p + "%" }));
+    const scatterYLabels = [0, 25, 50, 75, 100].map(p => ({ top: p + "%", label: this.n(yHi2 - (yHi2 - yLo2) * p / 100) + " h" }));
+    const scatterXLabels = [0, 0.25, 0.5, 0.75, 1].map(f => ({ label: this.n(xLo + (xHi - xLo) * f, 1) + "%" }));
+
+    // --- dettaglio mezzo ---
+    const dSerie = s.truck ? d.utilizzo_mensile.filter(r => r.truck_id === s.truck).sort((a, b) => a.month < b.month ? -1 : 1) : [];
+    const dLo = dSerie.length ? Math.min.apply(null, dSerie.map(r => r.average_l_100km)) : 0;
+    const dHi = dSerie.length ? Math.max.apply(null, dSerie.map(r => r.average_l_100km)) : 1;
+    const detailBars = dSerie.map((r, i) => ({
+      h: (18 + (r.average_l_100km - dLo) / ((dHi - dLo) || 1) * 82).toFixed(1) + "%",
+      color: s.hBar === i ? GREEN : r.average_l_100km > (dLo + dHi) / 2 ? "rgba(224,164,88,0.75)" : "rgba(79,201,140,0.5)",
+      tip: s.hBar === i, mese: this.mese(r.month), val: this.n(r.average_l_100km, 2) + " L/100km",
+      onEnter: () => this.setState({ hBar: i }), onLeave: () => this.setState({ hBar: null })
+    }));
+    const dEff = d.efficienza_flotta.find(r => r.truck_id === s.truck) || {};
+    const dCost = d.priorita_interventi.find(r => r.truck_id === s.truck) || {};
+    const dCons = d.consumo_previsto.find(r => r.truck_id === s.truck) || {};
+    const detailKpi = !s.truck ? [] : [
+      { label: "Consumo medio", value: this.n(dCons.consumo_reale, 2) + " L", color: "#e8eef0" },
+      { label: "vs media marca", value: (dCons.scostamento_pct >= 0 ? "+" : "") + this.n(dCons.scostamento_pct, 2) + "%", color: dCons.scostamento_pct > 0 ? AMBER : GREEN },
+      { label: "Utilizzo medio", value: this.n(dEff.utilizzo_medio_pct, 1) + "%", color: dEff.utilizzo_medio_pct < 82 ? AMBER : GREEN },
+      { label: "Ore di fermo", value: this.n(dEff.ore_fermo_totali) + " h", color: "#e8eef0" },
+      { label: "Costo per km", value: "€" + this.n(dCost.costo_per_km, 3), color: "#e8eef0" }
+    ];
+
+    // --- q3 costo per km ---
+    const q3all = d.priorita_interventi.filter(r => this.keepMake(r.truck_id));
+    const q3sorted = q3all.slice().sort((a, b) => b.costo_per_km - a.costo_per_km);
+    const q3 = q3sorted.slice(0, this.props.topN ?? 12);
+    const q3Max = q3sorted.length ? q3sorted[0].costo_per_km : 1;
+    const q3Rows = q3.map(r => {
+      const tot = r.costo_carburante + r.costo_manutenzione || 1;
+      const full = r.costo_per_km / q3Max * 100;
+      return {
+        id: r.truck_id,
+        wf: (full * r.costo_carburante / tot).toFixed(2) + "%",
+        wm: (full * r.costo_manutenzione / tot).toFixed(2) + "%",
+        cpk: "€" + this.n(r.costo_per_km, 3),
+        dim: s.truck && s.truck !== r.truck_id ? 0.32 : 1,
+        onEnter: () => this.setState({ hQ3: r.truck_id }), onLeave: () => this.setState({ hQ3: null }),
+        onClick: () => this.setState({ truck: s.truck === r.truck_id ? null : r.truck_id })
+      };
+    });
+    const h3 = s.hQ3 ? q3all.find(r => r.truck_id === s.hQ3) : null;
+
+    // --- simulatore risparmio ---
+    const litri = (risp.litri_risparmiabili || 0) * cop / 100;
+    const co2 = (risp.co2_risparmiabile_kg || 0) * cop / 100;
+    const euro = litri * prezzo;
+    const costoTot = d.priorita_interventi.reduce((a, r) => a + r.costo_carburante + r.costo_manutenzione, 0);
+
+    // --- q6 puntualità ---
+    const fac = d.puntualita_consegne.slice().sort((a, b) => a.pct_puntualita - b.pct_puntualita);
+    const fLo = Math.min.apply(null, fac.map(r => r.pct_puntualita));
+    const fHi = Math.max.apply(null, fac.map(r => r.pct_puntualita));
+    const eventiTot = fac.reduce((a, r) => a + r.eventi, 0);
+    const puntMedia = fac.reduce((a, r) => a + r.pct_puntualita * r.eventi, 0) / (eventiTot || 1);
+    const attesaMedia = fac.reduce((a, r) => a + r.minuti_attesa_medi * r.eventi, 0) / (eventiTot || 1);
+    const q6Bars = fac.map((r, i) => ({
+      h: (25 + (r.pct_puntualita - fLo) / ((fHi - fLo) || 1) * 75).toFixed(1) + "%",
+      color: s.hFac === i ? GREEN : r.pct_puntualita < puntMedia ? "rgba(224,122,122,0.65)" : "rgba(79,201,140,0.5)",
+      tip: s.hFac === i, id: r.facility_id,
+      pct: this.n(r.pct_puntualita, 1) + "% in orario",
+      att: this.n(r.minuti_attesa_medi, 0) + " min di attesa media",
+      onEnter: () => this.setState({ hFac: i }), onLeave: () => this.setState({ hFac: null })
+    }));
+
+    // --- q7 clienti ---
+    const cust = d.redditivita_cliente;
+    const pHi = Math.max.apply(null, cust.map(r => r.potenziale_annuo));
+    const rHi = Math.max.apply(null, cust.map(r => r.ricavo_effettivo));
+    const axHi = Math.ceil(Math.max(pHi, rHi) / 1e5) * 1e5;
+    const custDots = cust.map(r => ({
+      left: (r.potenziale_annuo / axHi * 100).toFixed(2) + "%",
+      top: (100 - r.ricavo_effettivo / axHi * 100).toFixed(2) + "%",
+      color: s.hCust === r.customer_id ? GREEN : r.pct_del_potenziale < 100 ? "rgba(224,122,122,0.6)" : "rgba(79,201,140,0.45)",
+      onEnter: () => this.setState({ hCust: r.customer_id }), onLeave: () => this.setState({ hCust: null })
+    }));
+    const hc = s.hCust ? cust.find(r => r.customer_id === s.hCust) : null;
+    const custAx = [0, 0.25, 0.5, 0.75, 1];
+    const sottoN = cust.filter(r => r.pct_del_potenziale < 100).length;
+    const gapTot = cust.reduce((a, r) => a + Math.max(r.potenziale_annuo - r.ricavo_effettivo, 0), 0);
+    const worst = cust.slice().sort((a, b) => (a.ricavo_effettivo - a.potenziale_annuo) - (b.ricavo_effettivo - b.potenziale_annuo)).slice(0, 10);
+    const best = cust.slice().sort((a, b) => b.pct_del_potenziale - a.pct_del_potenziale).slice(0, 10);
+
+    return Object.assign(base, {
+      makeChips, truckSel: s.truck, anyFilter: !!(s.make || s.truck),
+      clearTruck: () => this.setState({ truck: null }),
+      clearAll: () => this.setState({ make: null, truck: null }),
+
+      periodo: mesi.length ? this.mese(mesi[0]).toUpperCase() + " – " + this.mese(mesi[mesi.length - 1]).toUpperCase() + " · " + totMezzi + " MEZZI" : "",
+      titolo: "Il risparmio non è nel carburante: è nelle attese e nei mezzi fermi.",
+      sommario: "Portando ogni mezzo alla media della sua marca si recuperano " + this.eur(risp.litri_risparmiabili * prezzoReale / anni) +
+        " all'anno, il " + this.n(risp.litri_risparmiabili * prezzoReale / costoTot * 100, 1) + "% del costo operativo. È poco perché la flotta consuma già in modo omogeneo. " +
+        "Le due voci grosse sono altrove: " + fermi + " mezzi su " + totMezzi + " non sono in servizio, e solo il " +
+        this.n(puntMedia, 0) + "% delle consegne arriva in orario con " + this.n(attesaMedia, 0) + " minuti di attesa media al carico.",
+
+      kpiCards: [
+        { label: "Risparmio carburante / anno", value: this.eur(risp.litri_risparmiabili * prezzoReale / anni), color: GREEN, note: this.n(risp.litri_risparmiabili) + " litri e " + this.n(risp.co2_risparmiabile_kg / 1000, 1) + " t CO₂ sui " + mesiArchivio + " mesi" },
+        { label: "Consegne in orario", value: this.n(puntMedia, 1) + "%", color: RED, note: this.n(eventiTot) + " consegne su 50 magazzini" },
+        { label: "Mezzi non operativi", value: fermi + " / " + totMezzi, color: AMBER, note: this.n(fermi / totMezzi * 100, 1) + "% della flotta" },
+        { label: "Clienti sotto potenziale", value: sottoN + " / " + cust.length, color: AMBER, note: this.eur(gapTot) + " di fatturato non colto" }
+      ],
+
+      trendNota: (s.make || s.truck ? "Filtro attivo: " + (s.truck || s.make) + ". " : "") + "Media su " + (s.truck ? "1 mezzo" : Object.keys(agg).length ? this.n(Object.values(agg)[0].n) + " mezzi" : "—") + ", " + mesi.length + " mesi.",
+      trendPoints, trendArea: "0,210 " + trendPoints + " 1000,210",
+      trendGrid1: grid(0.25), trendGrid2: grid(0.5), trendGrid3: grid(0.75),
+      trendDots, trendLabels,
+      trendMax: this.n(yHi, 1), trendMin: this.n(yLo, 1),
+      trendTip: ht ? { mese: this.mese(ht.month), val: this.n(ht.val, 2) + " L/100km" } : null,
+      trendTipLeft: ht ? (px(s.hTrend) / 10).toFixed(2) + "%" : "0",
+      trendTipTop: ht ? (py(ht.val) / 210 * 100).toFixed(2) + "%" : "0",
+
+      statoRows, statoSegs,
+      statoNota: "Conteggio mezzi per stato in anagrafica.",
+      statoCommento: fermi + " mezzi immobilizzati valgono circa " + this.eur(costoTot / totMezzi * fermi) +
+        " di capacità produttiva non sfruttata: più del risparmio ottenibile sul carburante di tutta la flotta.",
+
+      insights: [
+        { tag: "CRITICO", color: RED, testo: "Solo il " + this.n(puntMedia, 0) + "% delle consegne è puntuale, con " + this.n(attesaMedia, 0) + " min di attesa media al carico.", vai: "Consegne", onClick: go("clienti") },
+        { tag: "ALTO", color: AMBER, testo: fermi + " mezzi fuori servizio su " + totMezzi + ", di cui " + (d.stato_flotta.find(r => r.status === "Inactive") || {}).numero_mezzi + " inattivi.", vai: "Flotta", onClick: go("flotta") },
+        { tag: "MEDIO", color: AMBER, testo: sottoN + " clienti su " + cust.length + " fatturano meno del potenziale dichiarato, per " + this.eur(gapTot) + ".", vai: "Clienti", onClick: go("clienti") },
+        { tag: "BASSO", color: GREEN, testo: "Il consumo è già omogeneo: tra il mezzo peggiore e il migliore ci sono " + this.n(spread, 2) + " punti percentuali.", vai: "Costi", onClick: go("costi") }
+      ],
+
+      q1Nota: "Consumo reale del mezzo (litri e km sommati) contro la media della sua marca calcolata allo stesso modo. Lo scostamento massimo è " +
+        this.n(q1sorted.length ? q1sorted[0].scostamento_pct : 0, 2) + "%: nessun mezzo è fuori controllo, quindi qui non c'è un intervento urgente da fare.",
+      q1Count: q1all.length + " mezzi con viaggi registrati · primi " + q1.length + " per scostamento",
+      q1Rows,
+
+      scatterDots, scatterGrid, scatterYLabels, scatterXLabels,
+      scatterTip: hs ? {
+        id: hs.truck_id + " · " + (this.makeOf(hs.truck_id) || ""),
+        r1: this.n(hs.utilizzo_medio_pct, 1) + "% utilizzo medio",
+        r2: this.n(hs.ore_fermo_totali, 0) + " h di fermo",
+        r3: this.eur(hs.costo_manutenzione_totale) + " di manutenzione"
+      } : null,
+      scatterTipLeft: hs ? ((hs.utilizzo_medio_pct - xLo) / (xHi - xLo) * 100).toFixed(2) + "%" : "0",
+      scatterTipTop: hs ? (100 - (hs.ore_fermo_totali - yLo2) / (yHi2 - yLo2) * 100).toFixed(2) + "%" : "0",
+
+      detailBars, detailKpi,
+      detailMeta: dSerie.length + " mesi · " + (this.makeOf(s.truck) || ""),
+      detailNota: "Consumo mese per mese di questo mezzo. Una salita costante indica usura; un salto isolato indica un carico o un percorso anomalo.",
+      detailFrom: dSerie.length ? this.mese(dSerie[0].month) : "",
+      detailTo: dSerie.length ? this.mese(dSerie[dSerie.length - 1].month) : "",
+
+      q3Rows,
+      q3Tip: h3 ? {
+        id: h3.truck_id, make: h3.make, km: this.n(h3.km_totali) + " km",
+        fuel: this.eur(h3.costo_carburante) + " carburante",
+        maint: this.eur(h3.costo_manutenzione) + " manutenzione"
+      } : null,
+
+      simNota: "Il dato di partenza è " + this.eur(risp.litri_risparmiabili * prezzoReale) + " sui " + mesiArchivio + " mesi in archivio (" + this.n(risp.litri_risparmiabili) +
+        " litri a " + this.n(prezzoReale, 4).replace(".", ",") + " €/L, il prezzo medio effettivamente pagato), cioè " + this.eur(risp.litri_risparmiabili * prezzoReale / anni) +
+        " all'anno. Gli slider mostrano quanto cambia lo scenario se l'intervento copre solo una parte della flotta o se il gasolio rincara.",
+      simCop: cop, simCopLabel: cop + "%",
+      onSimCop: e => this.setState({ simCop: Number(e.target.value) }),
+      simPrezzoRaw: Math.round(prezzo * 100),
+      simPrezzoLabel: this.n(prezzo, 3).replace(".", ",") + " €/L",
+      simPrezzoNota: "Prezzo medio reale dai dati: " + this.n(prezzoReale, 4).replace(".", ",") + " €/L",
+      onSimPrezzo: e => this.setState({ simPrezzo: Number(e.target.value) / 100 }),
+      resetSim: () => this.setState({ simCop: null, simPrezzo: null }),
+      simOut: [
+        { label: "Risparmio annuo", value: this.eur(euro / anni), color: GREEN, note: this.eur(euro) + " sui " + mesiArchivio + " mesi · " + this.n(euro / costoTot * 100, 1) + "% del costo operativo" },
+        { label: "Litri non bruciati", value: this.n(litri / anni) + " L", color: "#e8eef0", note: "all'anno, con il " + cop + "% dei mezzi portati alla media di marca" },
+        { label: "CO₂ evitata", value: this.n(co2 / anni / 1000, 1) + " t", color: GREEN, note: "all'anno · 2,68 kg per litro di gasolio" }
+      ],
+
+      q6Nota: "Percentuale di consegne puntuali per magazzino, su " + this.n(eventiTot) + " eventi. La media è " + this.n(puntMedia, 1) +
+        "%: il problema è sistemico, non di qualche sede. Con " + this.n(attesaMedia, 0) + " minuti di attesa media al carico, il collo di bottiglia è a terra, non in strada.",
+      q6Kpi: [
+        { label: "Puntualità media", value: this.n(puntMedia, 1) + "%", color: RED },
+        { label: "Attesa media al carico", value: this.n(attesaMedia, 0) + " min", color: RED },
+        { label: "Divario peggiore-migliore", value: this.n(fHi - fLo, 1) + " punti", color: AMBER }
+      ],
+      q6Bars,
+      q6Worst: fac.length ? fac[0].facility_id + " · " + this.n(fac[0].pct_puntualita, 1) + "%" : "",
+      q6Best: fac.length ? fac[fac.length - 1].facility_id + " · " + this.n(fac[fac.length - 1].pct_puntualita, 1) + "%" : "",
+
+      custDots,
+      custYLabels: custAx.map(f => ({ top: ((1 - f) * 100) + "%", label: this.eur(axHi * f) })),
+      custXLabels: custAx.map(f => ({ label: this.eur(axHi * f) })),
+      custTip: hc ? {
+        nome: hc.customer_name + " · " + hc.customer_id,
+        r1: this.eur(hc.potenziale_annuo) + " potenziale",
+        r2: this.eur(hc.ricavo_effettivo) + " effettivo · " + hc.numero_carichi + " carichi",
+        r3: this.n(hc.pct_del_potenziale, 1) + "% del potenziale",
+        color: hc.pct_del_potenziale < 100 ? RED : GREEN
+      } : null,
+      custTipLeft: hc ? (hc.potenziale_annuo / axHi * 100).toFixed(2) + "%" : "0",
+      custTipTop: hc ? (100 - hc.ricavo_effettivo / axHi * 100).toFixed(2) + "%" : "0",
+      custWorst: worst.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.eur(r.ricavo_effettivo - r.potenziale_annuo) })),
+      custBest: best.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.n(r.pct_del_potenziale, 0) + "%" })),
+
+      footLeft: "GreenLog · " + totMezzi + " mezzi · " + cust.length + " clienti · " + fac.length + " magazzini",
+      footRight: "8 view da " + d.manifest.database + " · " + this.n(d.utilizzo_mensile.length) + " righe mensili"
+    });
+  }
+}
+</script>
+</body>
+</html>

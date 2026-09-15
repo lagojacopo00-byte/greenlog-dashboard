@@ -1,0 +1,1082 @@
+[
+ {
+  "truck_id": "TRK00001",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 999298.71,
+  "costo_manutenzione": 47633.94,
+  "km_totali": 2182903.88,
+  "costo_per_km": 0.48
+ },
+ {
+  "truck_id": "TRK00002",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 916307.92,
+  "costo_manutenzione": 50479.49,
+  "km_totali": 2044782.36,
+  "costo_per_km": 0.473
+ },
+ {
+  "truck_id": "TRK00003",
+  "make": "Peterbilt",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 82948.51,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00004",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 951890.13,
+  "costo_manutenzione": 35476.88,
+  "km_totali": 2107506.37,
+  "costo_per_km": 0.469
+ },
+ {
+  "truck_id": "TRK00005",
+  "make": "Freightliner",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 60801.36,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00006",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 908922.6,
+  "costo_manutenzione": 46718.34,
+  "km_totali": 2057623.26,
+  "costo_per_km": 0.464
+ },
+ {
+  "truck_id": "TRK00007",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 957135.46,
+  "costo_manutenzione": 23799.45,
+  "km_totali": 2151262.78,
+  "costo_per_km": 0.456
+ },
+ {
+  "truck_id": "TRK00008",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 901802.7,
+  "costo_manutenzione": 30382.77,
+  "km_totali": 2086364.63,
+  "costo_per_km": 0.447
+ },
+ {
+  "truck_id": "TRK00009",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 943188.81,
+  "costo_manutenzione": 37107.14,
+  "km_totali": 2108509.02,
+  "costo_per_km": 0.465
+ },
+ {
+  "truck_id": "TRK00010",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 933727.06,
+  "costo_manutenzione": 46374.19,
+  "km_totali": 2056958.72,
+  "costo_per_km": 0.476
+ },
+ {
+  "truck_id": "TRK00011",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 975093.15,
+  "costo_manutenzione": 42747.45,
+  "km_totali": 2098874.01,
+  "costo_per_km": 0.485
+ },
+ {
+  "truck_id": "TRK00012",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 970027.14,
+  "costo_manutenzione": 37101.18,
+  "km_totali": 2158470.94,
+  "costo_per_km": 0.467
+ },
+ {
+  "truck_id": "TRK00013",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 855382.0,
+  "costo_manutenzione": 53315.06,
+  "km_totali": 2025367.39,
+  "costo_per_km": 0.449
+ },
+ {
+  "truck_id": "TRK00014",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 968989.31,
+  "costo_manutenzione": 66057.69,
+  "km_totali": 1996061.36,
+  "costo_per_km": 0.519
+ },
+ {
+  "truck_id": "TRK00015",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 979539.42,
+  "costo_manutenzione": 31014.98,
+  "km_totali": 2231517.28,
+  "costo_per_km": 0.453
+ },
+ {
+  "truck_id": "TRK00016",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 939888.77,
+  "costo_manutenzione": 33532.21,
+  "km_totali": 2171694.98,
+  "costo_per_km": 0.448
+ },
+ {
+  "truck_id": "TRK00017",
+  "make": "Mack",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 42564.58,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00018",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 867933.29,
+  "costo_manutenzione": 39036.25,
+  "km_totali": 1921833.7,
+  "costo_per_km": 0.472
+ },
+ {
+  "truck_id": "TRK00019",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 935290.41,
+  "costo_manutenzione": 26369.17,
+  "km_totali": 2157688.78,
+  "costo_per_km": 0.446
+ },
+ {
+  "truck_id": "TRK00020",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 968788.8,
+  "costo_manutenzione": 52431.68,
+  "km_totali": 2182701.12,
+  "costo_per_km": 0.468
+ },
+ {
+  "truck_id": "TRK00021",
+  "make": "Mack",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 35698.77,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00022",
+  "make": "Kenworth",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 44983.2,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00023",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 959596.41,
+  "costo_manutenzione": 45416.6,
+  "km_totali": 2117139.94,
+  "costo_per_km": 0.475
+ },
+ {
+  "truck_id": "TRK00024",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 991106.14,
+  "costo_manutenzione": 39184.86,
+  "km_totali": 2192457.04,
+  "costo_per_km": 0.47
+ },
+ {
+  "truck_id": "TRK00025",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 1009099.83,
+  "costo_manutenzione": 40555.56,
+  "km_totali": 2205273.87,
+  "costo_per_km": 0.476
+ },
+ {
+  "truck_id": "TRK00026",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 930129.86,
+  "costo_manutenzione": 65051.81,
+  "km_totali": 2015802.96,
+  "costo_per_km": 0.494
+ },
+ {
+  "truck_id": "TRK00027",
+  "make": "Peterbilt",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 40692.11,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00028",
+  "make": "Kenworth",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 40380.98,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00029",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 891266.55,
+  "costo_manutenzione": 36594.59,
+  "km_totali": 2048226.37,
+  "costo_per_km": 0.453
+ },
+ {
+  "truck_id": "TRK00030",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 913130.33,
+  "costo_manutenzione": 49061.72,
+  "km_totali": 2086375.65,
+  "costo_per_km": 0.461
+ },
+ {
+  "truck_id": "TRK00031",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 950991.14,
+  "costo_manutenzione": 47009.6,
+  "km_totali": 2142437.16,
+  "costo_per_km": 0.466
+ },
+ {
+  "truck_id": "TRK00032",
+  "make": "Mack",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 63261.34,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00033",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 928772.03,
+  "costo_manutenzione": 62113.29,
+  "km_totali": 2050986.37,
+  "costo_per_km": 0.483
+ },
+ {
+  "truck_id": "TRK00034",
+  "make": "Freightliner",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 48616.23,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00035",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 1003634.35,
+  "costo_manutenzione": 37676.12,
+  "km_totali": 2162634.43,
+  "costo_per_km": 0.482
+ },
+ {
+  "truck_id": "TRK00036",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 931438.58,
+  "costo_manutenzione": 25320.62,
+  "km_totali": 1940588.96,
+  "costo_per_km": 0.493
+ },
+ {
+  "truck_id": "TRK00037",
+  "make": "Freightliner",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 37862.53,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00038",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 974139.19,
+  "costo_manutenzione": 63470.01,
+  "km_totali": 2031624.42,
+  "costo_per_km": 0.511
+ },
+ {
+  "truck_id": "TRK00039",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 1022537.21,
+  "costo_manutenzione": 43774.67,
+  "km_totali": 2199536.73,
+  "costo_per_km": 0.485
+ },
+ {
+  "truck_id": "TRK00040",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 866759.24,
+  "costo_manutenzione": 62153.11,
+  "km_totali": 1896631.39,
+  "costo_per_km": 0.49
+ },
+ {
+  "truck_id": "TRK00041",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 974932.82,
+  "costo_manutenzione": 54910.44,
+  "km_totali": 2259515.12,
+  "costo_per_km": 0.456
+ },
+ {
+  "truck_id": "TRK00042",
+  "make": "International",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 44792.5,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00043",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 962630.24,
+  "costo_manutenzione": 37598.06,
+  "km_totali": 2126197.3,
+  "costo_per_km": 0.47
+ },
+ {
+  "truck_id": "TRK00044",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 1028046.97,
+  "costo_manutenzione": 64239.19,
+  "km_totali": 2259387.92,
+  "costo_per_km": 0.483
+ },
+ {
+  "truck_id": "TRK00045",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 887261.68,
+  "costo_manutenzione": 41627.33,
+  "km_totali": 1999408.57,
+  "costo_per_km": 0.465
+ },
+ {
+  "truck_id": "TRK00046",
+  "make": "Freightliner",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 52916.09,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00047",
+  "make": "Mack",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 25983.91,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00048",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 970957.09,
+  "costo_manutenzione": 39732.19,
+  "km_totali": 2173796.8,
+  "costo_per_km": 0.465
+ },
+ {
+  "truck_id": "TRK00049",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 929760.83,
+  "costo_manutenzione": 30585.79,
+  "km_totali": 2040807.26,
+  "costo_per_km": 0.471
+ },
+ {
+  "truck_id": "TRK00050",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 996845.06,
+  "costo_manutenzione": 51511.42,
+  "km_totali": 2154820.97,
+  "costo_per_km": 0.487
+ },
+ {
+  "truck_id": "TRK00051",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 924665.57,
+  "costo_manutenzione": 45992.52,
+  "km_totali": 2113019.89,
+  "costo_per_km": 0.459
+ },
+ {
+  "truck_id": "TRK00052",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 888488.36,
+  "costo_manutenzione": 58656.65,
+  "km_totali": 1997363.21,
+  "costo_per_km": 0.474
+ },
+ {
+  "truck_id": "TRK00053",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 986723.03,
+  "costo_manutenzione": 46273.42,
+  "km_totali": 2217844.35,
+  "costo_per_km": 0.466
+ },
+ {
+  "truck_id": "TRK00054",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 917435.47,
+  "costo_manutenzione": 50326.01,
+  "km_totali": 2142153.91,
+  "costo_per_km": 0.452
+ },
+ {
+  "truck_id": "TRK00055",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 982528.58,
+  "costo_manutenzione": 55598.64,
+  "km_totali": 2281287.85,
+  "costo_per_km": 0.455
+ },
+ {
+  "truck_id": "TRK00056",
+  "make": "Kenworth",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 36236.64,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00057",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 983773.65,
+  "costo_manutenzione": 53133.6,
+  "km_totali": 2216167.43,
+  "costo_per_km": 0.468
+ },
+ {
+  "truck_id": "TRK00058",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 907890.22,
+  "costo_manutenzione": 42085.8,
+  "km_totali": 2090676.03,
+  "costo_per_km": 0.454
+ },
+ {
+  "truck_id": "TRK00059",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 873520.88,
+  "costo_manutenzione": 31814.33,
+  "km_totali": 1958116.2,
+  "costo_per_km": 0.462
+ },
+ {
+  "truck_id": "TRK00060",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 854484.1,
+  "costo_manutenzione": 36063.84,
+  "km_totali": 1949551.25,
+  "costo_per_km": 0.457
+ },
+ {
+  "truck_id": "TRK00061",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 911955.08,
+  "costo_manutenzione": 40474.07,
+  "km_totali": 2040887.83,
+  "costo_per_km": 0.467
+ },
+ {
+  "truck_id": "TRK00062",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 915818.22,
+  "costo_manutenzione": 54874.89,
+  "km_totali": 2049891.96,
+  "costo_per_km": 0.474
+ },
+ {
+  "truck_id": "TRK00063",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 908169.2,
+  "costo_manutenzione": 42935.52,
+  "km_totali": 1978496.9,
+  "costo_per_km": 0.481
+ },
+ {
+  "truck_id": "TRK00064",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 966798.29,
+  "costo_manutenzione": 42592.65,
+  "km_totali": 2087104.9,
+  "costo_per_km": 0.484
+ },
+ {
+  "truck_id": "TRK00065",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 940012.14,
+  "costo_manutenzione": 52915.26,
+  "km_totali": 2104929.96,
+  "costo_per_km": 0.472
+ },
+ {
+  "truck_id": "TRK00066",
+  "make": "Peterbilt",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 30977.05,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00067",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 961715.41,
+  "costo_manutenzione": 41745.28,
+  "km_totali": 2112432.68,
+  "costo_per_km": 0.475
+ },
+ {
+  "truck_id": "TRK00068",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 956832.49,
+  "costo_manutenzione": 44899.61,
+  "km_totali": 2070655.62,
+  "costo_per_km": 0.484
+ },
+ {
+  "truck_id": "TRK00069",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 971866.14,
+  "costo_manutenzione": 32316.81,
+  "km_totali": 2121287.29,
+  "costo_per_km": 0.473
+ },
+ {
+  "truck_id": "TRK00070",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 942157.8,
+  "costo_manutenzione": 33250.94,
+  "km_totali": 2123554.86,
+  "costo_per_km": 0.459
+ },
+ {
+  "truck_id": "TRK00071",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 904943.27,
+  "costo_manutenzione": 56760.84,
+  "km_totali": 2042683.86,
+  "costo_per_km": 0.471
+ },
+ {
+  "truck_id": "TRK00072",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 899451.87,
+  "costo_manutenzione": 46095.43,
+  "km_totali": 2066648.46,
+  "costo_per_km": 0.458
+ },
+ {
+  "truck_id": "TRK00073",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 938059.18,
+  "costo_manutenzione": 70448.05,
+  "km_totali": 2154203.07,
+  "costo_per_km": 0.468
+ },
+ {
+  "truck_id": "TRK00074",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 940422.56,
+  "costo_manutenzione": 30401.25,
+  "km_totali": 2089007.21,
+  "costo_per_km": 0.465
+ },
+ {
+  "truck_id": "TRK00075",
+  "make": "Mack",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 65387.75,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00076",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 930092.55,
+  "costo_manutenzione": 27722.55,
+  "km_totali": 2060075.96,
+  "costo_per_km": 0.465
+ },
+ {
+  "truck_id": "TRK00077",
+  "make": "Kenworth",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 51306.43,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00078",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 964453.94,
+  "costo_manutenzione": 45014.57,
+  "km_totali": 2086131.21,
+  "costo_per_km": 0.484
+ },
+ {
+  "truck_id": "TRK00079",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 891219.74,
+  "costo_manutenzione": 36216.53,
+  "km_totali": 1924468.18,
+  "costo_per_km": 0.482
+ },
+ {
+  "truck_id": "TRK00080",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 903996.07,
+  "costo_manutenzione": 41303.06,
+  "km_totali": 2041406.01,
+  "costo_per_km": 0.463
+ },
+ {
+  "truck_id": "TRK00081",
+  "make": "Freightliner",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 67981.3,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00082",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 911639.76,
+  "costo_manutenzione": 36967.14,
+  "km_totali": 2131757.47,
+  "costo_per_km": 0.445
+ },
+ {
+  "truck_id": "TRK00083",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 898661.37,
+  "costo_manutenzione": 10944.58,
+  "km_totali": 2068087.16,
+  "costo_per_km": 0.44
+ },
+ {
+  "truck_id": "TRK00084",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 956487.74,
+  "costo_manutenzione": 31964.28,
+  "km_totali": 2146700.25,
+  "costo_per_km": 0.46
+ },
+ {
+  "truck_id": "TRK00085",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 943638.42,
+  "costo_manutenzione": 44907.65,
+  "km_totali": 2098701.57,
+  "costo_per_km": 0.471
+ },
+ {
+  "truck_id": "TRK00086",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 929261.62,
+  "costo_manutenzione": 39517.38,
+  "km_totali": 2138606.98,
+  "costo_per_km": 0.453
+ },
+ {
+  "truck_id": "TRK00087",
+  "make": "Peterbilt",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 34782.71,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00088",
+  "make": "Peterbilt",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 61603.08,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00089",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 945606.11,
+  "costo_manutenzione": 31032.02,
+  "km_totali": 2070021.57,
+  "costo_per_km": 0.472
+ },
+ {
+  "truck_id": "TRK00090",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 928343.39,
+  "costo_manutenzione": 49542.75,
+  "km_totali": 2020001.84,
+  "costo_per_km": 0.484
+ },
+ {
+  "truck_id": "TRK00091",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 926972.85,
+  "costo_manutenzione": 54731.74,
+  "km_totali": 2104012.57,
+  "costo_per_km": 0.467
+ },
+ {
+  "truck_id": "TRK00092",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 946669.56,
+  "costo_manutenzione": 38337.43,
+  "km_totali": 2131115.42,
+  "costo_per_km": 0.462
+ },
+ {
+  "truck_id": "TRK00093",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 915749.4,
+  "costo_manutenzione": 38323.65,
+  "km_totali": 2062816.57,
+  "costo_per_km": 0.463
+ },
+ {
+  "truck_id": "TRK00094",
+  "make": "Freightliner",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 33616.65,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00095",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 980499.53,
+  "costo_manutenzione": 46117.44,
+  "km_totali": 2062758.84,
+  "costo_per_km": 0.498
+ },
+ {
+  "truck_id": "TRK00096",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 888876.45,
+  "costo_manutenzione": 37400.31,
+  "km_totali": 1965401.78,
+  "costo_per_km": 0.471
+ },
+ {
+  "truck_id": "TRK00097",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 918536.69,
+  "costo_manutenzione": 36578.05,
+  "km_totali": 2175332.15,
+  "costo_per_km": 0.439
+ },
+ {
+  "truck_id": "TRK00098",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 932794.85,
+  "costo_manutenzione": 38013.44,
+  "km_totali": 2104400.36,
+  "costo_per_km": 0.461
+ },
+ {
+  "truck_id": "TRK00099",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 908549.94,
+  "costo_manutenzione": 67373.23,
+  "km_totali": 2078958.34,
+  "costo_per_km": 0.469
+ },
+ {
+  "truck_id": "TRK00100",
+  "make": "Mack",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 44105.97,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00101",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 924542.91,
+  "costo_manutenzione": 30236.88,
+  "km_totali": 1997836.39,
+  "costo_per_km": 0.478
+ },
+ {
+  "truck_id": "TRK00102",
+  "make": "Peterbilt",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 35814.48,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00103",
+  "make": "Freightliner",
+  "status": "Active",
+  "costo_carburante": 910365.24,
+  "costo_manutenzione": 50587.3,
+  "km_totali": 2011314.48,
+  "costo_per_km": 0.478
+ },
+ {
+  "truck_id": "TRK00104",
+  "make": "Peterbilt",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 41150.61,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00105",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 920795.74,
+  "costo_manutenzione": 39793.82,
+  "km_totali": 2092351.35,
+  "costo_per_km": 0.459
+ },
+ {
+  "truck_id": "TRK00106",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 963110.8,
+  "costo_manutenzione": 52861.28,
+  "km_totali": 2211928.4,
+  "costo_per_km": 0.459
+ },
+ {
+  "truck_id": "TRK00107",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 920658.1,
+  "costo_manutenzione": 28640.74,
+  "km_totali": 2236508.01,
+  "costo_per_km": 0.424
+ },
+ {
+  "truck_id": "TRK00108",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 851549.85,
+  "costo_manutenzione": 45843.52,
+  "km_totali": 1930416.47,
+  "costo_per_km": 0.465
+ },
+ {
+  "truck_id": "TRK00109",
+  "make": "Volvo",
+  "status": "Maintenance",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 35815.34,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00110",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 929523.7,
+  "costo_manutenzione": 38303.0,
+  "km_totali": 2114563.41,
+  "costo_per_km": 0.458
+ },
+ {
+  "truck_id": "TRK00111",
+  "make": "Kenworth",
+  "status": "Active",
+  "costo_carburante": 982470.66,
+  "costo_manutenzione": 52010.08,
+  "km_totali": 2123973.31,
+  "costo_per_km": 0.487
+ },
+ {
+  "truck_id": "TRK00112",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 973434.53,
+  "costo_manutenzione": 50951.02,
+  "km_totali": 2117963.85,
+  "costo_per_km": 0.484
+ },
+ {
+  "truck_id": "TRK00113",
+  "make": "Mack",
+  "status": "Active",
+  "costo_carburante": 884163.97,
+  "costo_manutenzione": 32158.85,
+  "km_totali": 2037418.13,
+  "costo_per_km": 0.45
+ },
+ {
+  "truck_id": "TRK00114",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 927485.7,
+  "costo_manutenzione": 32372.31,
+  "km_totali": 2124003.74,
+  "costo_per_km": 0.452
+ },
+ {
+  "truck_id": "TRK00115",
+  "make": "Peterbilt",
+  "status": "Active",
+  "costo_carburante": 969326.66,
+  "costo_manutenzione": 48424.85,
+  "km_totali": 2158482.24,
+  "costo_per_km": 0.472
+ },
+ {
+  "truck_id": "TRK00116",
+  "make": "International",
+  "status": "Active",
+  "costo_carburante": 937383.48,
+  "costo_manutenzione": 36557.89,
+  "km_totali": 2109423.18,
+  "costo_per_km": 0.462
+ },
+ {
+  "truck_id": "TRK00117",
+  "make": "Peterbilt",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 23532.69,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00118",
+  "make": "Freightliner",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 65325.34,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00119",
+  "make": "Mack",
+  "status": "Inactive",
+  "costo_carburante": 0.0,
+  "costo_manutenzione": 39936.37,
+  "km_totali": 0.0,
+  "costo_per_km": null
+ },
+ {
+  "truck_id": "TRK00120",
+  "make": "Volvo",
+  "status": "Active",
+  "costo_carburante": 911859.79,
+  "costo_manutenzione": 45483.33,
+  "km_totali": 2107567.62,
+  "costo_per_km": 0.454
+ }
+]

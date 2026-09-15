@@ -1,0 +1,302 @@
+[
+ {
+  "facility_id": "FAC00001",
+  "pct_puntualita": 58.3,
+  "minuti_attesa_medi": 90.7,
+  "eventi": 3279
+ },
+ {
+  "facility_id": "FAC00002",
+  "pct_puntualita": 55.6,
+  "minuti_attesa_medi": 92.2,
+  "eventi": 3434
+ },
+ {
+  "facility_id": "FAC00003",
+  "pct_puntualita": 57.3,
+  "minuti_attesa_medi": 90.4,
+  "eventi": 3526
+ },
+ {
+  "facility_id": "FAC00004",
+  "pct_puntualita": 55.6,
+  "minuti_attesa_medi": 92.7,
+  "eventi": 3374
+ },
+ {
+  "facility_id": "FAC00005",
+  "pct_puntualita": 57.0,
+  "minuti_attesa_medi": 91.3,
+  "eventi": 3399
+ },
+ {
+  "facility_id": "FAC00006",
+  "pct_puntualita": 55.9,
+  "minuti_attesa_medi": 92.5,
+  "eventi": 3340
+ },
+ {
+  "facility_id": "FAC00007",
+  "pct_puntualita": 56.8,
+  "minuti_attesa_medi": 92.4,
+  "eventi": 3396
+ },
+ {
+  "facility_id": "FAC00008",
+  "pct_puntualita": 57.4,
+  "minuti_attesa_medi": 92.2,
+  "eventi": 3435
+ },
+ {
+  "facility_id": "FAC00009",
+  "pct_puntualita": 54.4,
+  "minuti_attesa_medi": 92.5,
+  "eventi": 3404
+ },
+ {
+  "facility_id": "FAC00010",
+  "pct_puntualita": 56.3,
+  "minuti_attesa_medi": 91.4,
+  "eventi": 3528
+ },
+ {
+  "facility_id": "FAC00011",
+  "pct_puntualita": 54.1,
+  "minuti_attesa_medi": 91.2,
+  "eventi": 3419
+ },
+ {
+  "facility_id": "FAC00012",
+  "pct_puntualita": 53.4,
+  "minuti_attesa_medi": 92.6,
+  "eventi": 3278
+ },
+ {
+  "facility_id": "FAC00013",
+  "pct_puntualita": 55.7,
+  "minuti_attesa_medi": 91.3,
+  "eventi": 3410
+ },
+ {
+  "facility_id": "FAC00014",
+  "pct_puntualita": 55.4,
+  "minuti_attesa_medi": 93.6,
+  "eventi": 3399
+ },
+ {
+  "facility_id": "FAC00015",
+  "pct_puntualita": 54.7,
+  "minuti_attesa_medi": 93.7,
+  "eventi": 3391
+ },
+ {
+  "facility_id": "FAC00016",
+  "pct_puntualita": 55.7,
+  "minuti_attesa_medi": 90.7,
+  "eventi": 3424
+ },
+ {
+  "facility_id": "FAC00017",
+  "pct_puntualita": 55.9,
+  "minuti_attesa_medi": 92.6,
+  "eventi": 3449
+ },
+ {
+  "facility_id": "FAC00018",
+  "pct_puntualita": 54.3,
+  "minuti_attesa_medi": 90.3,
+  "eventi": 3392
+ },
+ {
+  "facility_id": "FAC00019",
+  "pct_puntualita": 56.2,
+  "minuti_attesa_medi": 91.3,
+  "eventi": 3368
+ },
+ {
+  "facility_id": "FAC00020",
+  "pct_puntualita": 57.5,
+  "minuti_attesa_medi": 91.4,
+  "eventi": 3466
+ },
+ {
+  "facility_id": "FAC00021",
+  "pct_puntualita": 56.9,
+  "minuti_attesa_medi": 90.0,
+  "eventi": 3268
+ },
+ {
+  "facility_id": "FAC00022",
+  "pct_puntualita": 57.7,
+  "minuti_attesa_medi": 90.6,
+  "eventi": 3419
+ },
+ {
+  "facility_id": "FAC00023",
+  "pct_puntualita": 55.5,
+  "minuti_attesa_medi": 92.5,
+  "eventi": 3282
+ },
+ {
+  "facility_id": "FAC00024",
+  "pct_puntualita": 55.3,
+  "minuti_attesa_medi": 92.5,
+  "eventi": 3417
+ },
+ {
+  "facility_id": "FAC00025",
+  "pct_puntualita": 55.6,
+  "minuti_attesa_medi": 90.4,
+  "eventi": 3462
+ },
+ {
+  "facility_id": "FAC00026",
+  "pct_puntualita": 56.2,
+  "minuti_attesa_medi": 90.5,
+  "eventi": 3418
+ },
+ {
+  "facility_id": "FAC00027",
+  "pct_puntualita": 56.1,
+  "minuti_attesa_medi": 92.0,
+  "eventi": 3435
+ },
+ {
+  "facility_id": "FAC00028",
+  "pct_puntualita": 55.7,
+  "minuti_attesa_medi": 90.6,
+  "eventi": 3580
+ },
+ {
+  "facility_id": "FAC00029",
+  "pct_puntualita": 55.0,
+  "minuti_attesa_medi": 89.7,
+  "eventi": 3387
+ },
+ {
+  "facility_id": "FAC00030",
+  "pct_puntualita": 54.4,
+  "minuti_attesa_medi": 90.5,
+  "eventi": 3391
+ },
+ {
+  "facility_id": "FAC00031",
+  "pct_puntualita": 56.0,
+  "minuti_attesa_medi": 90.7,
+  "eventi": 3509
+ },
+ {
+  "facility_id": "FAC00032",
+  "pct_puntualita": 55.7,
+  "minuti_attesa_medi": 92.6,
+  "eventi": 3388
+ },
+ {
+  "facility_id": "FAC00033",
+  "pct_puntualita": 54.9,
+  "minuti_attesa_medi": 89.9,
+  "eventi": 3478
+ },
+ {
+  "facility_id": "FAC00034",
+  "pct_puntualita": 53.5,
+  "minuti_attesa_medi": 88.9,
+  "eventi": 3414
+ },
+ {
+  "facility_id": "FAC00035",
+  "pct_puntualita": 54.5,
+  "minuti_attesa_medi": 92.4,
+  "eventi": 3457
+ },
+ {
+  "facility_id": "FAC00036",
+  "pct_puntualita": 55.1,
+  "minuti_attesa_medi": 90.1,
+  "eventi": 3398
+ },
+ {
+  "facility_id": "FAC00037",
+  "pct_puntualita": 56.1,
+  "minuti_attesa_medi": 91.4,
+  "eventi": 3407
+ },
+ {
+  "facility_id": "FAC00038",
+  "pct_puntualita": 56.6,
+  "minuti_attesa_medi": 92.3,
+  "eventi": 3352
+ },
+ {
+  "facility_id": "FAC00039",
+  "pct_puntualita": 56.7,
+  "minuti_attesa_medi": 91.9,
+  "eventi": 3474
+ },
+ {
+  "facility_id": "FAC00040",
+  "pct_puntualita": 56.7,
+  "minuti_attesa_medi": 93.8,
+  "eventi": 3385
+ },
+ {
+  "facility_id": "FAC00041",
+  "pct_puntualita": 54.9,
+  "minuti_attesa_medi": 91.4,
+  "eventi": 3436
+ },
+ {
+  "facility_id": "FAC00042",
+  "pct_puntualita": 56.6,
+  "minuti_attesa_medi": 92.9,
+  "eventi": 3434
+ },
+ {
+  "facility_id": "FAC00043",
+  "pct_puntualita": 54.4,
+  "minuti_attesa_medi": 91.3,
+  "eventi": 3522
+ },
+ {
+  "facility_id": "FAC00044",
+  "pct_puntualita": 56.7,
+  "minuti_attesa_medi": 91.1,
+  "eventi": 3499
+ },
+ {
+  "facility_id": "FAC00045",
+  "pct_puntualita": 55.5,
+  "minuti_attesa_medi": 91.7,
+  "eventi": 3380
+ },
+ {
+  "facility_id": "FAC00046",
+  "pct_puntualita": 54.5,
+  "minuti_attesa_medi": 91.7,
+  "eventi": 3437
+ },
+ {
+  "facility_id": "FAC00047",
+  "pct_puntualita": 56.2,
+  "minuti_attesa_medi": 90.9,
+  "eventi": 3474
+ },
+ {
+  "facility_id": "FAC00048",
+  "pct_puntualita": 53.0,
+  "minuti_attesa_medi": 93.6,
+  "eventi": 3384
+ },
+ {
+  "facility_id": "FAC00049",
+  "pct_puntualita": 54.4,
+  "minuti_attesa_medi": 90.9,
+  "eventi": 3365
+ },
+ {
+  "facility_id": "FAC00050",
+  "pct_puntualita": 55.5,
+  "minuti_attesa_medi": 91.4,
+  "eventi": 3457
+ }
+]

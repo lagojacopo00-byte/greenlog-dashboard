@@ -1,0 +1,554 @@
+[
+ {
+  "truck_id": "TRK00001",
+  "utilizzo_medio_pct": 86.7,
+  "ore_fermo_totali": 713.2,
+  "costo_manutenzione_totale": 47633.92
+ },
+ {
+  "truck_id": "TRK00002",
+  "utilizzo_medio_pct": 81.0,
+  "ore_fermo_totali": 665.3,
+  "costo_manutenzione_totale": 50479.5
+ },
+ {
+  "truck_id": "TRK00004",
+  "utilizzo_medio_pct": 84.7,
+  "ore_fermo_totali": 483.2,
+  "costo_manutenzione_totale": 35476.9
+ },
+ {
+  "truck_id": "TRK00006",
+  "utilizzo_medio_pct": 80.2,
+  "ore_fermo_totali": 587.7,
+  "costo_manutenzione_totale": 46718.34
+ },
+ {
+  "truck_id": "TRK00007",
+  "utilizzo_medio_pct": 84.2,
+  "ore_fermo_totali": 415.7,
+  "costo_manutenzione_totale": 23799.45
+ },
+ {
+  "truck_id": "TRK00008",
+  "utilizzo_medio_pct": 81.6,
+  "ore_fermo_totali": 483.0,
+  "costo_manutenzione_totale": 30382.77
+ },
+ {
+  "truck_id": "TRK00009",
+  "utilizzo_medio_pct": 82.1,
+  "ore_fermo_totali": 522.3,
+  "costo_manutenzione_totale": 37107.13
+ },
+ {
+  "truck_id": "TRK00010",
+  "utilizzo_medio_pct": 82.5,
+  "ore_fermo_totali": 603.1,
+  "costo_manutenzione_totale": 46374.18
+ },
+ {
+  "truck_id": "TRK00011",
+  "utilizzo_medio_pct": 84.6,
+  "ore_fermo_totali": 656.6,
+  "costo_manutenzione_totale": 42747.45
+ },
+ {
+  "truck_id": "TRK00012",
+  "utilizzo_medio_pct": 84.0,
+  "ore_fermo_totali": 450.1,
+  "costo_manutenzione_totale": 37101.18
+ },
+ {
+  "truck_id": "TRK00013",
+  "utilizzo_medio_pct": 80.7,
+  "ore_fermo_totali": 868.5,
+  "costo_manutenzione_totale": 53315.06
+ },
+ {
+  "truck_id": "TRK00014",
+  "utilizzo_medio_pct": 80.9,
+  "ore_fermo_totali": 940.4,
+  "costo_manutenzione_totale": 66057.67
+ },
+ {
+  "truck_id": "TRK00015",
+  "utilizzo_medio_pct": 87.7,
+  "ore_fermo_totali": 562.5,
+  "costo_manutenzione_totale": 31014.99
+ },
+ {
+  "truck_id": "TRK00016",
+  "utilizzo_medio_pct": 84.8,
+  "ore_fermo_totali": 437.1,
+  "costo_manutenzione_totale": 33532.19
+ },
+ {
+  "truck_id": "TRK00018",
+  "utilizzo_medio_pct": 78.4,
+  "ore_fermo_totali": 664.5,
+  "costo_manutenzione_totale": 39036.28
+ },
+ {
+  "truck_id": "TRK00019",
+  "utilizzo_medio_pct": 84.1,
+  "ore_fermo_totali": 337.1,
+  "costo_manutenzione_totale": 26369.17
+ },
+ {
+  "truck_id": "TRK00020",
+  "utilizzo_medio_pct": 86.3,
+  "ore_fermo_totali": 711.8,
+  "costo_manutenzione_totale": 52431.7
+ },
+ {
+  "truck_id": "TRK00023",
+  "utilizzo_medio_pct": 82.5,
+  "ore_fermo_totali": 600.7,
+  "costo_manutenzione_totale": 45416.61
+ },
+ {
+  "truck_id": "TRK00024",
+  "utilizzo_medio_pct": 85.8,
+  "ore_fermo_totali": 705.5,
+  "costo_manutenzione_totale": 39184.85
+ },
+ {
+  "truck_id": "TRK00025",
+  "utilizzo_medio_pct": 87.9,
+  "ore_fermo_totali": 570.1,
+  "costo_manutenzione_totale": 40555.56
+ },
+ {
+  "truck_id": "TRK00026",
+  "utilizzo_medio_pct": 81.6,
+  "ore_fermo_totali": 787.9,
+  "costo_manutenzione_totale": 65051.81
+ },
+ {
+  "truck_id": "TRK00029",
+  "utilizzo_medio_pct": 80.1,
+  "ore_fermo_totali": 540.1,
+  "costo_manutenzione_totale": 36594.59
+ },
+ {
+  "truck_id": "TRK00030",
+  "utilizzo_medio_pct": 81.5,
+  "ore_fermo_totali": 679.5,
+  "costo_manutenzione_totale": 49061.73
+ },
+ {
+  "truck_id": "TRK00031",
+  "utilizzo_medio_pct": 85.8,
+  "ore_fermo_totali": 579.5,
+  "costo_manutenzione_totale": 47009.61
+ },
+ {
+  "truck_id": "TRK00033",
+  "utilizzo_medio_pct": 82.7,
+  "ore_fermo_totali": 908.2,
+  "costo_manutenzione_totale": 62113.29
+ },
+ {
+  "truck_id": "TRK00035",
+  "utilizzo_medio_pct": 85.1,
+  "ore_fermo_totali": 516.8,
+  "costo_manutenzione_totale": 37676.11
+ },
+ {
+  "truck_id": "TRK00036",
+  "utilizzo_medio_pct": 79.1,
+  "ore_fermo_totali": 323.9,
+  "costo_manutenzione_totale": 25320.62
+ },
+ {
+  "truck_id": "TRK00038",
+  "utilizzo_medio_pct": 82.8,
+  "ore_fermo_totali": 796.4,
+  "costo_manutenzione_totale": 63470.02
+ },
+ {
+  "truck_id": "TRK00039",
+  "utilizzo_medio_pct": 88.2,
+  "ore_fermo_totali": 557.0,
+  "costo_manutenzione_totale": 43774.65
+ },
+ {
+  "truck_id": "TRK00040",
+  "utilizzo_medio_pct": 78.3,
+  "ore_fermo_totali": 665.1,
+  "costo_manutenzione_totale": 62153.11
+ },
+ {
+  "truck_id": "TRK00041",
+  "utilizzo_medio_pct": 88.0,
+  "ore_fermo_totali": 524.7,
+  "costo_manutenzione_totale": 54910.42
+ },
+ {
+  "truck_id": "TRK00043",
+  "utilizzo_medio_pct": 83.8,
+  "ore_fermo_totali": 488.6,
+  "costo_manutenzione_totale": 37598.08
+ },
+ {
+  "truck_id": "TRK00044",
+  "utilizzo_medio_pct": 88.5,
+  "ore_fermo_totali": 1080.4,
+  "costo_manutenzione_totale": 64239.18
+ },
+ {
+  "truck_id": "TRK00045",
+  "utilizzo_medio_pct": 78.0,
+  "ore_fermo_totali": 571.2,
+  "costo_manutenzione_totale": 41627.3
+ },
+ {
+  "truck_id": "TRK00048",
+  "utilizzo_medio_pct": 86.3,
+  "ore_fermo_totali": 583.2,
+  "costo_manutenzione_totale": 39732.19
+ },
+ {
+  "truck_id": "TRK00049",
+  "utilizzo_medio_pct": 83.1,
+  "ore_fermo_totali": 339.8,
+  "costo_manutenzione_totale": 30585.79
+ },
+ {
+  "truck_id": "TRK00050",
+  "utilizzo_medio_pct": 87.3,
+  "ore_fermo_totali": 687.7,
+  "costo_manutenzione_totale": 51511.42
+ },
+ {
+  "truck_id": "TRK00051",
+  "utilizzo_medio_pct": 83.3,
+  "ore_fermo_totali": 577.3,
+  "costo_manutenzione_totale": 45992.5
+ },
+ {
+  "truck_id": "TRK00052",
+  "utilizzo_medio_pct": 81.2,
+  "ore_fermo_totali": 737.3,
+  "costo_manutenzione_totale": 58656.66
+ },
+ {
+  "truck_id": "TRK00053",
+  "utilizzo_medio_pct": 87.9,
+  "ore_fermo_totali": 635.0,
+  "costo_manutenzione_totale": 46273.43
+ },
+ {
+  "truck_id": "TRK00054",
+  "utilizzo_medio_pct": 81.8,
+  "ore_fermo_totali": 681.4,
+  "costo_manutenzione_totale": 50326.02
+ },
+ {
+  "truck_id": "TRK00055",
+  "utilizzo_medio_pct": 89.1,
+  "ore_fermo_totali": 689.5,
+  "costo_manutenzione_totale": 55598.65
+ },
+ {
+  "truck_id": "TRK00057",
+  "utilizzo_medio_pct": 86.6,
+  "ore_fermo_totali": 651.2,
+  "costo_manutenzione_totale": 53133.61
+ },
+ {
+  "truck_id": "TRK00058",
+  "utilizzo_medio_pct": 82.0,
+  "ore_fermo_totali": 414.9,
+  "costo_manutenzione_totale": 42085.81
+ },
+ {
+  "truck_id": "TRK00059",
+  "utilizzo_medio_pct": 78.5,
+  "ore_fermo_totali": 450.0,
+  "costo_manutenzione_totale": 31814.33
+ },
+ {
+  "truck_id": "TRK00060",
+  "utilizzo_medio_pct": 77.2,
+  "ore_fermo_totali": 641.4,
+  "costo_manutenzione_totale": 36063.83
+ },
+ {
+  "truck_id": "TRK00061",
+  "utilizzo_medio_pct": 82.5,
+  "ore_fermo_totali": 530.4,
+  "costo_manutenzione_totale": 40474.07
+ },
+ {
+  "truck_id": "TRK00062",
+  "utilizzo_medio_pct": 82.9,
+  "ore_fermo_totali": 862.1,
+  "costo_manutenzione_totale": 54874.92
+ },
+ {
+  "truck_id": "TRK00063",
+  "utilizzo_medio_pct": 79.3,
+  "ore_fermo_totali": 674.8,
+  "costo_manutenzione_totale": 42935.51
+ },
+ {
+  "truck_id": "TRK00064",
+  "utilizzo_medio_pct": 83.7,
+  "ore_fermo_totali": 510.2,
+  "costo_manutenzione_totale": 42592.66
+ },
+ {
+  "truck_id": "TRK00065",
+  "utilizzo_medio_pct": 84.1,
+  "ore_fermo_totali": 589.8,
+  "costo_manutenzione_totale": 52915.28
+ },
+ {
+  "truck_id": "TRK00067",
+  "utilizzo_medio_pct": 83.0,
+  "ore_fermo_totali": 757.6,
+  "costo_manutenzione_totale": 41745.26
+ },
+ {
+  "truck_id": "TRK00068",
+  "utilizzo_medio_pct": 82.0,
+  "ore_fermo_totali": 632.3,
+  "costo_manutenzione_totale": 44899.61
+ },
+ {
+  "truck_id": "TRK00069",
+  "utilizzo_medio_pct": 85.3,
+  "ore_fermo_totali": 366.7,
+  "costo_manutenzione_totale": 32316.82
+ },
+ {
+  "truck_id": "TRK00070",
+  "utilizzo_medio_pct": 86.0,
+  "ore_fermo_totali": 307.7,
+  "costo_manutenzione_totale": 33250.94
+ },
+ {
+  "truck_id": "TRK00071",
+  "utilizzo_medio_pct": 83.1,
+  "ore_fermo_totali": 761.5,
+  "costo_manutenzione_totale": 56760.83
+ },
+ {
+  "truck_id": "TRK00072",
+  "utilizzo_medio_pct": 80.4,
+  "ore_fermo_totali": 700.6,
+  "costo_manutenzione_totale": 46095.43
+ },
+ {
+  "truck_id": "TRK00073",
+  "utilizzo_medio_pct": 85.4,
+  "ore_fermo_totali": 996.3,
+  "costo_manutenzione_totale": 70448.06
+ },
+ {
+  "truck_id": "TRK00074",
+  "utilizzo_medio_pct": 80.5,
+  "ore_fermo_totali": 459.2,
+  "costo_manutenzione_totale": 30401.25
+ },
+ {
+  "truck_id": "TRK00076",
+  "utilizzo_medio_pct": 82.7,
+  "ore_fermo_totali": 388.9,
+  "costo_manutenzione_totale": 27722.55
+ },
+ {
+  "truck_id": "TRK00078",
+  "utilizzo_medio_pct": 81.8,
+  "ore_fermo_totali": 839.6,
+  "costo_manutenzione_totale": 45014.56
+ },
+ {
+  "truck_id": "TRK00079",
+  "utilizzo_medio_pct": 75.8,
+  "ore_fermo_totali": 572.4,
+  "costo_manutenzione_totale": 36216.52
+ },
+ {
+  "truck_id": "TRK00080",
+  "utilizzo_medio_pct": 81.6,
+  "ore_fermo_totali": 504.4,
+  "costo_manutenzione_totale": 41303.06
+ },
+ {
+  "truck_id": "TRK00082",
+  "utilizzo_medio_pct": 84.3,
+  "ore_fermo_totali": 602.0,
+  "costo_manutenzione_totale": 36967.14
+ },
+ {
+  "truck_id": "TRK00083",
+  "utilizzo_medio_pct": 82.3,
+  "ore_fermo_totali": 247.9,
+  "costo_manutenzione_totale": 10944.58
+ },
+ {
+  "truck_id": "TRK00084",
+  "utilizzo_medio_pct": 84.6,
+  "ore_fermo_totali": 372.0,
+  "costo_manutenzione_totale": 31964.28
+ },
+ {
+  "truck_id": "TRK00085",
+  "utilizzo_medio_pct": 84.1,
+  "ore_fermo_totali": 791.2,
+  "costo_manutenzione_totale": 44907.63
+ },
+ {
+  "truck_id": "TRK00086",
+  "utilizzo_medio_pct": 84.7,
+  "ore_fermo_totali": 432.9,
+  "costo_manutenzione_totale": 39517.38
+ },
+ {
+  "truck_id": "TRK00089",
+  "utilizzo_medio_pct": 82.2,
+  "ore_fermo_totali": 611.4,
+  "costo_manutenzione_totale": 31032.01
+ },
+ {
+  "truck_id": "TRK00090",
+  "utilizzo_medio_pct": 80.5,
+  "ore_fermo_totali": 563.3,
+  "costo_manutenzione_totale": 49542.75
+ },
+ {
+  "truck_id": "TRK00091",
+  "utilizzo_medio_pct": 82.2,
+  "ore_fermo_totali": 595.3,
+  "costo_manutenzione_totale": 54731.73
+ },
+ {
+  "truck_id": "TRK00092",
+  "utilizzo_medio_pct": 82.3,
+  "ore_fermo_totali": 433.6,
+  "costo_manutenzione_totale": 38337.43
+ },
+ {
+  "truck_id": "TRK00093",
+  "utilizzo_medio_pct": 82.2,
+  "ore_fermo_totali": 565.0,
+  "costo_manutenzione_totale": 38323.65
+ },
+ {
+  "truck_id": "TRK00095",
+  "utilizzo_medio_pct": 84.8,
+  "ore_fermo_totali": 439.6,
+  "costo_manutenzione_totale": 46117.42
+ },
+ {
+  "truck_id": "TRK00096",
+  "utilizzo_medio_pct": 78.0,
+  "ore_fermo_totali": 515.1,
+  "costo_manutenzione_totale": 37400.3
+ },
+ {
+  "truck_id": "TRK00097",
+  "utilizzo_medio_pct": 83.9,
+  "ore_fermo_totali": 431.8,
+  "costo_manutenzione_totale": 36578.05
+ },
+ {
+  "truck_id": "TRK00098",
+  "utilizzo_medio_pct": 83.2,
+  "ore_fermo_totali": 460.3,
+  "costo_manutenzione_totale": 38013.44
+ },
+ {
+  "truck_id": "TRK00099",
+  "utilizzo_medio_pct": 81.6,
+  "ore_fermo_totali": 743.7,
+  "costo_manutenzione_totale": 67373.23
+ },
+ {
+  "truck_id": "TRK00101",
+  "utilizzo_medio_pct": 80.6,
+  "ore_fermo_totali": 404.4,
+  "costo_manutenzione_totale": 30236.88
+ },
+ {
+  "truck_id": "TRK00103",
+  "utilizzo_medio_pct": 79.5,
+  "ore_fermo_totali": 747.2,
+  "costo_manutenzione_totale": 50587.32
+ },
+ {
+  "truck_id": "TRK00105",
+  "utilizzo_medio_pct": 84.7,
+  "ore_fermo_totali": 805.8,
+  "costo_manutenzione_totale": 39793.8
+ },
+ {
+  "truck_id": "TRK00106",
+  "utilizzo_medio_pct": 85.7,
+  "ore_fermo_totali": 719.7,
+  "costo_manutenzione_totale": 52861.28
+ },
+ {
+  "truck_id": "TRK00107",
+  "utilizzo_medio_pct": 84.7,
+  "ore_fermo_totali": 341.2,
+  "costo_manutenzione_totale": 28640.75
+ },
+ {
+  "truck_id": "TRK00108",
+  "utilizzo_medio_pct": 78.3,
+  "ore_fermo_totali": 750.3,
+  "costo_manutenzione_totale": 45843.51
+ },
+ {
+  "truck_id": "TRK00110",
+  "utilizzo_medio_pct": 83.2,
+  "ore_fermo_totali": 634.7,
+  "costo_manutenzione_totale": 38303.01
+ },
+ {
+  "truck_id": "TRK00111",
+  "utilizzo_medio_pct": 84.7,
+  "ore_fermo_totali": 615.3,
+  "costo_manutenzione_totale": 52010.06
+ },
+ {
+  "truck_id": "TRK00112",
+  "utilizzo_medio_pct": 85.6,
+  "ore_fermo_totali": 635.9,
+  "costo_manutenzione_totale": 50951.02
+ },
+ {
+  "truck_id": "TRK00113",
+  "utilizzo_medio_pct": 80.3,
+  "ore_fermo_totali": 475.4,
+  "costo_manutenzione_totale": 32158.84
+ },
+ {
+  "truck_id": "TRK00114",
+  "utilizzo_medio_pct": 82.8,
+  "ore_fermo_totali": 469.5,
+  "costo_manutenzione_totale": 32372.3
+ },
+ {
+  "truck_id": "TRK00115",
+  "utilizzo_medio_pct": 86.5,
+  "ore_fermo_totali": 767.9,
+  "costo_manutenzione_totale": 48424.83
+ },
+ {
+  "truck_id": "TRK00116",
+  "utilizzo_medio_pct": 82.6,
+  "ore_fermo_totali": 366.2,
+  "costo_manutenzione_totale": 36557.89
+ },
+ {
+  "truck_id": "TRK00120",
+  "utilizzo_medio_pct": 81.5,
+  "ore_fermo_totali": 732.7,
+  "costo_manutenzione_totale": 45483.34
+ }
+]

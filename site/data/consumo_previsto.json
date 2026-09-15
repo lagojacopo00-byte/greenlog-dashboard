@@ -1,0 +1,738 @@
+[
+ {
+  "truck_id": "TRK00001",
+  "make": "Peterbilt",
+  "consumo_reale": 36.548624,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.06,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00002",
+  "make": "Kenworth",
+  "consumo_reale": 36.6123099,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": 0.13,
+  "scostamento_pct": 0.4
+ },
+ {
+  "truck_id": "TRK00004",
+  "make": "Freightliner",
+  "consumo_reale": 36.4979235,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.03,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00006",
+  "make": "Kenworth",
+  "consumo_reale": 36.533705,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": 0.05,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00007",
+  "make": "Volvo",
+  "consumo_reale": 36.5586172,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.04,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00008",
+  "make": "Mack",
+  "consumo_reale": 36.4680103,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.03,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00009",
+  "make": "International",
+  "consumo_reale": 36.4084331,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.07,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00010",
+  "make": "Volvo",
+  "consumo_reale": 36.3978615,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.12,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00011",
+  "make": "Freightliner",
+  "consumo_reale": 36.3784229,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.09,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00012",
+  "make": "Freightliner",
+  "consumo_reale": 36.2908463,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.17,
+  "scostamento_pct": -0.5
+ },
+ {
+  "truck_id": "TRK00013",
+  "make": "Volvo",
+  "consumo_reale": 36.4643981,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.05,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00014",
+  "make": "International",
+  "consumo_reale": 36.3228506,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.15,
+  "scostamento_pct": -0.4
+ },
+ {
+  "truck_id": "TRK00015",
+  "make": "International",
+  "consumo_reale": 36.5101873,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.04,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00016",
+  "make": "Freightliner",
+  "consumo_reale": 36.4556903,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00018",
+  "make": "International",
+  "consumo_reale": 36.4974836,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.02,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00019",
+  "make": "International",
+  "consumo_reale": 36.5628788,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.09,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00020",
+  "make": "Kenworth",
+  "consumo_reale": 36.5675061,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": 0.08,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00023",
+  "make": "Peterbilt",
+  "consumo_reale": 36.4295259,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.06,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00024",
+  "make": "Volvo",
+  "consumo_reale": 36.4423085,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.08,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00025",
+  "make": "Freightliner",
+  "consumo_reale": 36.5095131,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.05,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00026",
+  "make": "International",
+  "consumo_reale": 36.6316658,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.16,
+  "scostamento_pct": 0.4
+ },
+ {
+  "truck_id": "TRK00029",
+  "make": "International",
+  "consumo_reale": 36.5338549,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.06,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00030",
+  "make": "Volvo",
+  "consumo_reale": 36.5100197,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00031",
+  "make": "Kenworth",
+  "consumo_reale": 36.5567186,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": 0.07,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00033",
+  "make": "Mack",
+  "consumo_reale": 36.5452846,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.11,
+  "scostamento_pct": 0.3
+ },
+ {
+  "truck_id": "TRK00035",
+  "make": "International",
+  "consumo_reale": 36.4965581,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.02,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00036",
+  "make": "Peterbilt",
+  "consumo_reale": 36.3588096,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.13,
+  "scostamento_pct": -0.4
+ },
+ {
+  "truck_id": "TRK00038",
+  "make": "International",
+  "consumo_reale": 36.5114588,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.04,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00039",
+  "make": "International",
+  "consumo_reale": 36.4819136,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00040",
+  "make": "International",
+  "consumo_reale": 36.3842215,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.09,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00041",
+  "make": "International",
+  "consumo_reale": 36.3914271,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.08,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00043",
+  "make": "Freightliner",
+  "consumo_reale": 36.351679,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.11,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00044",
+  "make": "Volvo",
+  "consumo_reale": 36.4613129,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.06,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00045",
+  "make": "Volvo",
+  "consumo_reale": 36.5345403,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.02,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00048",
+  "make": "Volvo",
+  "consumo_reale": 36.558708,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.04,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00049",
+  "make": "Peterbilt",
+  "consumo_reale": 36.3676856,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.12,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00050",
+  "make": "Peterbilt",
+  "consumo_reale": 36.5870864,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.09,
+  "scostamento_pct": 0.3
+ },
+ {
+  "truck_id": "TRK00051",
+  "make": "Mack",
+  "consumo_reale": 36.3197806,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": -0.12,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00052",
+  "make": "Freightliner",
+  "consumo_reale": 36.4055361,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.06,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00053",
+  "make": "Peterbilt",
+  "consumo_reale": 36.6357998,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.14,
+  "scostamento_pct": 0.4
+ },
+ {
+  "truck_id": "TRK00054",
+  "make": "Freightliner",
+  "consumo_reale": 36.3231705,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.14,
+  "scostamento_pct": -0.4
+ },
+ {
+  "truck_id": "TRK00055",
+  "make": "Peterbilt",
+  "consumo_reale": 36.6788659,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.19,
+  "scostamento_pct": 0.5
+ },
+ {
+  "truck_id": "TRK00057",
+  "make": "Mack",
+  "consumo_reale": 36.1250798,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": -0.31,
+  "scostamento_pct": -0.9
+ },
+ {
+  "truck_id": "TRK00058",
+  "make": "Mack",
+  "consumo_reale": 36.6052465,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.17,
+  "scostamento_pct": 0.5
+ },
+ {
+  "truck_id": "TRK00059",
+  "make": "Mack",
+  "consumo_reale": 36.2081975,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": -0.23,
+  "scostamento_pct": -0.6
+ },
+ {
+  "truck_id": "TRK00060",
+  "make": "Freightliner",
+  "consumo_reale": 36.5061016,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.04,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00061",
+  "make": "International",
+  "consumo_reale": 36.4861794,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00062",
+  "make": "Mack",
+  "consumo_reale": 36.472372,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.04,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00063",
+  "make": "Peterbilt",
+  "consumo_reale": 36.5657974,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.07,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00064",
+  "make": "Kenworth",
+  "consumo_reale": 36.3462538,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": -0.14,
+  "scostamento_pct": -0.4
+ },
+ {
+  "truck_id": "TRK00065",
+  "make": "Freightliner",
+  "consumo_reale": 36.5713711,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.11,
+  "scostamento_pct": 0.3
+ },
+ {
+  "truck_id": "TRK00067",
+  "make": "International",
+  "consumo_reale": 36.5345191,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": 0.06,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00068",
+  "make": "Peterbilt",
+  "consumo_reale": 36.6125014,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.12,
+  "scostamento_pct": 0.3
+ },
+ {
+  "truck_id": "TRK00069",
+  "make": "Mack",
+  "consumo_reale": 36.446509,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00070",
+  "make": "Kenworth",
+  "consumo_reale": 36.418305,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": -0.07,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00071",
+  "make": "Mack",
+  "consumo_reale": 36.4684982,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.03,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00072",
+  "make": "Volvo",
+  "consumo_reale": 36.7490659,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.23,
+  "scostamento_pct": 0.6
+ },
+ {
+  "truck_id": "TRK00073",
+  "make": "Mack",
+  "consumo_reale": 36.4064822,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": -0.03,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00074",
+  "make": "Volvo",
+  "consumo_reale": 36.3949516,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.12,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00076",
+  "make": "Kenworth",
+  "consumo_reale": 36.4507576,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": -0.03,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00078",
+  "make": "Freightliner",
+  "consumo_reale": 36.6717297,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.21,
+  "scostamento_pct": 0.6
+ },
+ {
+  "truck_id": "TRK00079",
+  "make": "Mack",
+  "consumo_reale": 36.3853444,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": -0.05,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00080",
+  "make": "Volvo",
+  "consumo_reale": 36.3627114,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.16,
+  "scostamento_pct": -0.4
+ },
+ {
+  "truck_id": "TRK00082",
+  "make": "Peterbilt",
+  "consumo_reale": 36.5504624,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.06,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00083",
+  "make": "Kenworth",
+  "consumo_reale": 36.3959703,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": -0.09,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00084",
+  "make": "Freightliner",
+  "consumo_reale": 36.4855498,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.02,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00085",
+  "make": "Kenworth",
+  "consumo_reale": 36.5688153,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": 0.08,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00086",
+  "make": "Freightliner",
+  "consumo_reale": 36.6445121,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.18,
+  "scostamento_pct": 0.5
+ },
+ {
+  "truck_id": "TRK00089",
+  "make": "International",
+  "consumo_reale": 36.4488579,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.03,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00090",
+  "make": "Volvo",
+  "consumo_reale": 36.6780407,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.16,
+  "scostamento_pct": 0.4
+ },
+ {
+  "truck_id": "TRK00091",
+  "make": "International",
+  "consumo_reale": 36.400116,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.07,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00092",
+  "make": "Volvo",
+  "consumo_reale": 36.7755841,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.26,
+  "scostamento_pct": 0.7
+ },
+ {
+  "truck_id": "TRK00093",
+  "make": "Peterbilt",
+  "consumo_reale": 36.2775632,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.21,
+  "scostamento_pct": -0.6
+ },
+ {
+  "truck_id": "TRK00095",
+  "make": "Mack",
+  "consumo_reale": 36.3635999,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": -0.07,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00096",
+  "make": "Kenworth",
+  "consumo_reale": 36.2765953,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": -0.21,
+  "scostamento_pct": -0.6
+ },
+ {
+  "truck_id": "TRK00097",
+  "make": "Peterbilt",
+  "consumo_reale": 36.4523692,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.04,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00098",
+  "make": "Peterbilt",
+  "consumo_reale": 36.3602382,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.13,
+  "scostamento_pct": -0.4
+ },
+ {
+  "truck_id": "TRK00099",
+  "make": "Freightliner",
+  "consumo_reale": 36.3577433,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": -0.11,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00101",
+  "make": "Peterbilt",
+  "consumo_reale": 36.4211842,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.07,
+  "scostamento_pct": -0.2
+ },
+ {
+  "truck_id": "TRK00103",
+  "make": "Freightliner",
+  "consumo_reale": 36.5139154,
+  "previsto": 36.4638865,
+  "scostamento_assoluto": 0.05,
+  "scostamento_pct": 0.1
+ },
+ {
+  "truck_id": "TRK00105",
+  "make": "Volvo",
+  "consumo_reale": 36.5204672,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.0,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00106",
+  "make": "Volvo",
+  "consumo_reale": 36.4074107,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.11,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00107",
+  "make": "Mack",
+  "consumo_reale": 36.5027478,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.07,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00108",
+  "make": "Volvo",
+  "consumo_reale": 36.4984406,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.02,
+  "scostamento_pct": -0.1
+ },
+ {
+  "truck_id": "TRK00110",
+  "make": "Peterbilt",
+  "consumo_reale": 36.4801437,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": -0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00111",
+  "make": "Kenworth",
+  "consumo_reale": 36.5799421,
+  "previsto": 36.4839703,
+  "scostamento_assoluto": 0.1,
+  "scostamento_pct": 0.3
+ },
+ {
+  "truck_id": "TRK00112",
+  "make": "Volvo",
+  "consumo_reale": 36.4090805,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": -0.11,
+  "scostamento_pct": -0.3
+ },
+ {
+  "truck_id": "TRK00113",
+  "make": "Mack",
+  "consumo_reale": 36.808019,
+  "previsto": 36.4368281,
+  "scostamento_assoluto": 0.37,
+  "scostamento_pct": 1.0
+ },
+ {
+  "truck_id": "TRK00114",
+  "make": "Volvo",
+  "consumo_reale": 36.5917687,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.07,
+  "scostamento_pct": 0.2
+ },
+ {
+  "truck_id": "TRK00115",
+  "make": "Peterbilt",
+  "consumo_reale": 36.5056995,
+  "previsto": 36.4921964,
+  "scostamento_assoluto": 0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00116",
+  "make": "International",
+  "consumo_reale": 36.4680248,
+  "previsto": 36.4750197,
+  "scostamento_assoluto": -0.01,
+  "scostamento_pct": 0.0
+ },
+ {
+  "truck_id": "TRK00120",
+  "make": "Volvo",
+  "consumo_reale": 36.530056,
+  "previsto": 36.5178112,
+  "scostamento_assoluto": 0.01,
+  "scostamento_pct": 0.0
+ }
+]

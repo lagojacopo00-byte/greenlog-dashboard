@@ -1,0 +1,17 @@
+[
+ {
+  "status": "Active",
+  "numero_mezzi": 92,
+  "pct_flotta": 76.7
+ },
+ {
+  "status": "Maintenance",
+  "numero_mezzi": 15,
+  "pct_flotta": 12.5
+ },
+ {
+  "status": "Inactive",
+  "numero_mezzi": 13,
+  "pct_flotta": 10.8
+ }
+]

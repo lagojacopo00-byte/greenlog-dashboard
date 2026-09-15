@@ -1,0 +1,1602 @@
+[
+ {
+  "customer_id": "CUST00001",
+  "customer_name": "Metro Wholesale",
+  "potenziale_annuo": 906307.64,
+  "ricavo_effettivo": 1270346.14,
+  "pct_del_potenziale": 140.2,
+  "numero_carichi": 435
+ },
+ {
+  "customer_id": "CUST00002",
+  "customer_name": "National Retail",
+  "potenziale_annuo": 4541640.72,
+  "ricavo_effettivo": 1266871.22,
+  "pct_del_potenziale": 27.9,
+  "numero_carichi": 444
+ },
+ {
+  "customer_id": "CUST00003",
+  "customer_name": "XYZ Industries",
+  "potenziale_annuo": 2854588.88,
+  "ricavo_effettivo": 1077729.9,
+  "pct_del_potenziale": 37.8,
+  "numero_carichi": 392
+ },
+ {
+  "customer_id": "CUST00004",
+  "customer_name": "American Corp",
+  "potenziale_annuo": 3632184.84,
+  "ricavo_effettivo": 1108273.13,
+  "pct_del_potenziale": 30.5,
+  "numero_carichi": 401
+ },
+ {
+  "customer_id": "CUST00005",
+  "customer_name": "American Distribution",
+  "potenziale_annuo": 3387958.88,
+  "ricavo_effettivo": 1212405.69,
+  "pct_del_potenziale": 35.8,
+  "numero_carichi": 418
+ },
+ {
+  "customer_id": "CUST00006",
+  "customer_name": "American Industries",
+  "potenziale_annuo": 895412.08,
+  "ricavo_effettivo": 1170629.96,
+  "pct_del_potenziale": 130.7,
+  "numero_carichi": 401
+ },
+ {
+  "customer_id": "CUST00007",
+  "customer_name": "Superior Distribution",
+  "potenziale_annuo": 1379353.24,
+  "ricavo_effettivo": 1303028.27,
+  "pct_del_potenziale": 94.5,
+  "numero_carichi": 453
+ },
+ {
+  "customer_id": "CUST00008",
+  "customer_name": "American Logistics",
+  "potenziale_annuo": 1484213.0,
+  "ricavo_effettivo": 1170132.0,
+  "pct_del_potenziale": 78.8,
+  "numero_carichi": 405
+ },
+ {
+  "customer_id": "CUST00009",
+  "customer_name": "XYZ Wholesale",
+  "potenziale_annuo": 4336368.48,
+  "ricavo_effettivo": 1182641.07,
+  "pct_del_potenziale": 27.3,
+  "numero_carichi": 417
+ },
+ {
+  "customer_id": "CUST00010",
+  "customer_name": "National Logistics",
+  "potenziale_annuo": 3191024.6,
+  "ricavo_effettivo": 1235548.48,
+  "pct_del_potenziale": 38.7,
+  "numero_carichi": 424
+ },
+ {
+  "customer_id": "CUST00011",
+  "customer_name": "First Group",
+  "potenziale_annuo": 3986975.48,
+  "ricavo_effettivo": 1152255.68,
+  "pct_del_potenziale": 28.9,
+  "numero_carichi": 420
+ },
+ {
+  "customer_id": "CUST00012",
+  "customer_name": "ABC Distribution",
+  "potenziale_annuo": 2696761.96,
+  "ricavo_effettivo": 1264542.25,
+  "pct_del_potenziale": 46.9,
+  "numero_carichi": 453
+ },
+ {
+  "customer_id": "CUST00013",
+  "customer_name": "Pacific Corp",
+  "potenziale_annuo": 1312729.6,
+  "ricavo_effettivo": 1283991.7,
+  "pct_del_potenziale": 97.8,
+  "numero_carichi": 442
+ },
+ {
+  "customer_id": "CUST00014",
+  "customer_name": "Elite Foods",
+  "potenziale_annuo": 4212386.52,
+  "ricavo_effettivo": 1195392.66,
+  "pct_del_potenziale": 28.4,
+  "numero_carichi": 445
+ },
+ {
+  "customer_id": "CUST00015",
+  "customer_name": "First Group",
+  "potenziale_annuo": 3510954.6,
+  "ricavo_effettivo": 1252587.84,
+  "pct_del_potenziale": 35.7,
+  "numero_carichi": 442
+ },
+ {
+  "customer_id": "CUST00016",
+  "customer_name": "United Industries",
+  "potenziale_annuo": 2811067.36,
+  "ricavo_effettivo": 1155317.01,
+  "pct_del_potenziale": 41.1,
+  "numero_carichi": 404
+ },
+ {
+  "customer_id": "CUST00017",
+  "customer_name": "Superior Supply Chain",
+  "potenziale_annuo": 2524214.12,
+  "ricavo_effettivo": 1163813.15,
+  "pct_del_potenziale": 46.1,
+  "numero_carichi": 417
+ },
+ {
+  "customer_id": "CUST00018",
+  "customer_name": "ABC Retail",
+  "potenziale_annuo": 4337262.72,
+  "ricavo_effettivo": 1159463.29,
+  "pct_del_potenziale": 26.7,
+  "numero_carichi": 412
+ },
+ {
+  "customer_id": "CUST00019",
+  "customer_name": "American Supply Chain",
+  "potenziale_annuo": 2597524.32,
+  "ricavo_effettivo": 1221442.66,
+  "pct_del_potenziale": 47.0,
+  "numero_carichi": 437
+ },
+ {
+  "customer_id": "CUST00020",
+  "customer_name": "First Corp",
+  "potenziale_annuo": 2960752.28,
+  "ricavo_effettivo": 1237107.55,
+  "pct_del_potenziale": 41.8,
+  "numero_carichi": 421
+ },
+ {
+  "customer_id": "CUST00021",
+  "customer_name": "Elite Industries",
+  "potenziale_annuo": 3274267.12,
+  "ricavo_effettivo": 1253174.19,
+  "pct_del_potenziale": 38.3,
+  "numero_carichi": 436
+ },
+ {
+  "customer_id": "CUST00022",
+  "customer_name": "Continental Supply Chain",
+  "potenziale_annuo": 3415071.28,
+  "ricavo_effettivo": 1284998.37,
+  "pct_del_potenziale": 37.6,
+  "numero_carichi": 449
+ },
+ {
+  "customer_id": "CUST00023",
+  "customer_name": "Continental Industries",
+  "potenziale_annuo": 2588237.84,
+  "ricavo_effettivo": 1248980.2,
+  "pct_del_potenziale": 48.3,
+  "numero_carichi": 442
+ },
+ {
+  "customer_id": "CUST00024",
+  "customer_name": "XYZ Distribution",
+  "potenziale_annuo": 1949780.84,
+  "ricavo_effettivo": 1119881.4,
+  "pct_del_potenziale": 57.4,
+  "numero_carichi": 404
+ },
+ {
+  "customer_id": "CUST00025",
+  "customer_name": "Pacific Retail",
+  "potenziale_annuo": 4438080.0,
+  "ricavo_effettivo": 1086833.47,
+  "pct_del_potenziale": 24.5,
+  "numero_carichi": 413
+ },
+ {
+  "customer_id": "CUST00026",
+  "customer_name": "ABC Supply Chain",
+  "potenziale_annuo": 4302880.48,
+  "ricavo_effettivo": 1284871.08,
+  "pct_del_potenziale": 29.9,
+  "numero_carichi": 453
+ },
+ {
+  "customer_id": "CUST00027",
+  "customer_name": "Superior Foods",
+  "potenziale_annuo": 1742994.28,
+  "ricavo_effettivo": 1248719.03,
+  "pct_del_potenziale": 71.6,
+  "numero_carichi": 417
+ },
+ {
+  "customer_id": "CUST00028",
+  "customer_name": "First Group",
+  "potenziale_annuo": 2986556.44,
+  "ricavo_effettivo": 1363005.71,
+  "pct_del_potenziale": 45.6,
+  "numero_carichi": 476
+ },
+ {
+  "customer_id": "CUST00029",
+  "customer_name": "Superior Distribution",
+  "potenziale_annuo": 4338477.12,
+  "ricavo_effettivo": 1255986.91,
+  "pct_del_potenziale": 28.9,
+  "numero_carichi": 450
+ },
+ {
+  "customer_id": "CUST00030",
+  "customer_name": "ABC Manufacturing",
+  "potenziale_annuo": 2052937.68,
+  "ricavo_effettivo": 1184264.88,
+  "pct_del_potenziale": 57.7,
+  "numero_carichi": 413
+ },
+ {
+  "customer_id": "CUST00031",
+  "customer_name": "American Manufacturing",
+  "potenziale_annuo": 2870372.4,
+  "ricavo_effettivo": 1063890.92,
+  "pct_del_potenziale": 37.1,
+  "numero_carichi": 385
+ },
+ {
+  "customer_id": "CUST00032",
+  "customer_name": "Continental Wholesale",
+  "potenziale_annuo": 3583432.2,
+  "ricavo_effettivo": 1159849.83,
+  "pct_del_potenziale": 32.4,
+  "numero_carichi": 416
+ },
+ {
+  "customer_id": "CUST00033",
+  "customer_name": "XYZ Foods",
+  "potenziale_annuo": 3545588.0,
+  "ricavo_effettivo": 1302433.75,
+  "pct_del_potenziale": 36.7,
+  "numero_carichi": 439
+ },
+ {
+  "customer_id": "CUST00034",
+  "customer_name": "Elite Retail",
+  "potenziale_annuo": 3156554.04,
+  "ricavo_effettivo": 1093094.16,
+  "pct_del_potenziale": 34.6,
+  "numero_carichi": 399
+ },
+ {
+  "customer_id": "CUST00035",
+  "customer_name": "United Distribution",
+  "potenziale_annuo": 93509.72,
+  "ricavo_effettivo": 1344316.82,
+  "pct_del_potenziale": 1437.6,
+  "numero_carichi": 457
+ },
+ {
+  "customer_id": "CUST00036",
+  "customer_name": "National Retail",
+  "potenziale_annuo": 359511.16,
+  "ricavo_effettivo": 1132252.95,
+  "pct_del_potenziale": 314.9,
+  "numero_carichi": 414
+ },
+ {
+  "customer_id": "CUST00037",
+  "customer_name": "American Retail",
+  "potenziale_annuo": 2287496.28,
+  "ricavo_effettivo": 1129752.27,
+  "pct_del_potenziale": 49.4,
+  "numero_carichi": 396
+ },
+ {
+  "customer_id": "CUST00038",
+  "customer_name": "Continental Supply Chain",
+  "potenziale_annuo": 217813.68,
+  "ricavo_effettivo": 1291633.43,
+  "pct_del_potenziale": 593.0,
+  "numero_carichi": 464
+ },
+ {
+  "customer_id": "CUST00039",
+  "customer_name": "XYZ Wholesale",
+  "potenziale_annuo": 4086660.24,
+  "ricavo_effettivo": 1105767.61,
+  "pct_del_potenziale": 27.1,
+  "numero_carichi": 412
+ },
+ {
+  "customer_id": "CUST00040",
+  "customer_name": "ABC Corp",
+  "potenziale_annuo": 1134526.52,
+  "ricavo_effettivo": 1189434.64,
+  "pct_del_potenziale": 104.8,
+  "numero_carichi": 397
+ },
+ {
+  "customer_id": "CUST00041",
+  "customer_name": "XYZ Industries",
+  "potenziale_annuo": 2421468.52,
+  "ricavo_effettivo": 1073363.25,
+  "pct_del_potenziale": 44.3,
+  "numero_carichi": 377
+ },
+ {
+  "customer_id": "CUST00042",
+  "customer_name": "American Corp",
+  "potenziale_annuo": 142694.76,
+  "ricavo_effettivo": 1184891.88,
+  "pct_del_potenziale": 830.4,
+  "numero_carichi": 418
+ },
+ {
+  "customer_id": "CUST00043",
+  "customer_name": "First Manufacturing",
+  "potenziale_annuo": 2409832.36,
+  "ricavo_effettivo": 1110770.49,
+  "pct_del_potenziale": 46.1,
+  "numero_carichi": 400
+ },
+ {
+  "customer_id": "CUST00044",
+  "customer_name": "American Logistics",
+  "potenziale_annuo": 1804414.4,
+  "ricavo_effettivo": 1246869.15,
+  "pct_del_potenziale": 69.1,
+  "numero_carichi": 435
+ },
+ {
+  "customer_id": "CUST00045",
+  "customer_name": "First Logistics",
+  "potenziale_annuo": 1749898.88,
+  "ricavo_effettivo": 1105668.21,
+  "pct_del_potenziale": 63.2,
+  "numero_carichi": 413
+ },
+ {
+  "customer_id": "CUST00046",
+  "customer_name": "First Wholesale",
+  "potenziale_annuo": 2522282.12,
+  "ricavo_effettivo": 1109757.28,
+  "pct_del_potenziale": 44.0,
+  "numero_carichi": 394
+ },
+ {
+  "customer_id": "CUST00047",
+  "customer_name": "Elite Industries",
+  "potenziale_annuo": 259480.48,
+  "ricavo_effettivo": 1176575.53,
+  "pct_del_potenziale": 453.4,
+  "numero_carichi": 406
+ },
+ {
+  "customer_id": "CUST00048",
+  "customer_name": "First Manufacturing",
+  "potenziale_annuo": 2221704.32,
+  "ricavo_effettivo": 1257294.55,
+  "pct_del_potenziale": 56.6,
+  "numero_carichi": 432
+ },
+ {
+  "customer_id": "CUST00049",
+  "customer_name": "Continental Corp",
+  "potenziale_annuo": 4364905.96,
+  "ricavo_effettivo": 1084150.67,
+  "pct_del_potenziale": 24.8,
+  "numero_carichi": 388
+ },
+ {
+  "customer_id": "CUST00050",
+  "customer_name": "Global Manufacturing",
+  "potenziale_annuo": 4037747.52,
+  "ricavo_effettivo": 1183568.49,
+  "pct_del_potenziale": 29.3,
+  "numero_carichi": 425
+ },
+ {
+  "customer_id": "CUST00051",
+  "customer_name": "XYZ Wholesale",
+  "potenziale_annuo": 4385433.92,
+  "ricavo_effettivo": 1258312.03,
+  "pct_del_potenziale": 28.7,
+  "numero_carichi": 451
+ },
+ {
+  "customer_id": "CUST00052",
+  "customer_name": "Metro Corp",
+  "potenziale_annuo": 4496142.12,
+  "ricavo_effettivo": 1196540.74,
+  "pct_del_potenziale": 26.6,
+  "numero_carichi": 418
+ },
+ {
+  "customer_id": "CUST00053",
+  "customer_name": "Elite Supply Chain",
+  "potenziale_annuo": 4503424.84,
+  "ricavo_effettivo": 1244418.12,
+  "pct_del_potenziale": 27.6,
+  "numero_carichi": 429
+ },
+ {
+  "customer_id": "CUST00054",
+  "customer_name": "First Wholesale",
+  "potenziale_annuo": 1286013.72,
+  "ricavo_effettivo": 1118127.1,
+  "pct_del_potenziale": 86.9,
+  "numero_carichi": 407
+ },
+ {
+  "customer_id": "CUST00055",
+  "customer_name": "National Corp",
+  "potenziale_annuo": 819662.04,
+  "ricavo_effettivo": 1144980.96,
+  "pct_del_potenziale": 139.7,
+  "numero_carichi": 429
+ },
+ {
+  "customer_id": "CUST00056",
+  "customer_name": "Continental Retail",
+  "potenziale_annuo": 383230.6,
+  "ricavo_effettivo": 1131752.97,
+  "pct_del_potenziale": 295.3,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00057",
+  "customer_name": "Premier Wholesale",
+  "potenziale_annuo": 3644912.12,
+  "ricavo_effettivo": 1239919.15,
+  "pct_del_potenziale": 34.0,
+  "numero_carichi": 428
+ },
+ {
+  "customer_id": "CUST00058",
+  "customer_name": "Superior Foods",
+  "potenziale_annuo": 2836779.52,
+  "ricavo_effettivo": 1232087.51,
+  "pct_del_potenziale": 43.4,
+  "numero_carichi": 453
+ },
+ {
+  "customer_id": "CUST00059",
+  "customer_name": "American Manufacturing",
+  "potenziale_annuo": 1296759.32,
+  "ricavo_effettivo": 1251393.55,
+  "pct_del_potenziale": 96.5,
+  "numero_carichi": 433
+ },
+ {
+  "customer_id": "CUST00060",
+  "customer_name": "Global Wholesale",
+  "potenziale_annuo": 1160167.84,
+  "ricavo_effettivo": 1190058.96,
+  "pct_del_potenziale": 102.6,
+  "numero_carichi": 438
+ },
+ {
+  "customer_id": "CUST00061",
+  "customer_name": "Elite Group",
+  "potenziale_annuo": 2137050.52,
+  "ricavo_effettivo": 1217922.49,
+  "pct_del_potenziale": 57.0,
+  "numero_carichi": 446
+ },
+ {
+  "customer_id": "CUST00062",
+  "customer_name": "Premier Group",
+  "potenziale_annuo": 2924968.88,
+  "ricavo_effettivo": 1316975.81,
+  "pct_del_potenziale": 45.0,
+  "numero_carichi": 454
+ },
+ {
+  "customer_id": "CUST00063",
+  "customer_name": "Superior Group",
+  "potenziale_annuo": 4584797.92,
+  "ricavo_effettivo": 1197620.09,
+  "pct_del_potenziale": 26.1,
+  "numero_carichi": 423
+ },
+ {
+  "customer_id": "CUST00064",
+  "customer_name": "Metro Retail",
+  "potenziale_annuo": 2020274.92,
+  "ricavo_effettivo": 1148763.56,
+  "pct_del_potenziale": 56.9,
+  "numero_carichi": 409
+ },
+ {
+  "customer_id": "CUST00065",
+  "customer_name": "United Retail",
+  "potenziale_annuo": 1890136.32,
+  "ricavo_effettivo": 1166870.81,
+  "pct_del_potenziale": 61.7,
+  "numero_carichi": 412
+ },
+ {
+  "customer_id": "CUST00066",
+  "customer_name": "Elite Foods",
+  "potenziale_annuo": 2069566.68,
+  "ricavo_effettivo": 1200265.96,
+  "pct_del_potenziale": 58.0,
+  "numero_carichi": 422
+ },
+ {
+  "customer_id": "CUST00067",
+  "customer_name": "Metro Supply Chain",
+  "potenziale_annuo": 2409589.48,
+  "ricavo_effettivo": 1174936.02,
+  "pct_del_potenziale": 48.8,
+  "numero_carichi": 411
+ },
+ {
+  "customer_id": "CUST00068",
+  "customer_name": "Metro Manufacturing",
+  "potenziale_annuo": 801279.52,
+  "ricavo_effettivo": 1180295.5,
+  "pct_del_potenziale": 147.3,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00069",
+  "customer_name": "Continental Manufacturing",
+  "potenziale_annuo": 4494745.56,
+  "ricavo_effettivo": 1108473.84,
+  "pct_del_potenziale": 24.7,
+  "numero_carichi": 381
+ },
+ {
+  "customer_id": "CUST00070",
+  "customer_name": "First Group",
+  "potenziale_annuo": 3177450.0,
+  "ricavo_effettivo": 1303226.19,
+  "pct_del_potenziale": 41.0,
+  "numero_carichi": 430
+ },
+ {
+  "customer_id": "CUST00071",
+  "customer_name": "Continental Supply Chain",
+  "potenziale_annuo": 4483769.04,
+  "ricavo_effettivo": 1051417.74,
+  "pct_del_potenziale": 23.4,
+  "numero_carichi": 383
+ },
+ {
+  "customer_id": "CUST00072",
+  "customer_name": "Continental Distribution",
+  "potenziale_annuo": 1770076.32,
+  "ricavo_effettivo": 1298406.05,
+  "pct_del_potenziale": 73.4,
+  "numero_carichi": 443
+ },
+ {
+  "customer_id": "CUST00073",
+  "customer_name": "Pacific Supply Chain",
+  "potenziale_annuo": 687803.96,
+  "ricavo_effettivo": 1298768.14,
+  "pct_del_potenziale": 188.8,
+  "numero_carichi": 447
+ },
+ {
+  "customer_id": "CUST00074",
+  "customer_name": "First Industries",
+  "potenziale_annuo": 2597816.88,
+  "ricavo_effettivo": 1155503.88,
+  "pct_del_potenziale": 44.5,
+  "numero_carichi": 425
+ },
+ {
+  "customer_id": "CUST00075",
+  "customer_name": "Elite Corp",
+  "potenziale_annuo": 3815958.52,
+  "ricavo_effettivo": 1279261.73,
+  "pct_del_potenziale": 33.5,
+  "numero_carichi": 445
+ },
+ {
+  "customer_id": "CUST00076",
+  "customer_name": "Metro Wholesale",
+  "potenziale_annuo": 1426378.12,
+  "ricavo_effettivo": 1322075.49,
+  "pct_del_potenziale": 92.7,
+  "numero_carichi": 457
+ },
+ {
+  "customer_id": "CUST00077",
+  "customer_name": "Metro Group",
+  "potenziale_annuo": 3860282.28,
+  "ricavo_effettivo": 1400223.37,
+  "pct_del_potenziale": 36.3,
+  "numero_carichi": 487
+ },
+ {
+  "customer_id": "CUST00078",
+  "customer_name": "Premier Wholesale",
+  "potenziale_annuo": 4539084.96,
+  "ricavo_effettivo": 1203010.66,
+  "pct_del_potenziale": 26.5,
+  "numero_carichi": 424
+ },
+ {
+  "customer_id": "CUST00079",
+  "customer_name": "Pacific Logistics",
+  "potenziale_annuo": 827973.32,
+  "ricavo_effettivo": 1110427.52,
+  "pct_del_potenziale": 134.1,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00080",
+  "customer_name": "First Distribution",
+  "potenziale_annuo": 2410290.52,
+  "ricavo_effettivo": 1166420.28,
+  "pct_del_potenziale": 48.4,
+  "numero_carichi": 414
+ },
+ {
+  "customer_id": "CUST00081",
+  "customer_name": "ABC Wholesale",
+  "potenziale_annuo": 380415.4,
+  "ricavo_effettivo": 1303677.56,
+  "pct_del_potenziale": 342.7,
+  "numero_carichi": 433
+ },
+ {
+  "customer_id": "CUST00082",
+  "customer_name": "Global Logistics",
+  "potenziale_annuo": 4539480.56,
+  "ricavo_effettivo": 1238943.85,
+  "pct_del_potenziale": 27.3,
+  "numero_carichi": 431
+ },
+ {
+  "customer_id": "CUST00083",
+  "customer_name": "Metro Logistics",
+  "potenziale_annuo": 3036588.8,
+  "ricavo_effettivo": 1188971.51,
+  "pct_del_potenziale": 39.2,
+  "numero_carichi": 440
+ },
+ {
+  "customer_id": "CUST00084",
+  "customer_name": "United Foods",
+  "potenziale_annuo": 697650.72,
+  "ricavo_effettivo": 1226619.69,
+  "pct_del_potenziale": 175.8,
+  "numero_carichi": 443
+ },
+ {
+  "customer_id": "CUST00085",
+  "customer_name": "Pacific Manufacturing",
+  "potenziale_annuo": 523583.96,
+  "ricavo_effettivo": 1223473.94,
+  "pct_del_potenziale": 233.7,
+  "numero_carichi": 421
+ },
+ {
+  "customer_id": "CUST00086",
+  "customer_name": "Premier Foods",
+  "potenziale_annuo": 2672657.96,
+  "ricavo_effettivo": 1150721.84,
+  "pct_del_potenziale": 43.1,
+  "numero_carichi": 429
+ },
+ {
+  "customer_id": "CUST00087",
+  "customer_name": "Global Logistics",
+  "potenziale_annuo": 2777158.0,
+  "ricavo_effettivo": 1298078.83,
+  "pct_del_potenziale": 46.7,
+  "numero_carichi": 445
+ },
+ {
+  "customer_id": "CUST00088",
+  "customer_name": "Continental Foods",
+  "potenziale_annuo": 3443752.28,
+  "ricavo_effettivo": 1270346.21,
+  "pct_del_potenziale": 36.9,
+  "numero_carichi": 438
+ },
+ {
+  "customer_id": "CUST00089",
+  "customer_name": "United Group",
+  "potenziale_annuo": 3306514.04,
+  "ricavo_effettivo": 1074245.75,
+  "pct_del_potenziale": 32.5,
+  "numero_carichi": 374
+ },
+ {
+  "customer_id": "CUST00090",
+  "customer_name": "ABC Supply Chain",
+  "potenziale_annuo": 1022273.64,
+  "ricavo_effettivo": 1167518.34,
+  "pct_del_potenziale": 114.2,
+  "numero_carichi": 426
+ },
+ {
+  "customer_id": "CUST00091",
+  "customer_name": "American Distribution",
+  "potenziale_annuo": 1841697.4,
+  "ricavo_effettivo": 1202810.95,
+  "pct_del_potenziale": 65.3,
+  "numero_carichi": 414
+ },
+ {
+  "customer_id": "CUST00092",
+  "customer_name": "Elite Group",
+  "potenziale_annuo": 180244.56,
+  "ricavo_effettivo": 1112077.92,
+  "pct_del_potenziale": 617.0,
+  "numero_carichi": 387
+ },
+ {
+  "customer_id": "CUST00093",
+  "customer_name": "United Group",
+  "potenziale_annuo": 3043850.36,
+  "ricavo_effettivo": 1119218.26,
+  "pct_del_potenziale": 36.8,
+  "numero_carichi": 399
+ },
+ {
+  "customer_id": "CUST00094",
+  "customer_name": "National Retail",
+  "potenziale_annuo": 509733.36,
+  "ricavo_effettivo": 1262293.06,
+  "pct_del_potenziale": 247.6,
+  "numero_carichi": 446
+ },
+ {
+  "customer_id": "CUST00095",
+  "customer_name": "First Foods",
+  "potenziale_annuo": 2444171.36,
+  "ricavo_effettivo": 1077514.15,
+  "pct_del_potenziale": 44.1,
+  "numero_carichi": 402
+ },
+ {
+  "customer_id": "CUST00096",
+  "customer_name": "Continental Logistics",
+  "potenziale_annuo": 4138938.32,
+  "ricavo_effettivo": 1245437.13,
+  "pct_del_potenziale": 30.1,
+  "numero_carichi": 435
+ },
+ {
+  "customer_id": "CUST00097",
+  "customer_name": "National Wholesale",
+  "potenziale_annuo": 409824.12,
+  "ricavo_effettivo": 1368158.92,
+  "pct_del_potenziale": 333.8,
+  "numero_carichi": 470
+ },
+ {
+  "customer_id": "CUST00098",
+  "customer_name": "National Supply Chain",
+  "potenziale_annuo": 2556331.32,
+  "ricavo_effettivo": 1201333.21,
+  "pct_del_potenziale": 47.0,
+  "numero_carichi": 419
+ },
+ {
+  "customer_id": "CUST00099",
+  "customer_name": "First Logistics",
+  "potenziale_annuo": 4258917.36,
+  "ricavo_effettivo": 1215005.37,
+  "pct_del_potenziale": 28.5,
+  "numero_carichi": 441
+ },
+ {
+  "customer_id": "CUST00100",
+  "customer_name": "ABC Foods",
+  "potenziale_annuo": 4451725.44,
+  "ricavo_effettivo": 1084322.28,
+  "pct_del_potenziale": 24.4,
+  "numero_carichi": 400
+ },
+ {
+  "customer_id": "CUST00101",
+  "customer_name": "United Corp",
+  "potenziale_annuo": 1246386.56,
+  "ricavo_effettivo": 1359625.83,
+  "pct_del_potenziale": 109.1,
+  "numero_carichi": 460
+ },
+ {
+  "customer_id": "CUST00102",
+  "customer_name": "Pacific Industries",
+  "potenziale_annuo": 2614329.04,
+  "ricavo_effettivo": 1272854.57,
+  "pct_del_potenziale": 48.7,
+  "numero_carichi": 454
+ },
+ {
+  "customer_id": "CUST00103",
+  "customer_name": "United Supply Chain",
+  "potenziale_annuo": 3969294.0,
+  "ricavo_effettivo": 1168657.76,
+  "pct_del_potenziale": 29.4,
+  "numero_carichi": 410
+ },
+ {
+  "customer_id": "CUST00104",
+  "customer_name": "Pacific Corp",
+  "potenziale_annuo": 1796005.6,
+  "ricavo_effettivo": 1211222.38,
+  "pct_del_potenziale": 67.4,
+  "numero_carichi": 432
+ },
+ {
+  "customer_id": "CUST00105",
+  "customer_name": "First Corp",
+  "potenziale_annuo": 1274303.96,
+  "ricavo_effettivo": 1210440.42,
+  "pct_del_potenziale": 95.0,
+  "numero_carichi": 423
+ },
+ {
+  "customer_id": "CUST00106",
+  "customer_name": "United Retail",
+  "potenziale_annuo": 481886.8,
+  "ricavo_effettivo": 1293925.9,
+  "pct_del_potenziale": 268.5,
+  "numero_carichi": 449
+ },
+ {
+  "customer_id": "CUST00107",
+  "customer_name": "Premier Industries",
+  "potenziale_annuo": 3124078.96,
+  "ricavo_effettivo": 1267522.09,
+  "pct_del_potenziale": 40.6,
+  "numero_carichi": 437
+ },
+ {
+  "customer_id": "CUST00108",
+  "customer_name": "Global Distribution",
+  "potenziale_annuo": 3531051.08,
+  "ricavo_effettivo": 1227184.82,
+  "pct_del_potenziale": 34.8,
+  "numero_carichi": 456
+ },
+ {
+  "customer_id": "CUST00109",
+  "customer_name": "Global Manufacturing",
+  "potenziale_annuo": 4531540.04,
+  "ricavo_effettivo": 1060547.93,
+  "pct_del_potenziale": 23.4,
+  "numero_carichi": 375
+ },
+ {
+  "customer_id": "CUST00110",
+  "customer_name": "Continental Group",
+  "potenziale_annuo": 3987257.92,
+  "ricavo_effettivo": 1361217.85,
+  "pct_del_potenziale": 34.1,
+  "numero_carichi": 481
+ },
+ {
+  "customer_id": "CUST00111",
+  "customer_name": "XYZ Wholesale",
+  "potenziale_annuo": 787216.4,
+  "ricavo_effettivo": 1312941.46,
+  "pct_del_potenziale": 166.8,
+  "numero_carichi": 487
+ },
+ {
+  "customer_id": "CUST00112",
+  "customer_name": "ABC Wholesale",
+  "potenziale_annuo": 1805949.88,
+  "ricavo_effettivo": 1117724.85,
+  "pct_del_potenziale": 61.9,
+  "numero_carichi": 396
+ },
+ {
+  "customer_id": "CUST00113",
+  "customer_name": "Premier Group",
+  "potenziale_annuo": 3425471.88,
+  "ricavo_effettivo": 1113842.57,
+  "pct_del_potenziale": 32.5,
+  "numero_carichi": 414
+ },
+ {
+  "customer_id": "CUST00114",
+  "customer_name": "Premier Manufacturing",
+  "potenziale_annuo": 2328405.92,
+  "ricavo_effettivo": 1067961.74,
+  "pct_del_potenziale": 45.9,
+  "numero_carichi": 400
+ },
+ {
+  "customer_id": "CUST00115",
+  "customer_name": "Global Corp",
+  "potenziale_annuo": 3135190.72,
+  "ricavo_effettivo": 1170539.56,
+  "pct_del_potenziale": 37.3,
+  "numero_carichi": 407
+ },
+ {
+  "customer_id": "CUST00116",
+  "customer_name": "Premier Logistics",
+  "potenziale_annuo": 1234288.56,
+  "ricavo_effettivo": 1185636.83,
+  "pct_del_potenziale": 96.1,
+  "numero_carichi": 419
+ },
+ {
+  "customer_id": "CUST00117",
+  "customer_name": "Superior Industries",
+  "potenziale_annuo": 1112171.44,
+  "ricavo_effettivo": 1157848.36,
+  "pct_del_potenziale": 104.1,
+  "numero_carichi": 415
+ },
+ {
+  "customer_id": "CUST00118",
+  "customer_name": "Continental Manufacturing",
+  "potenziale_annuo": 2686384.36,
+  "ricavo_effettivo": 1107024.67,
+  "pct_del_potenziale": 41.2,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00119",
+  "customer_name": "ABC Manufacturing",
+  "potenziale_annuo": 729042.96,
+  "ricavo_effettivo": 1282211.9,
+  "pct_del_potenziale": 175.9,
+  "numero_carichi": 439
+ },
+ {
+  "customer_id": "CUST00120",
+  "customer_name": "Superior Corp",
+  "potenziale_annuo": 3764417.36,
+  "ricavo_effettivo": 1277149.98,
+  "pct_del_potenziale": 33.9,
+  "numero_carichi": 437
+ },
+ {
+  "customer_id": "CUST00121",
+  "customer_name": "ABC Corp",
+  "potenziale_annuo": 4502103.72,
+  "ricavo_effettivo": 1121043.56,
+  "pct_del_potenziale": 24.9,
+  "numero_carichi": 411
+ },
+ {
+  "customer_id": "CUST00122",
+  "customer_name": "Metro Foods",
+  "potenziale_annuo": 472558.92,
+  "ricavo_effettivo": 1364533.7,
+  "pct_del_potenziale": 288.8,
+  "numero_carichi": 463
+ },
+ {
+  "customer_id": "CUST00123",
+  "customer_name": "American Corp",
+  "potenziale_annuo": 4322376.2,
+  "ricavo_effettivo": 1279523.87,
+  "pct_del_potenziale": 29.6,
+  "numero_carichi": 435
+ },
+ {
+  "customer_id": "CUST00124",
+  "customer_name": "First Supply Chain",
+  "potenziale_annuo": 3172766.28,
+  "ricavo_effettivo": 1354360.81,
+  "pct_del_potenziale": 42.7,
+  "numero_carichi": 454
+ },
+ {
+  "customer_id": "CUST00125",
+  "customer_name": "XYZ Supply Chain",
+  "potenziale_annuo": 2118295.4,
+  "ricavo_effettivo": 1256446.94,
+  "pct_del_potenziale": 59.3,
+  "numero_carichi": 440
+ },
+ {
+  "customer_id": "CUST00126",
+  "customer_name": "First Retail",
+  "potenziale_annuo": 748598.48,
+  "ricavo_effettivo": 1129443.36,
+  "pct_del_potenziale": 150.9,
+  "numero_carichi": 405
+ },
+ {
+  "customer_id": "CUST00127",
+  "customer_name": "Global Group",
+  "potenziale_annuo": 3167640.04,
+  "ricavo_effettivo": 1194739.15,
+  "pct_del_potenziale": 37.7,
+  "numero_carichi": 421
+ },
+ {
+  "customer_id": "CUST00128",
+  "customer_name": "XYZ Group",
+  "potenziale_annuo": 3964829.24,
+  "ricavo_effettivo": 1214095.03,
+  "pct_del_potenziale": 30.6,
+  "numero_carichi": 446
+ },
+ {
+  "customer_id": "CUST00129",
+  "customer_name": "Global Wholesale",
+  "potenziale_annuo": 3445193.0,
+  "ricavo_effettivo": 1270169.0,
+  "pct_del_potenziale": 36.9,
+  "numero_carichi": 460
+ },
+ {
+  "customer_id": "CUST00130",
+  "customer_name": "First Group",
+  "potenziale_annuo": 1098172.72,
+  "ricavo_effettivo": 1249575.47,
+  "pct_del_potenziale": 113.8,
+  "numero_carichi": 430
+ },
+ {
+  "customer_id": "CUST00131",
+  "customer_name": "National Distribution",
+  "potenziale_annuo": 1132866.84,
+  "ricavo_effettivo": 1140904.78,
+  "pct_del_potenziale": 100.7,
+  "numero_carichi": 415
+ },
+ {
+  "customer_id": "CUST00132",
+  "customer_name": "Superior Retail",
+  "potenziale_annuo": 3803528.4,
+  "ricavo_effettivo": 1122240.47,
+  "pct_del_potenziale": 29.5,
+  "numero_carichi": 400
+ },
+ {
+  "customer_id": "CUST00133",
+  "customer_name": "United Supply Chain",
+  "potenziale_annuo": 4408378.72,
+  "ricavo_effettivo": 1338918.31,
+  "pct_del_potenziale": 30.4,
+  "numero_carichi": 489
+ },
+ {
+  "customer_id": "CUST00134",
+  "customer_name": "Superior Supply Chain",
+  "potenziale_annuo": 1620905.68,
+  "ricavo_effettivo": 1315600.04,
+  "pct_del_potenziale": 81.2,
+  "numero_carichi": 450
+ },
+ {
+  "customer_id": "CUST00135",
+  "customer_name": "Premier Retail",
+  "potenziale_annuo": 3857077.0,
+  "ricavo_effettivo": 1322754.74,
+  "pct_del_potenziale": 34.3,
+  "numero_carichi": 465
+ },
+ {
+  "customer_id": "CUST00136",
+  "customer_name": "Pacific Corp",
+  "potenziale_annuo": 3142880.08,
+  "ricavo_effettivo": 1323376.4,
+  "pct_del_potenziale": 42.1,
+  "numero_carichi": 466
+ },
+ {
+  "customer_id": "CUST00137",
+  "customer_name": "First Industries",
+  "potenziale_annuo": 4501255.48,
+  "ricavo_effettivo": 1266329.56,
+  "pct_del_potenziale": 28.1,
+  "numero_carichi": 455
+ },
+ {
+  "customer_id": "CUST00138",
+  "customer_name": "First Logistics",
+  "potenziale_annuo": 1605400.0,
+  "ricavo_effettivo": 1250250.47,
+  "pct_del_potenziale": 77.9,
+  "numero_carichi": 454
+ },
+ {
+  "customer_id": "CUST00139",
+  "customer_name": "XYZ Supply Chain",
+  "potenziale_annuo": 4422821.8,
+  "ricavo_effettivo": 1213759.75,
+  "pct_del_potenziale": 27.4,
+  "numero_carichi": 414
+ },
+ {
+  "customer_id": "CUST00140",
+  "customer_name": "American Retail",
+  "potenziale_annuo": 4137892.28,
+  "ricavo_effettivo": 1230132.41,
+  "pct_del_potenziale": 29.7,
+  "numero_carichi": 439
+ },
+ {
+  "customer_id": "CUST00141",
+  "customer_name": "Metro Corp",
+  "potenziale_annuo": 1992406.28,
+  "ricavo_effettivo": 1142357.18,
+  "pct_del_potenziale": 57.3,
+  "numero_carichi": 393
+ },
+ {
+  "customer_id": "CUST00142",
+  "customer_name": "Elite Retail",
+  "potenziale_annuo": 1962071.12,
+  "ricavo_effettivo": 1177309.22,
+  "pct_del_potenziale": 60.0,
+  "numero_carichi": 397
+ },
+ {
+  "customer_id": "CUST00143",
+  "customer_name": "ABC Supply Chain",
+  "potenziale_annuo": 644913.56,
+  "ricavo_effettivo": 1294848.01,
+  "pct_del_potenziale": 200.8,
+  "numero_carichi": 461
+ },
+ {
+  "customer_id": "CUST00144",
+  "customer_name": "National Distribution",
+  "potenziale_annuo": 2146843.92,
+  "ricavo_effettivo": 1295190.88,
+  "pct_del_potenziale": 60.3,
+  "numero_carichi": 444
+ },
+ {
+  "customer_id": "CUST00145",
+  "customer_name": "National Foods",
+  "potenziale_annuo": 3411039.84,
+  "ricavo_effettivo": 1261926.98,
+  "pct_del_potenziale": 37.0,
+  "numero_carichi": 449
+ },
+ {
+  "customer_id": "CUST00146",
+  "customer_name": "First Foods",
+  "potenziale_annuo": 2587935.16,
+  "ricavo_effettivo": 1308775.3,
+  "pct_del_potenziale": 50.6,
+  "numero_carichi": 447
+ },
+ {
+  "customer_id": "CUST00147",
+  "customer_name": "ABC Group",
+  "potenziale_annuo": 4537431.72,
+  "ricavo_effettivo": 1145366.43,
+  "pct_del_potenziale": 25.2,
+  "numero_carichi": 385
+ },
+ {
+  "customer_id": "CUST00148",
+  "customer_name": "Pacific Supply Chain",
+  "potenziale_annuo": 783448.08,
+  "ricavo_effettivo": 1137465.04,
+  "pct_del_potenziale": 145.2,
+  "numero_carichi": 428
+ },
+ {
+  "customer_id": "CUST00149",
+  "customer_name": "First Group",
+  "potenziale_annuo": 960450.56,
+  "ricavo_effettivo": 991801.41,
+  "pct_del_potenziale": 103.3,
+  "numero_carichi": 400
+ },
+ {
+  "customer_id": "CUST00150",
+  "customer_name": "American Industries",
+  "potenziale_annuo": 3283826.84,
+  "ricavo_effettivo": 1196992.03,
+  "pct_del_potenziale": 36.5,
+  "numero_carichi": 423
+ },
+ {
+  "customer_id": "CUST00151",
+  "customer_name": "ABC Foods",
+  "potenziale_annuo": 3360682.72,
+  "ricavo_effettivo": 1056709.05,
+  "pct_del_potenziale": 31.4,
+  "numero_carichi": 374
+ },
+ {
+  "customer_id": "CUST00152",
+  "customer_name": "Metro Retail",
+  "potenziale_annuo": 2910960.04,
+  "ricavo_effettivo": 1190538.3,
+  "pct_del_potenziale": 40.9,
+  "numero_carichi": 420
+ },
+ {
+  "customer_id": "CUST00153",
+  "customer_name": "Superior Group",
+  "potenziale_annuo": 2780072.56,
+  "ricavo_effettivo": 1060812.97,
+  "pct_del_potenziale": 38.2,
+  "numero_carichi": 384
+ },
+ {
+  "customer_id": "CUST00154",
+  "customer_name": "XYZ Distribution",
+  "potenziale_annuo": 1562107.56,
+  "ricavo_effettivo": 1299139.29,
+  "pct_del_potenziale": 83.2,
+  "numero_carichi": 460
+ },
+ {
+  "customer_id": "CUST00155",
+  "customer_name": "Global Group",
+  "potenziale_annuo": 2567304.16,
+  "ricavo_effettivo": 1123422.71,
+  "pct_del_potenziale": 43.8,
+  "numero_carichi": 412
+ },
+ {
+  "customer_id": "CUST00156",
+  "customer_name": "First Logistics",
+  "potenziale_annuo": 2750877.28,
+  "ricavo_effettivo": 1038461.97,
+  "pct_del_potenziale": 37.8,
+  "numero_carichi": 382
+ },
+ {
+  "customer_id": "CUST00157",
+  "customer_name": "Metro Distribution",
+  "potenziale_annuo": 278816.12,
+  "ricavo_effettivo": 1114643.86,
+  "pct_del_potenziale": 399.8,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00158",
+  "customer_name": "United Retail",
+  "potenziale_annuo": 2444444.6,
+  "ricavo_effettivo": 1178619.72,
+  "pct_del_potenziale": 48.2,
+  "numero_carichi": 436
+ },
+ {
+  "customer_id": "CUST00159",
+  "customer_name": "Metro Wholesale",
+  "potenziale_annuo": 1398230.72,
+  "ricavo_effettivo": 1110056.32,
+  "pct_del_potenziale": 79.4,
+  "numero_carichi": 407
+ },
+ {
+  "customer_id": "CUST00160",
+  "customer_name": "XYZ Retail",
+  "potenziale_annuo": 2790942.36,
+  "ricavo_effettivo": 1326716.72,
+  "pct_del_potenziale": 47.5,
+  "numero_carichi": 450
+ },
+ {
+  "customer_id": "CUST00161",
+  "customer_name": "First Wholesale",
+  "potenziale_annuo": 3504764.84,
+  "ricavo_effettivo": 1186579.5,
+  "pct_del_potenziale": 33.9,
+  "numero_carichi": 424
+ },
+ {
+  "customer_id": "CUST00162",
+  "customer_name": "Metro Distribution",
+  "potenziale_annuo": 1217356.88,
+  "ricavo_effettivo": 1225970.0,
+  "pct_del_potenziale": 100.7,
+  "numero_carichi": 444
+ },
+ {
+  "customer_id": "CUST00163",
+  "customer_name": "Continental Manufacturing",
+  "potenziale_annuo": 3491285.0,
+  "ricavo_effettivo": 1170664.29,
+  "pct_del_potenziale": 33.5,
+  "numero_carichi": 421
+ },
+ {
+  "customer_id": "CUST00164",
+  "customer_name": "ABC Industries",
+  "potenziale_annuo": 438343.2,
+  "ricavo_effettivo": 1352408.96,
+  "pct_del_potenziale": 308.5,
+  "numero_carichi": 466
+ },
+ {
+  "customer_id": "CUST00165",
+  "customer_name": "Continental Supply Chain",
+  "potenziale_annuo": 1893959.84,
+  "ricavo_effettivo": 1181201.18,
+  "pct_del_potenziale": 62.4,
+  "numero_carichi": 411
+ },
+ {
+  "customer_id": "CUST00166",
+  "customer_name": "ABC Distribution",
+  "potenziale_annuo": 1633073.6,
+  "ricavo_effettivo": 1289380.09,
+  "pct_del_potenziale": 79.0,
+  "numero_carichi": 462
+ },
+ {
+  "customer_id": "CUST00167",
+  "customer_name": "XYZ Logistics",
+  "potenziale_annuo": 2976969.12,
+  "ricavo_effettivo": 1064701.45,
+  "pct_del_potenziale": 35.8,
+  "numero_carichi": 396
+ },
+ {
+  "customer_id": "CUST00168",
+  "customer_name": "Global Foods",
+  "potenziale_annuo": 1295865.08,
+  "ricavo_effettivo": 1253897.88,
+  "pct_del_potenziale": 96.8,
+  "numero_carichi": 429
+ },
+ {
+  "customer_id": "CUST00169",
+  "customer_name": "First Distribution",
+  "potenziale_annuo": 754273.96,
+  "ricavo_effettivo": 1216244.61,
+  "pct_del_potenziale": 161.2,
+  "numero_carichi": 426
+ },
+ {
+  "customer_id": "CUST00170",
+  "customer_name": "Elite Retail",
+  "potenziale_annuo": 959230.64,
+  "ricavo_effettivo": 1198945.77,
+  "pct_del_potenziale": 125.0,
+  "numero_carichi": 417
+ },
+ {
+  "customer_id": "CUST00171",
+  "customer_name": "Premier Wholesale",
+  "potenziale_annuo": 512898.16,
+  "ricavo_effettivo": 1163966.51,
+  "pct_del_potenziale": 226.9,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00172",
+  "customer_name": "National Industries",
+  "potenziale_annuo": 1967729.12,
+  "ricavo_effettivo": 1147339.17,
+  "pct_del_potenziale": 58.3,
+  "numero_carichi": 420
+ },
+ {
+  "customer_id": "CUST00173",
+  "customer_name": "Metro Wholesale",
+  "potenziale_annuo": 1231700.6,
+  "ricavo_effettivo": 1273100.61,
+  "pct_del_potenziale": 103.4,
+  "numero_carichi": 454
+ },
+ {
+  "customer_id": "CUST00174",
+  "customer_name": "National Supply Chain",
+  "potenziale_annuo": 2312214.84,
+  "ricavo_effettivo": 1167093.89,
+  "pct_del_potenziale": 50.5,
+  "numero_carichi": 412
+ },
+ {
+  "customer_id": "CUST00175",
+  "customer_name": "ABC Wholesale",
+  "potenziale_annuo": 197986.76,
+  "ricavo_effettivo": 1191929.24,
+  "pct_del_potenziale": 602.0,
+  "numero_carichi": 434
+ },
+ {
+  "customer_id": "CUST00176",
+  "customer_name": "Metro Distribution",
+  "potenziale_annuo": 2741202.56,
+  "ricavo_effettivo": 1270640.67,
+  "pct_del_potenziale": 46.4,
+  "numero_carichi": 449
+ },
+ {
+  "customer_id": "CUST00177",
+  "customer_name": "First Logistics",
+  "potenziale_annuo": 950789.64,
+  "ricavo_effettivo": 1263952.9,
+  "pct_del_potenziale": 132.9,
+  "numero_carichi": 426
+ },
+ {
+  "customer_id": "CUST00178",
+  "customer_name": "Metro Corp",
+  "potenziale_annuo": 2446753.8,
+  "ricavo_effettivo": 1188498.91,
+  "pct_del_potenziale": 48.6,
+  "numero_carichi": 428
+ },
+ {
+  "customer_id": "CUST00179",
+  "customer_name": "XYZ Corp",
+  "potenziale_annuo": 3565358.8,
+  "ricavo_effettivo": 1194786.18,
+  "pct_del_potenziale": 33.5,
+  "numero_carichi": 428
+ },
+ {
+  "customer_id": "CUST00180",
+  "customer_name": "ABC Distribution",
+  "potenziale_annuo": 3728419.6,
+  "ricavo_effettivo": 1183906.51,
+  "pct_del_potenziale": 31.8,
+  "numero_carichi": 415
+ },
+ {
+  "customer_id": "CUST00181",
+  "customer_name": "Superior Group",
+  "potenziale_annuo": 267559.0,
+  "ricavo_effettivo": 1418935.35,
+  "pct_del_potenziale": 530.3,
+  "numero_carichi": 497
+ },
+ {
+  "customer_id": "CUST00182",
+  "customer_name": "XYZ Foods",
+  "potenziale_annuo": 2653264.36,
+  "ricavo_effettivo": 1231719.81,
+  "pct_del_potenziale": 46.4,
+  "numero_carichi": 415
+ },
+ {
+  "customer_id": "CUST00183",
+  "customer_name": "Pacific Foods",
+  "potenziale_annuo": 1705035.08,
+  "ricavo_effettivo": 1162185.51,
+  "pct_del_potenziale": 68.2,
+  "numero_carichi": 411
+ },
+ {
+  "customer_id": "CUST00184",
+  "customer_name": "Elite Distribution",
+  "potenziale_annuo": 4244066.72,
+  "ricavo_effettivo": 1208037.79,
+  "pct_del_potenziale": 28.5,
+  "numero_carichi": 435
+ },
+ {
+  "customer_id": "CUST00185",
+  "customer_name": "Premier Industries",
+  "potenziale_annuo": 1727150.96,
+  "ricavo_effettivo": 1253125.8,
+  "pct_del_potenziale": 72.6,
+  "numero_carichi": 447
+ },
+ {
+  "customer_id": "CUST00186",
+  "customer_name": "National Wholesale",
+  "potenziale_annuo": 1664840.28,
+  "ricavo_effettivo": 1123173.07,
+  "pct_del_potenziale": 67.5,
+  "numero_carichi": 410
+ },
+ {
+  "customer_id": "CUST00187",
+  "customer_name": "Metro Logistics",
+  "potenziale_annuo": 4309038.96,
+  "ricavo_effettivo": 1232366.39,
+  "pct_del_potenziale": 28.6,
+  "numero_carichi": 436
+ },
+ {
+  "customer_id": "CUST00188",
+  "customer_name": "American Manufacturing",
+  "potenziale_annuo": 4130314.24,
+  "ricavo_effettivo": 1158447.66,
+  "pct_del_potenziale": 28.0,
+  "numero_carichi": 411
+ },
+ {
+  "customer_id": "CUST00189",
+  "customer_name": "First Retail",
+  "potenziale_annuo": 2088197.6,
+  "ricavo_effettivo": 1137826.92,
+  "pct_del_potenziale": 54.5,
+  "numero_carichi": 409
+ },
+ {
+  "customer_id": "CUST00190",
+  "customer_name": "Global Wholesale",
+  "potenziale_annuo": 4327374.56,
+  "ricavo_effettivo": 1260922.54,
+  "pct_del_potenziale": 29.1,
+  "numero_carichi": 448
+ },
+ {
+  "customer_id": "CUST00191",
+  "customer_name": "Pacific Group",
+  "potenziale_annuo": 3819764.56,
+  "ricavo_effettivo": 1131276.44,
+  "pct_del_potenziale": 29.6,
+  "numero_carichi": 413
+ },
+ {
+  "customer_id": "CUST00192",
+  "customer_name": "Premier Manufacturing",
+  "potenziale_annuo": 1182851.36,
+  "ricavo_effettivo": 1252118.77,
+  "pct_del_potenziale": 105.9,
+  "numero_carichi": 435
+ },
+ {
+  "customer_id": "CUST00193",
+  "customer_name": "Premier Supply Chain",
+  "potenziale_annuo": 233913.68,
+  "ricavo_effettivo": 1252095.74,
+  "pct_del_potenziale": 535.3,
+  "numero_carichi": 415
+ },
+ {
+  "customer_id": "CUST00194",
+  "customer_name": "ABC Group",
+  "potenziale_annuo": 2998468.6,
+  "ricavo_effettivo": 1188426.74,
+  "pct_del_potenziale": 39.6,
+  "numero_carichi": 434
+ },
+ {
+  "customer_id": "CUST00195",
+  "customer_name": "First Manufacturing",
+  "potenziale_annuo": 4591351.08,
+  "ricavo_effettivo": 1285821.87,
+  "pct_del_potenziale": 28.0,
+  "numero_carichi": 442
+ },
+ {
+  "customer_id": "CUST00196",
+  "customer_name": "XYZ Logistics",
+  "potenziale_annuo": 4157582.12,
+  "ricavo_effettivo": 1353442.27,
+  "pct_del_potenziale": 32.6,
+  "numero_carichi": 483
+ },
+ {
+  "customer_id": "CUST00197",
+  "customer_name": "ABC Corp",
+  "potenziale_annuo": 427572.76,
+  "ricavo_effettivo": 1273900.27,
+  "pct_del_potenziale": 297.9,
+  "numero_carichi": 452
+ },
+ {
+  "customer_id": "CUST00198",
+  "customer_name": "Elite Wholesale",
+  "potenziale_annuo": 2063489.16,
+  "ricavo_effettivo": 1166316.2,
+  "pct_del_potenziale": 56.5,
+  "numero_carichi": 408
+ },
+ {
+  "customer_id": "CUST00199",
+  "customer_name": "First Group",
+  "potenziale_annuo": 1406444.48,
+  "ricavo_effettivo": 1093293.67,
+  "pct_del_potenziale": 77.7,
+  "numero_carichi": 403
+ },
+ {
+  "customer_id": "CUST00200",
+  "customer_name": "XYZ Foods",
+  "potenziale_annuo": 555899.88,
+  "ricavo_effettivo": 1420866.24,
+  "pct_del_potenziale": 255.6,
+  "numero_carichi": 476
+ }
+]

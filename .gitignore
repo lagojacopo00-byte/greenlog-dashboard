@@ -1,0 +1,5 @@
+.env
+ca.pem
+*.pem
+__pycache__/
+.DS_Store

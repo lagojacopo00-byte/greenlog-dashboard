@@ -1,0 +1,16 @@
+{
+ "generato_il": "2026-09-14T23:42:54",
+ "database": "GreenLog",
+ "file": {
+  "consumo_previsto": 92,
+  "efficienza_flotta": 92,
+  "priorita_interventi": 120,
+  "puntualita_consegne": 50,
+  "redditivita_cliente": 200,
+  "risparmio_potenziale": 1,
+  "stato_flotta": 3,
+  "utilizzo_mensile": 3312,
+  "prezzo_carburante": 1
+ },
+ "errori": {}
+}
