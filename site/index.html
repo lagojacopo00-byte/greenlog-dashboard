@@ -75,6 +75,15 @@
   .steps h3 { font-size: 1.1rem; margin: 0 0 8px; font-weight: 600; }
   .steps p { margin: 0 0 12px; color: var(--ink-2); font-size: 15px; }
   .steps code { font-family: var(--mono); font-size: 12.5px; color: var(--brand-ink); }
+  /* passaggi con pagina di approfondimento: tutto il blocco è un link */
+  .steps .step-link { display: block; color: inherit; text-decoration: none; border-radius: 8px; margin: -10px -12px 0; padding: 10px 12px 12px; transition: background-color 160ms var(--ease-out), transform 120ms var(--ease-out); }
+  .steps .step-link:hover { background: rgba(255, 255, 255, 0.7); }
+  .steps .step-link:hover h3 { color: var(--brand-ink); }
+  .steps .more { display: inline-flex; gap: 6px; align-items: center; margin-top: 14px; font-size: 14.5px; font-weight: 500; color: var(--brand-ink); }
+  .steps .more span { transition: transform 200ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .steps .step-link:hover .more span { transform: translateX(3px); } }
+  .steps .step-link:active { transform: scale(0.99); }
+  .steps li.linked .node i { box-shadow: 0 0 0 4px var(--band), 0 0 0 5px var(--brand); }
   @media (max-width: 1040px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 44px; } }
   @media (max-width: 640px) {
     .steps { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
@@ -212,19 +221,19 @@
     <div class="wrap">
       <div class="section-head reveal">
         <h2 id="pipeline-t">Dal file grezzo alla risposta, in sei passaggi.</h2>
-        <p>Ogni passaggio prepara il successivo. La logica dei KPI vive nel database, così Power BI e la dashboard web leggono gli stessi numeri.</p>
+        <p>Ogni passaggio prepara il successivo. La logica dei KPI vive nel database, così Power BI e la dashboard web leggono gli stessi numeri. Pulizia, modellazione, caricamento e calcolo hanno una pagina di approfondimento.</p>
       </div>
       <ol class="steps">
         <li class="reveal"><div class="node" aria-hidden="true"><i></i><b></b></div>
           <h3>Acquisire</h3><p>Tre anni di operazioni di trasporto su gomma, in più file CSV.</p><code>Kaggle, CSV</code></li>
-        <li class="reveal" style="--d: 50ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
-          <h3>Pulire</h3><p>Tipi corretti, duplicati e valori mancanti gestiti, miglia e galloni convertiti.</p><code>Python, pandas</code></li>
-        <li class="reveal" style="--d: 100ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
-          <h3>Modellare</h3><p>Schema E-R normalizzato con chiavi esterne e vincoli CHECK e UNIQUE.</p><code>MySQL</code></li>
-        <li class="reveal" style="--d: 150ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
-          <h3>Caricare</h3><p>Un database in cloud condiviso, gli stessi dati per tutto il team.</p><code>Aiven</code></li>
-        <li class="reveal" style="--d: 200ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
-          <h3>Calcolare</h3><p>Una view SQL per ogni KPI, con JOIN, subquery e medie ponderate.</p><code>SQL, view vw_*</code></li>
+        <li class="reveal linked" style="--d: 50ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
+          <a class="step-link" href="./pipeline/pulire.html"><h3>Pulire</h3><p>Tipi corretti, duplicati e valori mancanti gestiti, miglia e galloni convertiti.</p><code>Python, pandas</code><span class="more">Approfondisci <span aria-hidden="true">→</span></span></a></li>
+        <li class="reveal linked" style="--d: 100ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
+          <a class="step-link" href="./pipeline/modellare.html"><h3>Modellare</h3><p>Schema E-R normalizzato con chiavi esterne e vincoli CHECK e UNIQUE.</p><code>MySQL</code><span class="more">Approfondisci <span aria-hidden="true">→</span></span></a></li>
+        <li class="reveal linked" style="--d: 150ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
+          <a class="step-link" href="./pipeline/caricare.html"><h3>Caricare</h3><p>Un database in cloud condiviso, gli stessi dati per tutto il team.</p><code>Aiven</code><span class="more">Approfondisci <span aria-hidden="true">→</span></span></a></li>
+        <li class="reveal linked" style="--d: 200ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
+          <a class="step-link" href="./pipeline/calcolare.html"><h3>Calcolare</h3><p>Una view SQL per ogni KPI, con JOIN, subquery e medie ponderate.</p><code>SQL, view vw_*</code><span class="more">Approfondisci <span aria-hidden="true">→</span></span></a></li>
         <li class="reveal" style="--d: 250ms"><div class="node" aria-hidden="true"><i></i><b></b></div>
           <h3>Mostrare</h3><p>Report in Power BI e una dashboard web pubblica che legge le view.</p><code>Power BI, HTML</code></li>
       </ol>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modellare il database | GreenLog</title>
+<meta name="description" content="Lo schema relazionale MySQL di GreenLog: 15 tabelle in sei aree, chiavi alfanumeriche native e vincoli di integrità.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brand.css">
+<link rel="stylesheet" href="../assets/pipeline.css">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<style>
+  /* mappa delle aree dello schema */
+  .areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .area { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 20px 22px 22px; }
+  .area.core { background: var(--brand-tint); border-color: #d6e8dc; }
+  .area h3 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 600; }
+  .area p { margin: 0 0 16px; color: var(--ink-2); font-size: 14.5px; }
+  .tables { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tables li { font: 13px/1 var(--mono); padding: 8px 10px; border-radius: 6px; background: var(--band); color: var(--ink); border: 1px solid var(--line); }
+  .area.core .tables li { background: var(--surface); }
+  .area .tables li.hub { background: var(--brand-ink); color: #fff; border-color: var(--brand-ink); }
+  @media (max-width: 900px) { .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .areas { grid-template-columns: minmax(0, 1fr); } }
+
+  .keys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+  .key { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 20px 22px; }
+  .key > code { display: inline-block; font: 500 14px/1 var(--mono); color: var(--brand-ink); background: var(--brand-tint); padding: 7px 9px; border-radius: 6px; margin-bottom: 12px; }
+  .key p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .key p code { font-family: var(--mono); font-size: 13px; color: var(--brand-ink); }
+  @media (max-width: 860px) { .keys { grid-template-columns: minmax(0, 1fr); } }
+
+  .er-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+  .er-pair .frame { background: #fff; }
+  @media (max-width: 760px) { .er-pair { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" aria-label="GreenLog, torna alla presentazione"><img src="../assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <nav aria-label="Principale">
+      <a class="back" href="../#pipeline"><span aria-hidden="true">←</span> La pipeline</a>
+      <a class="btn btn-primary btn-sm" href="../dashboard.html">Apri la dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="steps-nav" aria-label="Passaggi della pipeline">
+  <div class="wrap">
+    <ol>
+      <li><a href="../#pipeline"><i></i>Acquisire</a></li>
+      <li><a href="./pulire.html"><i></i>Pulire</a></li>
+      <li><a href="./modellare.html" aria-current="page"><i></i>Modellare</a></li>
+      <li><a href="./caricare.html"><i></i>Caricare</a></li>
+      <li><a href="./calcolare.html"><i></i>Calcolare</a></li>
+      <li><a href="../dashboard.html"><i></i>Mostrare</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="contenuto">
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Pipeline dati</p>
+        <h1>Modellare</h1>
+        <p class="lead">Dall'analisi dei dati grezzi a uno schema relazionale MySQL: tabelle raggruppate per area, chiavi che collegano tutto e vincoli che tengono i dati coerenti.</p>
+      </div>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1644079446600-219068676743?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75"
+             srcset="https://images.unsplash.com/photo-1644079446600-219068676743?auto=format&amp;fit=crop&amp;w=800&amp;h=533&amp;q=75 800w, https://images.unsplash.com/photo-1644079446600-219068676743?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75 1200w, https://images.unsplash.com/photo-1644079446600-219068676743?auto=format&amp;fit=crop&amp;w=1800&amp;h=1200&amp;q=75 1800w"
+             sizes="(max-width: 900px) 100vw, 640px" width="1200" height="800" fetchpriority="high"
+             alt="Corsia di un grande magazzino con scaffalature alte e scatole ordinate su ogni ripiano.">
+        <figcaption>Uno schema fa per i dati quello che le scaffalature fanno per le merci: ogni cosa al suo posto, raggiungibile. Foto di Lance Chang su <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="breve">
+    <div class="wrap">
+      <div class="p-head"><h2 id="breve">In breve</h2></div>
+      <ul class="brief">
+        <li class="reveal"><span class="display-num">15</span><b>tabelle</b><span>Quattordici arrivano dai file del dataset, la quindicesima è il digital twin.</span></li>
+        <li class="reveal" style="--d: 60ms"><span class="display-num">6</span><b>aree logiche</b><span>Anagrafiche, operazioni, flotta, eventi, riferimenti e metriche.</span></li>
+        <li class="reveal" style="--d: 120ms"><span class="display-num">trips</span><b>la tabella perno</b><span>Collega carico, autista, camion e rimorchio. Rifornimenti, consegne e incidenti si agganciano al viaggio.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="aree">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="aree">Le sei aree dello schema</h2>
+        <p>Il raggruppamento segue i diagrammi ER del progetto. In verde il cuore operativo; la tabella scura è quella a cui si collegano più tabelle.</p>
+      </div>
+      <div class="areas">
+        <div class="area reveal"><h3>Anagrafiche</h3><p>Chi lavora, per chi, su quali tratte.</p>
+          <ul class="tables"><li>drivers</li><li>customers</li><li>routes</li></ul></div>
+        <div class="area core reveal" style="--d: 50ms"><h3>Operazioni</h3><p>Il carico da consegnare e il viaggio che lo porta.</p>
+          <ul class="tables"><li>loads</li><li class="hub">trips</li></ul></div>
+        <div class="area reveal" style="--d: 100ms"><h3>Flotta</h3><p>Mezzi, rimorchi e la loro manutenzione.</p>
+          <ul class="tables"><li>trucks</li><li>trailers</li><li>maintenance_records</li></ul></div>
+        <div class="area reveal"><h3>Eventi operativi</h3><p>Quello che succede durante un viaggio.</p>
+          <ul class="tables"><li>fuel_purchases</li><li>delivery_events</li><li>safety_incidents</li></ul></div>
+        <div class="area reveal" style="--d: 50ms"><h3>Riferimenti</h3><p>I luoghi di carico e consegna.</p>
+          <ul class="tables"><li>facilities</li></ul></div>
+        <div class="area reveal" style="--d: 100ms"><h3>Metriche e analisi</h3><p>Aggregati mensili e stato attuale di ogni mezzo.</p>
+          <ul class="tables"><li>truck_utilization_metrics</li><li>driver_monthly_metrics</li><li>digital_twin</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="er">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="er">I diagrammi entità-relazione</h2>
+        <p>Il primo mostra come si parlano le tabelle, il secondo le colonne con chiavi primarie (PK) ed esterne (FK) e le cardinalità uno-a-molti.</p>
+      </div>
+      <div class="er-pair">
+        <figure class="shot reveal">
+          <a class="zoom frame" href="../assets/pipeline/er-panoramica.jpg" target="_blank" rel="noopener" aria-label="Apri il diagramma panoramico a piena risoluzione">
+            <img src="../assets/pipeline/er-panoramica.jpg" width="738" height="1024" loading="lazy" alt="Diagramma ER panoramico: aree Master Data, Operations Core e Fleet Management in alto, eventi operativi al centro, metriche di analisi in basso, con le frecce delle relazioni.">
+          </a>
+          <figcaption>Panoramica delle tabelle. Clic per ingrandire.</figcaption>
+        </figure>
+        <figure class="shot reveal" style="--d: 80ms">
+          <a class="zoom frame" href="../assets/pipeline/er-colonne.jpg" target="_blank" rel="noopener" aria-label="Apri il diagramma delle colonne a piena risoluzione">
+            <img src="../assets/pipeline/er-colonne.jpg" width="802" height="1024" loading="lazy" alt="Diagramma ER con le colonne di ogni tabella, chiavi primarie e chiavi esterne evidenziate e frecce uno-a-molti.">
+          </a>
+          <figcaption>Tabelle e colonne, con chiavi e cardinalità. Clic per ingrandire.</figcaption>
+        </figure>
+      </div>
+
+      <div class="keys">
+        <div class="key reveal"><code>DRV00001</code><p>Chiavi alfanumeriche native come primarie ed esterne: restano uguali ai file di origine.</p></div>
+        <div class="key reveal" style="--d: 50ms"><code>FOREIGN KEY</code><p>Integrità referenziale, con <code>ON DELETE CASCADE</code> o <code>RESTRICT</code> a seconda della tabella.</p></div>
+        <div class="key reveal" style="--d: 100ms"><code>ENUM · DECIMAL · DATETIME</code><p>Tipi precisi, più vincoli <code>CHECK</code> e <code>UNIQUE</code> per bloccare valori impossibili.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="creazione">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="creazione">Dallo schema al database</h2>
+        <p>Lo schema non è disegnato a mano sul server: lo crea uno script Python, <code>creazione_db_v3.py</code>, che si può rilanciare da zero.</p>
+      </div>
+      <div class="split">
+        <figure class="shot reveal">
+          <a class="zoom frame" href="../assets/pipeline/modellare-connessione.png" target="_blank" rel="noopener" aria-label="Apri lo screenshot a piena risoluzione">
+            <img src="../assets/pipeline/modellare-connessione.png" width="974" height="832" loading="lazy" alt="Codice Python: connessione a MySQL con i parametri letti da variabili d'ambiente, poi DROP DATABASE IF EXISTS, CREATE DATABASE GreenLog e USE GreenLog.">
+          </a>
+          <figcaption>L'apertura dello script di creazione. Clic per ingrandire.</figcaption>
+        </figure>
+        <ol class="notes reveal" style="--d: 80ms">
+          <li><div><b>Connettersi senza credenziali nel codice</b><span>Host, utente, password e nome del database arrivano da <code>os.environ</code>, caricato da un file <code>.env</code>.</span></div></li>
+          <li><div><b>Ripartire puliti</b><span><code>DROP DATABASE IF EXISTS</code> e poi <code>CREATE DATABASE GreenLog</code>: ogni esecuzione produce lo stesso schema.</span></div></li>
+          <li><div><b>Creare le tabelle</b><span>Una <code>CREATE TABLE</code> per ciascuna delle 15 tabelle, con chiavi e vincoli già dichiarati.</span></div></li>
+          <li><div><b>Allineare le unità</b><span>Le colonne nascono già in unità metriche: litri al posto di galloni, chili al posto di libbre.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="strumenti">
+    <div class="wrap">
+      <div class="p-head"><h2 id="strumenti">Strumenti usati</h2></div>
+      <div class="table-wrap reveal">
+        <table>
+          <thead><tr><th>Strumento</th><th>A cosa è servito</th></tr></thead>
+          <tbody>
+            <tr><td>MySQL</td><td>Il database relazionale che conserva i dati.</td></tr>
+            <tr><td>Python con <code>mysql-connector-python</code></td><td>Eseguire gli script di creazione e dialogare con il database.</td></tr>
+            <tr><td><code>python-dotenv</code></td><td>Tenere le credenziali in un file <code>.env</code>, fuori dal codice.</td></tr>
+            <tr><td>Software per diagrammi ER</td><td>Disegnare relazioni, cardinalità e vincoli prima di scrivere il codice.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="competenze">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="competenze">Cosa abbiamo imparato</h2>
+      </div>
+      <ul class="brief">
+        <li class="reveal"><b>Progettare un database</b><span>Tradurre i bisogni di un'azienda logistica in uno schema normalizzato, con vincoli e tipi adatti.</span></li>
+        <li class="reveal" style="--d: 60ms"><b>Preparare i dati</b><span>Pulizia, tipizzazione e unità di misura pensate prima del caricamento, così i nulli non rompono gli inserimenti.</span></li>
+        <li class="reveal" style="--d: 120ms"><b>Tenere allineati disegno e codice</b><span>Il diagramma ER e lo script di creazione descrivono lo stesso database, tabella per tabella.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<nav class="pager" aria-label="Passaggi vicini">
+  <div class="wrap">
+    <a href="./pulire.html"><small>← Passaggio precedente</small><b>Pulire</b></a>
+    <a class="next" href="./caricare.html"><small>Passaggio successivo →</small><b>Caricare</b></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>GreenLog, project work dell'Academy Data Engineering. Dati simulati a scopo didattico.</span>
+    <a href="../">Torna al progetto</a>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

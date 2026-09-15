@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulire i dati | GreenLog</title>
+<meta name="description" content="Come i CSV del dataset sono stati tipizzati, convertiti al sistema metrico e ripuliti con pandas prima del caricamento.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brand.css">
+<link rel="stylesheet" href="../assets/pipeline.css">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" aria-label="GreenLog, torna alla presentazione"><img src="../assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <nav aria-label="Principale">
+      <a class="back" href="../#pipeline"><span aria-hidden="true">←</span> La pipeline</a>
+      <a class="btn btn-primary btn-sm" href="../dashboard.html">Apri la dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="steps-nav" aria-label="Passaggi della pipeline">
+  <div class="wrap">
+    <ol>
+      <li><a href="../#pipeline"><i></i>Acquisire</a></li>
+      <li><a href="./pulire.html" aria-current="page"><i></i>Pulire</a></li>
+      <li><a href="./modellare.html"><i></i>Modellare</a></li>
+      <li><a href="./caricare.html"><i></i>Caricare</a></li>
+      <li><a href="./calcolare.html"><i></i>Calcolare</a></li>
+      <li><a href="../dashboard.html"><i></i>Mostrare</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="contenuto">
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Pipeline dati</p>
+        <h1>Pulire</h1>
+        <p class="lead">Prima di entrare nel database, ogni CSV del dataset viene letto con pandas, tipizzato, portato al sistema metrico e ripulito da valori nulli e duplicati.</p>
+      </div>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1586376379501-f76023f37afd?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75"
+             srcset="https://images.unsplash.com/photo-1586376379501-f76023f37afd?auto=format&amp;fit=crop&amp;w=800&amp;h=533&amp;q=75 800w, https://images.unsplash.com/photo-1586376379501-f76023f37afd?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75 1200w, https://images.unsplash.com/photo-1586376379501-f76023f37afd?auto=format&amp;fit=crop&amp;w=1800&amp;h=1200&amp;q=75 1800w"
+             sizes="(max-width: 900px) 100vw, 640px" width="1200" height="800" fetchpriority="high"
+             alt="Quadro strumenti di un veicolo con contagiri, indicatori di carburante e temperatura e tachimetro in km/h.">
+        <figcaption>Il dataset misurava in miglia e galloni: la pulizia porta tutto in chilometri e litri. Foto di Igor Stepanov su <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="breve">
+    <div class="wrap">
+      <div class="p-head"><h2 id="breve">In breve</h2></div>
+      <ul class="brief">
+        <li class="reveal"><b>Tipi corretti</b><span>Date, interi, decimali e testo convertiti nei formati che lo schema del database si aspetta.</span></li>
+        <li class="reveal" style="--d: 60ms"><b>Sistema metrico</b><span>Miglia in chilometri, galloni in litri, libbre in chili. Anche i dollari diventano euro.</span></li>
+        <li class="reveal" style="--d: 120ms"><b>Nulli sotto controllo</b><span>Ogni valore mancante è imputato, eliminato o marcato. I NaN di pandas arrivano in MySQL come NULL.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="operazioni">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="operazioni">Cinque operazioni, un risultato</h2>
+        <p>Ogni file passa dagli stessi controlli. In uscita: CSV puliti e tipizzati, pronti per il database relazionale.</p>
+      </div>
+      <ol class="flow">
+        <li class="reveal"><b>Tipizzare</b><span>Ogni colonna nel suo tipo: date, interi, decimali, testo.</span></li>
+        <li class="reveal" style="--d: 50ms"><b>Convertire le unità</b><span>Dal sistema imperiale americano al metrico europeo.</span></li>
+        <li class="reveal" style="--d: 100ms"><b>Gestire i nulli</b><span>Imputare, eliminare o marcare in base al peso del campo.</span></li>
+        <li class="reveal" style="--d: 150ms"><b>Correggere le anomalie</b><span>Duplicati, valori incoerenti o fuori intervallo.</span></li>
+        <li class="reveal" style="--d: 200ms"><b>Standardizzare</b><span>Testi e chiavi identificative uniformi, per collegare le tabelle.</span></li>
+        <li class="reveal hl" style="--d: 250ms"><b>CSV puliti</b><span>Pronti per il caricamento.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="conversioni">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="conversioni">Le conversioni applicate</h2>
+        <p>I fattori sono costanti definite in testa a <code>pulizia_csv.py</code>, usate da tutte le funzioni di caricamento.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table>
+          <thead><tr><th>Grandezza</th><th>Da</th><th>A</th><th>Come</th><th>Colonne di esempio</th></tr></thead>
+          <tbody>
+            <tr><td>Distanza</td><td>miglia</td><td>chilometri</td><td class="num">× 1,60934</td><td><code>actual_distance_miles</code></td></tr>
+            <tr><td>Volume</td><td>galloni USA</td><td>litri</td><td class="num">× 3,78541</td><td><code>fuel_gallons_used</code></td></tr>
+            <tr><td>Peso</td><td>libbre</td><td>chilogrammi</td><td class="num">× 0,453592</td><td><code>weight_lbs</code></td></tr>
+            <tr><td>Lunghezza</td><td>piedi</td><td>metri</td><td class="num">× 0,3048</td><td><code>length_feet</code></td></tr>
+            <tr><td>Consumo</td><td>miglia per gallone</td><td>litri per 100 km</td><td class="num">235,21 ÷ mpg</td><td><code>average_mpg</code></td></tr>
+            <tr><td>Valuta</td><td>dollari</td><td>euro</td><td class="num">× 0,92</td><td><code>revenue</code>, <code>total_cost</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="code-cap">Il cambio dollaro-euro è un tasso fisso indicativo, non quello storico giorno per giorno.</p>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="funzione">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="funzione">Dentro una funzione di pulizia</h2>
+        <p>Ogni tabella ha la sua funzione <code>load_*_csv</code>: 14 in tutto. Questa è quella dei camion, dalla lettura del file all'inserimento.</p>
+      </div>
+      <figure class="shot full reveal">
+          <a class="zoom frame" href="../assets/pipeline/pulire-load-trucks.png" target="_blank" rel="noopener" aria-label="Apri lo screenshot a piena risoluzione">
+            <img src="../assets/pipeline/pulire-load-trucks.png" width="1666" height="1038" loading="lazy" alt="Codice Python della funzione load_trucks_csv: lettura del CSV come stringhe, conversione di anno, data, chilometraggio e capacità del serbatoio, trasformazione in tuple e INSERT con executemany.">
+          </a>
+          <figcaption>La funzione <code>load_trucks_csv</code> in <code>pulizia_csv.py</code>. Clic per ingrandire.</figcaption>
+        </figure>
+        <ol class="notes cols reveal" style="--d: 80ms">
+          <li><div><b>Leggere tutto come testo</b><span><code>dtype=str</code> evita che pandas indovini i tipi e sbagli.</span></div></li>
+          <li><div><b>Convertire e normalizzare</b><span>Anno in numero, date nel formato giusto, miglia in km e galloni in litri.</span></div></li>
+          <li><div><b>Trasformare i nulli</b><span><code>_to_none</code> cambia i NaN in <code>None</code>, che MySQL registra come NULL.</span></div></li>
+          <li><div><b>Preparare le righe</b><span>Il DataFrame diventa una lista di tuple, pronta per l'inserimento massivo.</span></div></li>
+          <li><div><b>Inserire in sicurezza</b><span>Query parametrizzata contro la SQL injection, eseguita in blocco con <code>executemany</code>. Restituisce le righe inserite.</span></div></li>
+        </ol>
+    </div>
+  </section>
+
+</main>
+
+<nav class="pager" aria-label="Passaggi vicini">
+  <div class="wrap">
+    <a href="../#pipeline"><small>← Torna a</small><b>La pipeline</b></a>
+    <a class="next" href="./modellare.html"><small>Passaggio successivo →</small><b>Modellare</b></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>GreenLog, project work dell'Academy Data Engineering. Dati simulati a scopo didattico.</span>
+    <a href="../">Torna al progetto</a>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

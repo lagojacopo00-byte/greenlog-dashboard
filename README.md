@@ -133,6 +133,7 @@ Le view fanno tutto il calcolo lato database; la dashboard non ricalcola KPI, li
 | File | Cosa contiene |
 | --- | --- |
 | `site/index.html` | Pagina di presentazione del progetto (fondo chiaro, identità in `DESIGN.md`). Legge alcuni JSON per mostrare i numeri aggiornati |
+| `site/pipeline/*.html` | Approfondimenti di quattro passaggi della pipeline (pulire, modellare, caricare, calcolare): riassunti, schemi, screenshot di codice, diagrammi ER e risultati della dashboard. Stile in `assets/pipeline.css` |
 | `site/brand.html` | Linee guida pubbliche: logo, colori, tipografia, componenti, tono di voce |
 | `site/dashboard.html` | La dashboard completa: markup, stili inline, classe `Component` con tutta la logica di calcolo e disegno. `dashboard.html#costi` apre direttamente una scheda |
 | `site/assets/` | Logo, favicon, screenshot della dashboard, `brand.css` (token condivisi) e `site.js` (entrate allo scroll) |

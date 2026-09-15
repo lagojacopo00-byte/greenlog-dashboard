@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caricare i dati | GreenLog</title>
+<meta name="description" content="Come i dati puliti sono stati caricati in un database MySQL su Aiven: ordine delle dipendenze, credenziali nel file .env e inserimenti a blocchi.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brand.css">
+<link rel="stylesheet" href="../assets/pipeline.css">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<style>
+  /* livelli di dipendenza */
+  .levels { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+  .level { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 20px; }
+  .level + .level::before { content: ""; position: absolute; left: -22px; top: 44px; width: 16px; height: 1px; background: var(--line-strong); }
+  .level + .level::after { content: ""; position: absolute; left: -10px; top: 40px; border: 4px solid transparent; border-left: 5px solid var(--line-strong); }
+  .level h3 { margin: 0 0 4px; font-size: 1.02rem; font-weight: 600; }
+  .level > p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+  .level ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .level li { font: 13px/1.35 var(--mono); padding: 9px 11px; border-radius: 6px; background: var(--band); border: 1px solid var(--line); color: var(--ink); }
+  .level li small { display: block; font: 12.5px/1.4 var(--sans); color: var(--muted); margin-top: 3px; }
+  .level.first { background: var(--brand-tint); border-color: #d6e8dc; }
+  .level.first li { background: var(--surface); }
+  @media (max-width: 1000px) {
+    .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .level:nth-child(3)::before, .level:nth-child(3)::after { display: none; }
+  }
+  @media (max-width: 600px) {
+    .levels { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .level + .level::before { left: 28px; top: -17px; width: 1px; height: 12px; display: block; }
+    .level + .level::after { left: 24px; top: -8px; border: 4px solid transparent; border-top: 5px solid var(--line-strong); display: block; }
+  }
+
+  /* confronto riga per riga / a blocchi */
+  .batch { display: grid; gap: 28px; }
+  .batch-row { display: grid; grid-template-columns: 220px minmax(0, 1fr) 140px; gap: 20px; align-items: center; }
+  .batch-row b { display: block; font-weight: 600; }
+  .batch-row span { color: var(--muted); font-size: 14px; }
+  .bar { height: 44px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); overflow: hidden; }
+  .bar.rows { background-image: repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px 3px); }
+  .bar.blocks { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; padding: 3px; }
+  .bar.blocks i { background: var(--brand); border-radius: 3px; }
+  .batch-row .display-num { font-size: 2rem; text-align: right; }
+  .batch-row .display-num small { display: block; font-size: 13px; letter-spacing: 0; color: var(--muted); font-weight: 400; }
+  @media (max-width: 760px) {
+    .batch-row { grid-template-columns: minmax(0, 1fr) auto; }
+    .batch-row .bar { grid-column: 1 / -1; grid-row: 2; }
+  }
+
+  .loaded { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .loaded li { border-top: 2px solid var(--ink); padding-top: 14px; }
+  .loaded .display-num { display: block; font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+  .loaded code { font: 13px/1.4 var(--mono); color: var(--ink-2); }
+  @media (max-width: 760px) { .loaded { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 24px; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" aria-label="GreenLog, torna alla presentazione"><img src="../assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <nav aria-label="Principale">
+      <a class="back" href="../#pipeline"><span aria-hidden="true">←</span> La pipeline</a>
+      <a class="btn btn-primary btn-sm" href="../dashboard.html">Apri la dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="steps-nav" aria-label="Passaggi della pipeline">
+  <div class="wrap">
+    <ol>
+      <li><a href="../#pipeline"><i></i>Acquisire</a></li>
+      <li><a href="./pulire.html"><i></i>Pulire</a></li>
+      <li><a href="./modellare.html"><i></i>Modellare</a></li>
+      <li><a href="./caricare.html" aria-current="page"><i></i>Caricare</a></li>
+      <li><a href="./calcolare.html"><i></i>Calcolare</a></li>
+      <li><a href="../dashboard.html"><i></i>Mostrare</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="contenuto">
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Pipeline dati</p>
+        <h1>Caricare</h1>
+        <p class="lead">I dati puliti entrano in un database MySQL su Aiven, condiviso da tutto il team. Con Python, nell'ordine giusto e a blocchi.</p>
+      </div>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1532635026-d12867005472?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75"
+             srcset="https://images.unsplash.com/photo-1532635026-d12867005472?auto=format&amp;fit=crop&amp;w=800&amp;h=533&amp;q=75 800w, https://images.unsplash.com/photo-1532635026-d12867005472?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75 1200w, https://images.unsplash.com/photo-1532635026-d12867005472?auto=format&amp;fit=crop&amp;w=1800&amp;h=1200&amp;q=75 1800w"
+             sizes="(max-width: 900px) 100vw, 640px" width="1200" height="800" fetchpriority="high"
+             alt="Vista dall'interno di un rimorchio: un carrello elevatore avanza dalla banchina con un bancale di merce.">
+        <figcaption>Si carica un bancale alla volta, non una scatola alla volta. Con i dati vale lo stesso. Foto di Elevate su <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="breve">
+    <div class="wrap">
+      <div class="p-head"><h2 id="breve">In breve</h2></div>
+      <ul class="brief">
+        <li class="reveal"><b>Un database per tutti</b><span>MySQL in cloud su Aiven: ogni membro del team lavora sulle stesse tabelle, senza copie locali da sincronizzare.</span></li>
+        <li class="reveal" style="--d: 60ms"><b>Prima i padri, poi i figli</b><span>Le tabelle indipendenti entrano per prime. Le chiavi esterne rifiutano un record che punta a qualcosa che non esiste ancora.</span></li>
+        <li class="reveal" style="--d: 120ms"><b>A blocchi, non riga per riga</b><span><code>executemany()</code> invia 100 record per volta, 5.000 per i rifornimenti. Meno viaggi verso il cloud.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="ordine">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="ordine">L'ordine di caricamento</h2>
+        <p>Da sinistra a destra, come in <code>inserimento_dati.py</code>. Sotto ogni tabella, le tabelle da cui dipende.</p>
+      </div>
+      <ol class="levels">
+        <li class="level first reveal">
+          <h3>Tabelle indipendenti</h3><p>Nessuna chiave esterna</p>
+          <ul><li>drivers</li><li>customers</li><li>routes</li><li>trucks</li><li>trailers</li><li>facilities</li></ul>
+        </li>
+        <li class="level reveal" style="--d: 60ms">
+          <h3>Il carico</h3><p>Serve sapere cliente e tratta</p>
+          <ul><li>loads<small>customers, routes</small></li></ul>
+        </li>
+        <li class="level reveal" style="--d: 120ms">
+          <h3>Il viaggio</h3><p>Il carico, chi guida e con cosa</p>
+          <ul><li>trips<small>loads, drivers, trucks, trailers</small></li></ul>
+        </li>
+        <li class="level reveal" style="--d: 180ms">
+          <h3>Eventi e metriche</h3><p>Si agganciano a viaggi e mezzi</p>
+          <ul>
+            <li>maintenance_records<small>trucks</small></li>
+            <li>truck_utilization_metrics<small>trucks</small></li>
+            <li>fuel_purchases<small>trips, trucks, drivers</small></li>
+            <li>delivery_events<small>loads, trips, facilities</small></li>
+            <li>safety_incidents<small>trips, trucks, drivers</small></li>
+            <li>driver_monthly_metrics<small>drivers</small></li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="blocchi">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="blocchi">Riga per riga o a blocchi</h2>
+        <p>Ogni invio a un database in cloud è un andata e ritorno in rete. Con 1.000 record la differenza si vede subito.</p>
+      </div>
+      <div class="batch">
+        <div class="batch-row reveal">
+          <div><b>Riga per riga</b><span>Una <code>INSERT</code> per record</span></div>
+          <div class="bar rows" role="img" aria-label="Mille invii separati"></div>
+          <div class="display-num">1.000<small>invii</small></div>
+        </div>
+        <div class="batch-row reveal" style="--d: 80ms">
+          <div><b>A blocchi da 100</b><span><code>executemany()</code> per blocco</span></div>
+          <div class="bar blocks" role="img" aria-label="Dieci invii da cento record"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="display-num">10<small>invii</small></div>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top: clamp(40px, 6vw, 64px)">
+        <div class="reveal">
+          <span class="label">Il principio</span>
+<pre class="code" data-lang="py">batch_size = 100
+
+for i in range(0, len(data), batch_size):
+    batch = data[i:i + batch_size]
+    cursor.executemany(query, batch)
+
+conn.commit()</pre>
+          <p class="code-cap">Il ciclo divide i record in gruppi e ne invia uno per volta. Il <code>commit()</code> finale conferma tutto nel database.</p>
+        </div>
+        <div class="callout tint reveal" style="--d: 80ms">
+          <p style="margin:0 0 10px"><strong>Perché due misure di blocco.</strong></p>
+          <p style="margin:0 0 10px">Per quasi tutte le tabelle bastano 100 record per invio. <code>fuel_purchases</code> contiene molte più righe: con blocchi da 5.000 il caricamento resta rapido.</p>
+          <p style="margin:0">Il risultato è un processo automatico, ordinato e ripetibile, che regge anche quando i dati crescono.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="credenziali">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="credenziali">Le credenziali restano fuori dal codice</h2>
+        <p>Lo script non contiene password: le legge all'avvio da un file <code>.env</code> che non finisce nel repository.</p>
+      </div>
+      <ol class="flow">
+        <li class="reveal"><b>File <code>.env</code></b><span>Host, utente, password, nome del database e porta.</span></li>
+        <li class="reveal" style="--d: 60ms"><b><code>load_dotenv()</code></b><span>Porta i valori nelle variabili d'ambiente.</span></li>
+        <li class="reveal" style="--d: 120ms"><b><code>mysql.connector</code></b><span>Apre la connessione con quei valori.</span></li>
+        <li class="reveal hl" style="--d: 180ms"><b>MySQL su Aiven</b><span>Lo stesso database per tutto il team.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="risultato">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="risultato">Cosa c'è nel database</h2>
+        <p>Alcune tabelle dopo il caricamento, contate sulle esportazioni che alimentano la dashboard.</p>
+      </div>
+      <ul class="loaded">
+        <li class="reveal"><span class="display-num">120</span><code>trucks</code></li>
+        <li class="reveal" style="--d: 50ms"><span class="display-num">200</span><code>customers</code></li>
+        <li class="reveal" style="--d: 100ms"><span class="display-num">3.312</span><code>truck_utilization_metrics</code></li>
+        <li class="reveal" style="--d: 150ms"><span class="display-num">170.820</span><code>delivery_events</code></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<nav class="pager" aria-label="Passaggi vicini">
+  <div class="wrap">
+    <a href="./modellare.html"><small>← Passaggio precedente</small><b>Modellare</b></a>
+    <a class="next" href="./calcolare.html"><small>Passaggio successivo →</small><b>Calcolare</b></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>GreenLog, project work dell'Academy Data Engineering. Dati simulati a scopo didattico.</span>
+    <a href="../">Torna al progetto</a>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # DESIGN.md — Identità GreenLog
 
-Fonte unica delle decisioni visive per `site/index.html` (presentazione) e `site/brand.html` (linee guida pubbliche). I valori vivono in `site/assets/brand.css`: se cambi un token, cambialo lì e aggiorna questa pagina.
+Fonte unica delle decisioni visive per `site/index.html` (presentazione), `site/brand.html` (linee guida pubbliche) e `site/pipeline/*.html` (approfondimenti, componenti in `assets/pipeline.css`). I valori vivono in `site/assets/brand.css`: se cambi un token, cambialo lì e aggiorna questa pagina.
 
 La dashboard (`site/dashboard.html`) **non segue ancora questo sistema**: usa il tema scuro originale del design handoff (`README.md`, sezione Design Tokens). Allinearla al fondo chiaro è una decisione aperta.
 
@@ -74,6 +74,14 @@ Numeri sempre in formato `it-IT`: `170.820`, `55,7%`, `€27k`. Nessun trattino 
 - La hero **non** si anima: è la prima cosa che si legge.
 - Con `prefers-reduced-motion: reduce` resta solo la dissolvenza.
 - Pressione: `scale(0.97)` sui bottoni, `scale(0.99)` sui riquadri. Freccia che scorre di 3px in hover, solo con puntatore fine.
+
+## Pagine di approfondimento
+
+- Stessa testata della home, più una barra dei sei passaggi con quello corrente sottolineato in verde.
+- Apertura: titolo col verbo del passaggio e una foto reale che lo racconta, con credito al fotografo.
+- Blocchi ricorrenti: "In breve" (tre fatti), flusso a riquadri con frecce, tabelle, screenshot in cornice ingrandibili, codice su fondo verde scuro `#14201A` con colorazione minima da `site.js`.
+- Codice e screenshot di risultati vanno a tutta larghezza: a metà colonna diventano illeggibili.
+- Chiusura con passaggio precedente e successivo.
 
 ## Accessibilità
 

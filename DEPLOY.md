@@ -12,6 +12,9 @@ Online su GitHub Pages: https://lagojacopo00-byte.github.io/greenlog-dashboard/
 - `/` presentazione del progetto
 - `/dashboard.html` la dashboard (`#sintesi`, `#flotta`, `#costi`, `#clienti` aprono la scheda)
 - `/brand.html` identità visiva
+- `/pipeline/pulire.html`, `modellare.html`, `caricare.html`, `calcolare.html` gli approfondimenti della pipeline
+
+Le foto di apertura di queste pagine sono caricate da Unsplash (licenza libera); screenshot e diagrammi sono in `site/assets/pipeline/`.
 
 Lo screenshot in `site/assets/dashboard-sintesi.jpg` non si aggiorna con i dati: se la dashboard cambia aspetto, rigeneralo.
 

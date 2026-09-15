@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcolare i KPI | GreenLog</title>
+<meta name="description" content="Come i dati operativi diventano KPI: una view SQL per ogni indicatore, medie ponderate e una query parametrica per il prima e dopo.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/png" href="../assets/favicon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brand.css">
+<link rel="stylesheet" href="../assets/pipeline.css">
+<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<style>
+  /* esempio media semplice contro media ponderata */
+  .weights { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+  .trips { display: grid; gap: 14px; }
+  .trip { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 18px 20px; }
+  .trip-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 12px; }
+  .trip-top b { font-weight: 600; }
+  .trip-top span { font-size: 14px; color: var(--muted); }
+  .km { height: 14px; border-radius: 4px; background: var(--brand); }
+  .km-scale { display: flex; justify-content: space-between; font: 12px/1 var(--mono); color: var(--muted); margin-top: 8px; }
+  .results { display: grid; gap: 14px; }
+  .result { border-radius: var(--r-card); padding: 20px 22px; border: 1px solid var(--line); background: var(--surface); }
+  .result.good { background: var(--brand-tint); border-color: #d6e8dc; }
+  .result small { display: block; font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  .result .display-num { display: block; font-size: 2.3rem; }
+  .result.good .display-num { color: var(--brand-ink); }
+  .result p { margin: 8px 0 0; color: var(--ink-2); font-size: 14.5px; }
+  .result code { font-family: var(--mono); font-size: 13px; }
+  @media (max-width: 860px) { .weights { grid-template-columns: minmax(0, 1fr); } }
+
+  .kpi-table td:nth-child(2) code { white-space: nowrap; }
+  /* codice e risultato uno sotto l'altro: a metà larghezza l'SQL scorreva e gli screenshot non si leggevano */
+  .stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 44px); max-width: 1040px; }
+  .kpi-table td:last-child { color: var(--ink); }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../" aria-label="GreenLog, torna alla presentazione"><img src="../assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <nav aria-label="Principale">
+      <a class="back" href="../#pipeline"><span aria-hidden="true">←</span> La pipeline</a>
+      <a class="btn btn-primary btn-sm" href="../dashboard.html">Apri la dashboard</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="steps-nav" aria-label="Passaggi della pipeline">
+  <div class="wrap">
+    <ol>
+      <li><a href="../#pipeline"><i></i>Acquisire</a></li>
+      <li><a href="./pulire.html"><i></i>Pulire</a></li>
+      <li><a href="./modellare.html"><i></i>Modellare</a></li>
+      <li><a href="./caricare.html"><i></i>Caricare</a></li>
+      <li><a href="./calcolare.html" aria-current="page"><i></i>Calcolare</a></li>
+      <li><a href="../dashboard.html"><i></i>Mostrare</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="contenuto">
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Pipeline dati</p>
+        <h1>Calcolare</h1>
+        <p class="lead">I dati caricati diventano indicatori con SQL: una view per ogni KPI, che Python e la dashboard leggono come una tabella qualsiasi.</p>
+      </div>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1492168732976-2676c584c675?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75"
+             srcset="https://images.unsplash.com/photo-1492168732976-2676c584c675?auto=format&amp;fit=crop&amp;w=800&amp;h=533&amp;q=75 800w, https://images.unsplash.com/photo-1492168732976-2676c584c675?auto=format&amp;fit=crop&amp;w=1200&amp;h=800&amp;q=75 1200w, https://images.unsplash.com/photo-1492168732976-2676c584c675?auto=format&amp;fit=crop&amp;w=1800&amp;h=1200&amp;q=75 1800w"
+             sizes="(max-width: 900px) 100vw, 640px" width="1200" height="800" fetchpriority="high"
+             alt="Piazzale di camion e rimorchi parcheggiati in file, fotografato dall'alto.">
+        <figcaption>Un KPI guarda la flotta dall'alto: 120 mezzi, un numero. Foto di Nigel Tadyanehondo su <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="breve">
+    <div class="wrap">
+      <div class="p-head"><h2 id="breve">In breve</h2></div>
+      <ul class="brief">
+        <li class="reveal"><span class="display-num">7</span><b>view <code>vw_*</code></b><span>Ognuna salva una query complessa come tabella virtuale. I dati restano nelle tabelle originali.</span></li>
+        <li class="reveal" style="--d: 60ms"><span class="display-num">1</span><b>query parametrica</b><span>Il confronto prima e dopo un intervento cambia camion e data ogni volta: non può essere una view fissa.</span></li>
+        <li class="reveal" style="--d: 120ms"><b style="margin-top:4px">Medie ponderate</b><span>Consumi, puntualità e attese pesano i chilometri e gli eventi reali, non la semplice media delle percentuali.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="flusso">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="flusso">Dal database alla dashboard</h2>
+        <p>La logica di calcolo sta in un posto solo, il database. Tutto quello che viene dopo si limita a leggerla.</p>
+      </div>
+      <ol class="flow">
+        <li class="reveal"><b>Database</b><span>Le tabelle caricate su Aiven.</span></li>
+        <li class="reveal" style="--d: 50ms"><b>SQL VIEW</b><span>JOIN, subquery, CTE e aggregazioni salvate con nome.</span></li>
+        <li class="reveal" style="--d: 100ms"><b>KPI</b><span>Una riga o una tabella di risultati per indicatore.</span></li>
+        <li class="reveal" style="--d: 150ms"><b>Python e DataFrame</b><span><code>greenlog_kpi.py</code> legge ogni view con pandas.</span></li>
+        <li class="reveal hl" style="--d: 200ms"><b>Dashboard</b><span>Grafici e testi costruiti sui risultati.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="kpi">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="kpi">Un KPI, una tecnica SQL</h2>
+        <p>Ogni indicatore risponde a una domanda del committente. L'ultima colonna riporta il risultato sui dati del progetto, gennaio 2022 - dicembre 2024.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="kpi-table">
+          <thead><tr><th>KPI</th><th>Dove vive</th><th>Come si calcola</th><th>Risultato</th></tr></thead>
+          <tbody>
+            <tr><td>1. Consumo previsto</td><td><code>vw_consumo_previsto</code></td><td>Subquery per il consumo di ogni camion e della sua marca, poi JOIN per confrontarli.</td><td>Scostamento massimo 1,0% dalla media di marca</td></tr>
+            <tr><td>2. Efficienza flotta</td><td><code>vw_efficienza_flotta</code></td><td><code>AVG()</code> e <code>SUM()</code> per camion: utilizzo medio, ore di fermo, costo di manutenzione.</td><td>Utilizzo e fermo per 92 mezzi con dati mensili</td></tr>
+            <tr><td>3. Priorità interventi</td><td><code>vw_priorita_interventi</code></td><td>LEFT JOIN su tre subquery aggregate: carburante, manutenzione e km, uniti nel costo per km.</td><td>Costo per km più alto: €0,519 (TRK00014)</td></tr>
+            <tr><td>4. Risparmio potenziale</td><td><code>vw_risparmio_potenziale</code></td><td>CTE con <code>WITH</code>: consumo per mezzo, benchmark di marca, prezzo medio. Conta solo l'eccesso sul benchmark.</td><td>86.822 litri, €82.260 e 232,7 t di CO₂ in 36 mesi</td></tr>
+            <tr><td>5. Prima e dopo</td><td>query parametrica</td><td><code>CASE WHEN</code> divide i mesi prima e dopo la data dell'intervento scelto.</td><td>Calcolato a richiesta, per camion e data</td></tr>
+            <tr><td>6. Puntualità consegne</td><td><code>vw_puntualita_consegne</code></td><td><code>AVG(on_time)</code> per la quota puntuale, <code>AVG(detention_minutes)</code> per l'attesa, per facility.</td><td>55,7% in orario, 92 minuti di attesa media</td></tr>
+            <tr><td>7. Redditività cliente</td><td><code>vw_redditivita_cliente</code></td><td>LEFT JOIN tra clienti e carichi: ricavo effettivo contro potenziale annuo.</td><td>153 clienti su 200 sotto il potenziale</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="code-cap">A queste si aggiunge <code>vw_stato_flotta</code>, che conta i mezzi per stato: 92 in servizio, 15 in manutenzione, 13 fermi.</p>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="ponderate">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="ponderate">Perché le medie ponderate</h2>
+        <p>Un viaggio di 100 km e uno di 1.000 km non possono pesare uguale. Un esempio con due viaggi dello stesso camion:</p>
+      </div>
+      <div class="weights">
+        <div class="trips reveal">
+          <div class="trip">
+            <div class="trip-top"><b>Viaggio A</b><span>100 km, 40 litri, 40 L/100 km</span></div>
+            <div class="km" style="width: 10%"></div>
+          </div>
+          <div class="trip">
+            <div class="trip-top"><b>Viaggio B</b><span>1.000 km, 300 litri, 30 L/100 km</span></div>
+            <div class="km" style="width: 100%"></div>
+            <div class="km-scale"><span>0 km</span><span>1.000 km</span></div>
+          </div>
+        </div>
+        <div class="results reveal" style="--d: 80ms">
+          <div class="result">
+            <small>Media dei due consumi</small>
+            <span class="display-num">35,0 L/100 km</span>
+            <p>Il viaggio corto conta quanto quello lungo e gonfia il risultato.</p>
+          </div>
+          <div class="result good">
+            <small>Litri totali su km totali</small>
+            <span class="display-num">30,9 L/100 km</span>
+            <p><code>SUM(litri) / SUM(km) × 100</code>: 340 litri su 1.100 km. È il metodo usato nelle view.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section" aria-labelledby="sql">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="sql">Una view dall'inizio alla fine</h2>
+        <p>Il KPI 1 per intero, com'è in <code>greenlog_kpi.py</code>. Accanto, quello che la dashboard ne ricava.</p>
+      </div>
+      <div class="stack">
+        <div class="reveal">
+<pre class="code" data-lang="sql">CREATE OR REPLACE VIEW vw_consumo_previsto AS
+SELECT
+    t.truck_id, t.make,
+    tr.consumo_reale,
+    peer.consumo_medio_marca AS previsto,
+    ROUND(tr.consumo_reale - peer.consumo_medio_marca, 2) AS scostamento_assoluto,
+    ROUND((tr.consumo_reale - peer.consumo_medio_marca)
+          / peer.consumo_medio_marca * 100, 1) AS scostamento_pct
+FROM trucks t
+JOIN (
+    -- consumo reale di ogni camion, pesato sui km
+    SELECT truck_id, SUM(consumo_litro) / SUM(distanza_km) * 100 AS consumo_reale
+    FROM trips
+    WHERE distanza_km > 0
+    GROUP BY truck_id
+) tr ON tr.truck_id = t.truck_id
+JOIN (
+    -- stesso calcolo, raggruppato per marca: il benchmark
+    SELECT t2.make, SUM(tr2.consumo_litro) / SUM(tr2.distanza_km) * 100 AS consumo_medio_marca
+    FROM trucks t2
+    JOIN trips tr2 ON tr2.truck_id = t2.truck_id
+    WHERE tr2.distanza_km > 0
+    GROUP BY t2.make
+) peer ON peer.make = t.make</pre>
+          <p class="code-cap">I due commenti sono aggiunti qui per la lettura; il resto è il codice del progetto.</p>
+        </div>
+        <figure class="shot reveal" style="--d: 80ms">
+          <a class="zoom frame" href="../assets/pipeline/calcolare-consumo-previsto.jpg" target="_blank" rel="noopener" aria-label="Apri lo screenshot a piena risoluzione">
+            <img src="../assets/pipeline/calcolare-consumo-previsto.jpg" width="1600" height="841" loading="lazy" alt="Grafico della dashboard con i 12 camion più sopra la media di marca: TRK00113 Mack al primo posto con più 1,00 per cento.">
+          </a>
+          <figcaption>Il risultato nella scheda Flotta: i 12 camion più lontani dalla media della loro marca. Il primo, TRK00113, consuma l'1% in più.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-section band" aria-labelledby="parametrica">
+    <div class="wrap">
+      <div class="p-head">
+        <h2 id="parametrica">Il KPI che non è una view</h2>
+        <p>Per misurare se un intervento ha funzionato servono un camion e una data, scelti ogni volta. La funzione <code>get_baseline_confronto</code> li passa come parametri.</p>
+      </div>
+      <div class="stack">
+        <div class="reveal">
+<pre class="code" data-lang="sql">SELECT
+    CASE WHEN month &lt; %s THEN 'prima' ELSE 'dopo' END AS periodo,
+    ROUND(AVG(average_l_100km), 2) AS consumo_medio,
+    ROUND(AVG(utilization_rate_pct), 1) AS utilizzo_medio,
+    SUM(downtime_hours) AS ore_fermo_totali
+FROM truck_utilization_metrics
+WHERE truck_id = %s
+GROUP BY periodo</pre>
+          <p class="code-cap">I due <code>%s</code> sono la data dell'intervento e il camion, passati in modo sicuro dal connettore.</p>
+        </div>
+        <figure class="shot reveal" style="--d: 80ms">
+          <a class="zoom frame" href="../assets/pipeline/calcolare-costo-km.jpg" target="_blank" rel="noopener" aria-label="Apri lo screenshot a piena risoluzione">
+            <img src="../assets/pipeline/calcolare-costo-km.jpg" width="1600" height="599" loading="lazy" alt="Grafico della dashboard del costo per km di 12 camion, diviso tra carburante e manutenzione, da 0,519 a 0,484 euro.">
+          </a>
+          <figcaption>Da <code>vw_priorita_interventi</code>: il costo per km diviso tra carburante e manutenzione. È da qui che si sceglie su quale mezzo intervenire, e poi con la query qui accanto se ne misura l'effetto.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="pager" aria-label="Passaggi vicini">
+  <div class="wrap">
+    <a href="./caricare.html"><small>← Passaggio precedente</small><b>Caricare</b></a>
+    <a class="next" href="../dashboard.html"><small>Passaggio successivo →</small><b>Mostrare: la dashboard</b></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>GreenLog, project work dell'Academy Data Engineering. Dati simulati a scopo didattico.</span>
+    <a href="../">Torna al progetto</a>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
