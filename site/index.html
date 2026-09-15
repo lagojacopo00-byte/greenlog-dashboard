@@ -16,7 +16,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/brand.css">
-<script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+<script>
+  // Alla prima visita si parte dalle slide di presentazione. Il controllo sul referrer evita un rimbalzo
+  // continuo nei browser che non salvano localStorage (per esempio certe finestre private).
+  try {
+    if (!localStorage.getItem("greenlog:presentazione-vista") && document.referrer.indexOf("presentazione.html") < 0) {
+      location.replace("./presentazione.html");
+    }
+  } catch (e) {}
+  if ("IntersectionObserver" in window) document.documentElement.classList.add("js");
+</script>
 <style>
   /* ---------- header ---------- */
   .site-header { padding-block: 14px; }
@@ -27,7 +36,13 @@
   .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
   .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 15px; }
   .nav-links a:hover { color: var(--ink); }
-  @media (max-width: 880px) { .nav-links { display: none; } }
+  @media (max-width: 880px) { .nav-links { display: none; } .nav { gap: 10px; } }
+  .nav .lbl-short { display: none; }
+  @media (max-width: 520px) {
+    .brand-link img { height: 48px; }
+    .nav .lbl-long { display: none; }
+    .nav .lbl-short { display: inline; }
+  }
 
   /* ---------- hero ---------- */
   .hero { padding-block: clamp(40px, 7vw, 88px) clamp(64px, 9vw, 120px); overflow-x: clip; }
@@ -130,15 +145,6 @@
   .note strong { color: var(--ink); font-weight: 600; }
   @media (max-width: 760px) { .status-grid { grid-template-columns: minmax(0, 1fr); } }
 
-  /* ---------- team ---------- */
-  .team { padding-block: clamp(64px, 8vw, 104px); background: var(--band); }
-  .team h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -0.02em; font-weight: 600; margin: 0 0 32px; }
-  .people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
-  .people li { font-size: clamp(1.05rem, 1.5vw, 1.25rem); font-weight: 500; letter-spacing: -0.01em; border-top: 1px solid var(--line-strong); padding-top: 14px; }
-  .people li span { display: block; font-size: 14px; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-top: 4px; }
-  .team p { color: var(--ink-2); margin: 32px 0 0; max-width: 62ch; }
-  @media (max-width: 860px) { .people { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; } }
-
   /* ---------- chiusura ---------- */
   .closing { padding-block: clamp(80px, 11vw, 144px); }
   .closing h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 32px; max-width: 20ch; }
@@ -166,10 +172,10 @@
         <li><a href="#progetto">Progetto</a></li>
         <li><a href="#pipeline">Pipeline</a></li>
         <li><a href="#domande">Domande</a></li>
-        <li><a href="#team">Team</a></li>
         <li><a href="./brand.html">Identità</a></li>
       </ul>
-      <a class="btn btn-primary btn-sm" href="./dashboard.html">Apri la dashboard</a>
+      <a class="btn btn-secondary btn-sm deck-link" href="./presentazione.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M12 17v4M8 21h8"/></svg><span class="lbl-long">Presentazione</span><span class="lbl-short">Slide</span></a>
+      <a class="btn btn-primary btn-sm" href="./dashboard.html"><span class="lbl-long">Apri la dashboard</span><span class="lbl-short">Dashboard</span></a>
     </nav>
   </div>
 </header>
@@ -324,20 +330,6 @@
     </div>
   </section>
 
-  <section class="team" id="team" aria-labelledby="team-t">
-    <div class="wrap">
-      <h2 id="team-t" class="reveal">Il team</h2>
-      <ul class="people">
-        <li class="reveal">Jacopo Lago<span>PM e Scrum master</span></li>
-        <li class="reveal" style="--d: 40ms">Youssef Aouidy</li>
-        <li class="reveal" style="--d: 80ms">Simone Damiani</li>
-        <li class="reveal" style="--d: 120ms">Chaimae El Guerouy</li>
-        <li class="reveal" style="--d: 160ms">Valerio Trevisan</li>
-      </ul>
-      <p class="reveal">Lavoro organizzato in sprint, con revisione a fine iterazione e codice condiviso su GitHub.</p>
-    </div>
-  </section>
-
   <section class="closing" aria-labelledby="chiusura">
     <div class="wrap reveal">
       <h2 id="chiusura">Il risparmio non è nel carburante. <span>È nelle attese e nei mezzi fermi.</span></h2>
@@ -352,6 +344,7 @@
     <img src="./assets/greenlog-logo.png" alt="GreenLog" width="351" height="216" loading="lazy">
     <p>Project work dell'Academy Data Engineering. Dati aggiornati al <span data-live="aggiornato">14/09/2026</span>.</p>
     <ul>
+      <li><a href="./presentazione.html">Rivedi la presentazione</a></li>
       <li><a href="./brand.html">Identità visiva</a></li>
       <li><a href="https://github.com/lagojacopo00-byte/GreenLog" rel="noopener">Codice della pipeline</a></li>
       <li><a href="https://github.com/lagojacopo00-byte/greenlog-dashboard" rel="noopener">Codice del sito</a></li>

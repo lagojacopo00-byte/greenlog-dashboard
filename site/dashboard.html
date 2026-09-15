@@ -21,6 +21,7 @@
   a:hover { color: #7edcae; text-decoration: underline; }
   input[type="range"] { accent-color: #4fc98c; width: 100%; }
   ::selection { background: #4fc98c; color: #0d1317; }
+  .dash-deck:hover { text-decoration: none; background: #1c2b33; border-color: #4fc98c !important; }
   /* telefono: logo più basso e schede su una riga scorrevole, così l'header fisso non ruba un quinto dello schermo */
   @media (max-width: 640px) {
     .dash-head { flex-wrap: nowrap !important; gap: 12px !important; padding: 10px 16px !important; }
@@ -28,6 +29,8 @@
     .dash-nav { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; min-width: 0; }
     .dash-nav::-webkit-scrollbar { display: none; }
     .dash-nav button { flex: none; white-space: nowrap; }
+    .dash-deck { padding: 8px 10px !important; }
+    .dash-deck-lbl { display: none; }
   }
 </style>
 </helmet>
@@ -45,6 +48,9 @@
         <button onClick="{{ goCosti }}" style="{{ tabCosti }}">Costi &amp; Risparmi</button>
         <button onClick="{{ goClienti }}" style="{{ tabClienti }}">Clienti &amp; Consegne</button>
       </nav>
+      <a href="./presentazione.html" class="dash-deck" aria-label="Presentazione" style="display:inline-flex;align-items:center;gap:7px;flex:none;border:1px solid #2a3b44;border-radius:8px;padding:8px 14px;font-size:14px;color:#4fc98c;white-space:nowrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M12 17v4M8 21h8"/></svg><span class="dash-deck-lbl">Presentazione</span>
+      </a>
     </div>
   </header>
 
@@ -456,7 +462,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
           <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
             <h3 style="margin:0 0 4px;font-size:17px;font-weight:600">Sotto potenziale</h3>
-            <p style="margin:0 0 18px;color:#7f939d;font-size:13px">I dieci clienti col divario più grande da recuperare.</p>
+            <p style="margin:0 0 18px;color:#7f939d;font-size:13px">I dieci clienti che fatturano la quota più bassa del loro potenziale annuo.</p>
             <div style="display:grid;gap:12px">
               <sc-for list="{{ custWorst }}" as="c" hint-placeholder-count="0">
                 <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:baseline">
@@ -774,7 +780,7 @@ class Component extends DCLogic {
     const custAx = [0, 0.25, 0.5, 0.75, 1];
     const sottoN = cust.filter(r => r.pct_del_potenziale < 100).length;
     const gapTot = cust.reduce((a, r) => a + Math.max(r.potenziale_annuo - r.ricavo_effettivo, 0), 0);
-    const worst = cust.slice().sort((a, b) => (a.ricavo_effettivo - a.potenziale_annuo) - (b.ricavo_effettivo - b.potenziale_annuo)).slice(0, 10);
+    const worst = cust.slice().sort((a, b) => a.pct_del_potenziale - b.pct_del_potenziale).slice(0, 10);
     const best = cust.slice().sort((a, b) => b.pct_del_potenziale - a.pct_del_potenziale).slice(0, 10);
 
     return Object.assign(base, {
@@ -884,7 +890,7 @@ class Component extends DCLogic {
       } : null,
       custTipLeft: hc ? (hc.potenziale_annuo / axHi * 100).toFixed(2) + "%" : "0",
       custTipTop: hc ? (100 - hc.ricavo_effettivo / axHi * 100).toFixed(2) + "%" : "0",
-      custWorst: worst.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.eur(r.ricavo_effettivo - r.potenziale_annuo) })),
+      custWorst: worst.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.n(r.pct_del_potenziale, 1) + "%" })),
       custBest: best.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.n(r.pct_del_potenziale, 0) + "%" })),
 
       footLeft: "GreenLog · " + totMezzi + " mezzi · " + cust.length + " clienti · " + fac.length + " magazzini",

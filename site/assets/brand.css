@@ -90,6 +90,11 @@ a:hover { color: var(--brand-ink-hover); }
 .btn span { transition: transform 200ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .btn:hover span { transform: translateX(3px); } }
 
+/* link alle slide di presentazione, nell'header di ogni pagina */
+.deck-link { display: inline-flex; align-items: center; gap: 7px; }
+.deck-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+@media (max-width: 420px) { .back.deck-link span { display: none; } }
+
 /* cifre grandi: Plex Sans con cifre tabellari. Il mono resta per etichette, id e codice,
    perché in corpo grande la virgola monospazio apre un buco ("55 , 7%"). */
 .display-num { font-family: var(--sans); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -0.035em; line-height: 1.05; }

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Presentazione | GreenLog</title>
+<meta name="description" content="Le quattro slide di presentazione del project work GreenLog: team, contesto, deliverable e prossimi sviluppi.">
+<meta name="theme-color" content="#043D2F">
+<link rel="icon" type="image/png" href="./assets/favicon-64.png">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  // Da qui in poi la home non rimanda più alla presentazione: la si rivede dal link nell'header.
+  try { localStorage.setItem("greenlog:presentazione-vista", "1"); } catch (e) {}
+</script>
+<style>
+  /* I colori vengono dal file PowerPoint "GreenLog Dashboard - Presentazione Progetto". */
+  :root {
+    --deep: #043D2F;
+    --card-dark: #114739;
+    --card-dark-line: #1D5044;
+    --mint: #34D399;
+    --mint-2: #10B981;
+    --mint-pale: #A7F3D0;
+    --emerald: #059669;
+    --emerald-ink: #047857;
+    --slate-900: #0F172A;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-400: #94A3B8;
+    --slate-300: #CBD5E1;
+    --sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --bar-h: 76px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; overflow: hidden; background: var(--deep); color: #fff;
+    font-family: var(--sans); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  p { text-wrap: pretty; margin: 0; }
+  :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 6px; }
+  body[data-tone="light"] :focus-visible { outline-color: var(--emerald-ink); }
+
+  /* ---------- palco ---------- */
+  .deck { position: fixed; inset: 0; }
+  .slide {
+    position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain;
+    display: flex; flex-direction: column;
+    padding: clamp(20px, 3.5vw, 44px) clamp(16px, 5vw, 64px) calc(var(--bar-h) + clamp(12px, 2vw, 24px));
+    opacity: 0; visibility: hidden;
+    transition: opacity 420ms var(--ease-out), visibility 0s linear 420ms, transform 420ms var(--ease-out);
+  }
+  .slide.is-active { opacity: 1; visibility: visible; transition: opacity 420ms var(--ease-out), visibility 0s, transform 420ms var(--ease-out); }
+  @media (prefers-reduced-motion: no-preference) {
+    .slide { transform: translateX(var(--from, 28px)); }
+    .slide.is-active { transform: none; }
+  }
+  .slide-inner { width: 100%; max-width: 1152px; margin: auto; display: flex; flex-direction: column; flex: 1; }
+  .slide-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(28px, 4vw, 48px) 0; }
+
+  .eyebrow { font-size: clamp(12px, 1.05vw, 14px); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pill {
+    flex: none; display: inline-flex; align-items: center; height: 32px; padding: 0 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 700; white-space: nowrap; border: 1px solid transparent;
+  }
+  .title { font-size: clamp(2rem, 4.2vw, 3.3rem); line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; margin-top: 10px; }
+
+  .icon { flex: none; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; }
+  .icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- 1 · team ---------- */
+  .s-team { background: var(--deep); }
+  .s-team .eyebrow { color: var(--mint-pale); }
+  .s-team .pill { background: #06503B; border-color: #086248; color: var(--mint); }
+  .s-team .slide-head { align-items: center; }
+  .s-team .slide-head img { height: 48px; width: auto; filter: brightness(0) invert(1); opacity: 0.92; }
+  .s-team .slide-body { padding-top: clamp(16px, 2.5vw, 28px); }
+  .s-team .lead { text-align: center; margin-bottom: clamp(20px, 3vw, 32px); }
+  .s-team .lead h1 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; margin-top: 8px; }
+  .people { list-style: none; margin: 0 auto; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(14px, 1.8vw, 20px); max-width: 1040px; }
+  .person {
+    flex: 0 1 320px; min-width: 0; background: var(--card-dark); border: 1px solid var(--card-dark-line); border-radius: 16px;
+    padding: clamp(18px, 2vw, 24px); display: grid; gap: 2px; align-content: start;
+  }
+  .person .icon { width: 44px; height: 44px; border-radius: 12px; background: #0E5C45; color: var(--mint); margin-bottom: 12px; }
+  .person .icon svg { width: 22px; height: 22px; }
+  .person h2 { font-size: clamp(1.1rem, 1.6vw, 1.3rem); font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+  .person .role { color: var(--mint-2); font-weight: 700; font-size: 15px; }
+  .person p:last-child { color: var(--slate-400); font-size: 15px; margin-top: 6px; }
+
+  /* ---------- 2 · contesto ---------- */
+  .s-context { background: #F8FAFC; color: var(--slate-700); }
+  .s-context .eyebrow { color: var(--emerald); }
+  .s-context .pill { background: #E2E8F0; color: var(--slate-600); }
+  .context-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); max-width: 880px; width: 100%; margin-inline: auto; }
+  .box { background: #fff; border: 1px solid var(--slate-300); border-radius: 18px; padding: clamp(20px, 2.6vw, 32px); }
+  .box.wide { grid-column: 1 / -1; }
+  .box-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .box-head .icon { background: #ECFDF5; color: var(--emerald); }
+  .box h2 { font-size: clamp(1.4rem, 2.2vw, 1.75rem); font-weight: 800; color: var(--slate-900); letter-spacing: -0.02em; }
+  .box .statement { font-size: clamp(1.1rem, 1.7vw, 1.35rem); line-height: 1.45; text-align: center; color: var(--slate-700); font-weight: 500; max-width: 38ch; margin-inline: auto; }
+  .box.mission .statement { font-size: clamp(1.02rem, 1.45vw, 1.15rem); }
+  .goals { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .goals li { display: flex; gap: 12px; align-items: center; font-size: clamp(1rem, 1.35vw, 1.08rem); color: var(--slate-700); }
+  .goals li::before {
+    content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; background: #D1FAE5
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23047857' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 12px no-repeat;
+  }
+  @media (max-width: 680px) { .context-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  /* ---------- 3 · deliverable ---------- */
+  .s-output { background: #fff; color: var(--slate-600); }
+  .s-output .eyebrow { color: var(--emerald); }
+  .s-output .title { color: var(--slate-900); }
+  .s-output .pill { background: #ECFDF5; border-color: var(--mint-pale); color: var(--emerald-ink); }
+  .outputs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
+  .output { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 18px; padding: clamp(24px, 2.6vw, 32px); }
+  .output .icon { background: #D1FAE5; color: var(--emerald); margin-bottom: 22px; }
+  .output h2 { font-size: clamp(1.1rem, 1.6vw, 1.3rem); font-weight: 700; color: var(--slate-900); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .output p { font-size: clamp(1rem, 1.3vw, 1.08rem); }
+  @media (max-width: 860px) { .outputs { grid-template-columns: minmax(0, 1fr); } }
+
+  /* ---------- 4 · conclusione ---------- */
+  .s-close { background: linear-gradient(135deg, #07573F 0%, #043D2F 48%, #002E22 100%); }
+  .s-close .eyebrow { color: var(--mint); }
+  .s-close .pill { background: #06563F; color: var(--mint-pale); }
+  .close-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 32px); align-items: center; }
+  .values { display: grid; gap: clamp(14px, 1.8vw, 20px); }
+  .value { background: var(--card-dark); border: 1px solid var(--card-dark-line); border-radius: 18px; padding: clamp(20px, 2.4vw, 28px); }
+  .value h2 { color: var(--mint); font-size: clamp(1.1rem, 1.6vw, 1.3rem); font-weight: 700; margin-bottom: 8px; }
+  .value p { color: var(--slate-300); font-size: clamp(1rem, 1.3vw, 1.08rem); max-width: 46ch; }
+  .photo { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); aspect-ratio: 560 / 318; max-width: 100%; background: var(--card-dark); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .enter { margin-top: clamp(20px, 3vw, 32px); display: flex; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 860px) { .close-grid { grid-template-columns: minmax(0, 1fr); } .photo { order: -1; } }
+
+  /* schermi bassi (portatili 1280×720, proiettori): stesso contenuto, più compatto, così ogni slide sta in una schermata */
+  @media (max-height: 820px) and (min-width: 861px) {
+    .slide-body { padding-top: clamp(12px, 2vw, 20px); }
+    .title { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+    .icon { width: 44px; height: 44px; border-radius: 12px; }
+    .icon svg { width: 22px; height: 22px; }
+    .s-team .lead { margin-bottom: 18px; }
+    .s-team .lead h1 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+    .person { grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: start; }
+    .person .icon { grid-row: 1 / span 3; margin-bottom: 0; }
+    .person > :not(.icon) { grid-column: 2; }
+    .person p:last-child { margin-top: 2px; }
+    .box { padding: 20px 24px; }
+    .box-head { margin-bottom: 12px; }
+    .goals { gap: 6px; }
+    .output .icon { margin-bottom: 16px; }
+  }
+
+  /* ---------- barra di navigazione ---------- */
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; min-height: var(--bar-h);
+    padding: 12px clamp(16px, 5vw, 64px) calc(12px + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px;
+    color: rgba(255, 255, 255, 0.92);
+    background: linear-gradient(to top, rgba(4, 61, 47, 0.96) 55%, rgba(4, 61, 47, 0));
+    transition: color 300ms var(--ease-out), background 300ms var(--ease-out);
+    --track: rgba(255, 255, 255, 0.22); --fill: var(--mint); --btn-bg: rgba(255, 255, 255, 0.08); --btn-line: rgba(255, 255, 255, 0.2); --btn-hover: rgba(255, 255, 255, 0.16);
+    --primary-bg: var(--mint); --primary-ink: #03261D; --muted: rgba(255, 255, 255, 0.62);
+  }
+  body[data-tone="light"] .bar {
+    color: var(--slate-900);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.97) 55%, rgba(255, 255, 255, 0));
+    --track: #CBD5E1; --fill: var(--emerald); --btn-bg: #fff; --btn-line: #CBD5E1; --btn-hover: #F1F5F9;
+    --primary-bg: var(--emerald-ink); --primary-ink: #fff; --muted: var(--slate-600);
+  }
+  .bar-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .where { font: 500 13px/1.3 var(--mono); letter-spacing: 0.02em; min-width: 0; }
+  .where b { font-weight: 500; font-size: 15px; }
+  .where span { color: var(--muted); }
+  .where .name { display: block; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .progress { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .progress button {
+    appearance: none; border: 0; background: none; padding: 12px 0; width: clamp(28px, 4vw, 48px); cursor: pointer; display: block;
+  }
+  .progress button i { display: block; height: 4px; border-radius: 2px; background: var(--track); position: relative; overflow: hidden; }
+  .progress button i::after { content: ""; position: absolute; inset: 0; background: var(--fill); transform: scaleX(0); transform-origin: left; transition: transform 380ms var(--ease-out); }
+  .progress button.done i::after, .progress button[aria-current="step"] i::after { transform: scaleX(1); }
+  .progress button:hover i { background: var(--muted); }
+
+  .bar-right { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+  .ctl {
+    appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-width: 44px; height: 44px; padding: 0 14px; border-radius: 10px;
+    border: 1px solid var(--btn-line); background: var(--btn-bg); color: inherit;
+    font: 600 15px/1 var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+    transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out), opacity 160ms;
+  }
+  .ctl:hover { background: var(--btn-hover); }
+  .ctl:active { transform: scale(0.96); }
+  .ctl:disabled { opacity: 0.35; cursor: default; transform: none; background: var(--btn-bg); }
+  .ctl svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .ctl.primary { background: var(--primary-bg); border-color: var(--primary-bg); color: var(--primary-ink); }
+  .ctl.primary:hover { filter: brightness(1.06); }
+  .ctl.skip { border-color: transparent; background: none; color: var(--muted); padding-inline: 8px; }
+  .ctl.skip:hover { color: inherit; background: var(--btn-hover); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 640px) {
+    :root { --bar-h: 112px; }
+    .bar { grid-template-columns: minmax(0, 1fr) auto; row-gap: 4px; }
+    .bar-left { grid-column: 1; grid-row: 1; }
+    .progress { grid-column: 1 / -1; grid-row: 2; }
+    .progress li { flex: 1; }
+    .progress button { width: 100%; }
+    .bar-right { grid-column: 2; grid-row: 1; }
+    .where .name { display: none; }
+    .ctl .lbl-long { display: none; }
+    .slide-head .pill { display: none; }
+  }
+</style>
+</head>
+<body data-tone="dark">
+
+<main class="deck" id="deck" aria-roledescription="presentazione" aria-label="Presentazione del progetto GreenLog">
+
+  <!-- 1 · Chi siamo -->
+  <section class="slide s-team is-active" data-tone="dark" data-name="Chi siamo" aria-roledescription="slide" aria-label="Slide 1 di 4: Chi siamo">
+    <div class="slide-inner">
+      <div class="slide-head">
+        <img src="./assets/greenlog-logo.png" alt="GreenLog" width="351" height="216">
+        <span class="pill">Logistica Sostenibile</span>
+      </div>
+      <div class="slide-body">
+        <div class="lead">
+          <p class="eyebrow">Chi siamo</p>
+          <h1>Struttura del team</h1>
+        </div>
+        <ul class="people">
+          <li class="person">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M2 21v-1a6 6 0 0 1 9.5-4.9"/><circle cx="18" cy="17" r="2.5"/><path d="M18 12.5v2M18 19.5v2M22.5 17h-2M15.5 17h-2M21.2 13.8l-1.4 1.4M16.2 18.8l-1.4 1.4M21.2 20.2l-1.4-1.4M16.2 15.2l-1.4-1.4"/></svg></span>
+            <h2>Jacopo Lago</h2>
+            <p class="role">Project Manager / Scrum Master</p>
+            <p>Coordinamento generale e roadmap.</p>
+          </li>
+          <li class="person">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.2 15.9A10 10 0 1 1 8 2.8"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
+            <h2>Valerio Trevisan</h2>
+            <p class="role">Data cleaning</p>
+            <p>Pulizia e normalizzazione dati.</p>
+          </li>
+          <li class="person">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-4M13 17V8M18 17v-7"/></svg></span>
+            <h2>Chaimae El Guerouy</h2>
+            <p class="role">Analisi dati</p>
+            <p>Analisi Power BI.</p>
+          </li>
+          <li class="person">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span>
+            <h2>Simone Damiani</h2>
+            <p class="role">Sviluppo Web</p>
+            <p>Architettura UI e interfaccia utente.</p>
+          </li>
+          <li class="person">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span>
+            <h2>Youssef Aouidy</h2>
+            <p class="role">Database</p>
+            <p>Creazione DataBase e caricamento dati.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Contesto strategico -->
+  <section class="slide s-context" data-tone="light" data-name="Contesto strategico" aria-roledescription="slide" aria-label="Slide 2 di 4: Contesto strategico" inert>
+    <div class="slide-inner">
+      <div class="slide-head">
+        <p class="eyebrow">Contesto strategico</p>
+        <span class="pill">Visione d'Insieme</span>
+      </div>
+      <div class="slide-body">
+        <div class="context-grid">
+          <article class="box wide">
+            <div class="box-head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+              <h2>Cliente</h2>
+            </div>
+            <p class="statement">FTSLog, un’azienda di logistica su strada che desidera ridurre i propri costi operativi ed il proprio impatto ambientale.</p>
+          </article>
+          <article class="box mission">
+            <div class="box-head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+              <h2>Mission</h2>
+            </div>
+            <p class="statement">Semplificare le analisi, ottimizzare i flussi di trasporto ed abilitare decisioni guidate dai dati in tempo reale.</p>
+          </article>
+          <article class="box">
+            <div class="box-head">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+              <h2>Obiettivi</h2>
+            </div>
+            <ul class="goals">
+              <li>Centralizzare i dati</li>
+              <li>Indici KPI</li>
+              <li>Individuare inefficienze</li>
+              <li>Simulazione scenari</li>
+              <li>Stima ROI &amp; emissioni CO₂</li>
+              <li>Produzione Report</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Deliverable -->
+  <section class="slide s-output" data-tone="light" data-name="Output di progetto" aria-roledescription="slide" aria-label="Slide 3 di 4: Output di progetto" inert>
+    <div class="slide-inner">
+      <div class="slide-head">
+        <div>
+          <p class="eyebrow">Deliverable</p>
+          <h1 class="title">Output di progetto</h1>
+        </div>
+        <span class="pill">Deliverable Sviluppati</span>
+      </div>
+      <div class="slide-body">
+        <ul class="outputs">
+          <li class="output">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <h2>Interfaccia Dashboard Web</h2>
+            <p>Applicazione web responsive realizzata per la consultazione interattiva dei dati di flotta.</p>
+          </li>
+          <li class="output">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span>
+            <h2>Visualizzazione &amp; Analytics KPI</h2>
+            <p>Grafici dinamici e moduli di calcolo delle emissioni di CO₂ e consumi energetici.</p>
+          </li>
+          <li class="output">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span>
+            <h2>Documentazione &amp; Report</h2>
+            <p>Report di progetto completo con specifiche tecniche, metodologia e linee guida d'uso.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Conclusione -->
+  <section class="slide s-close" data-tone="dark" data-name="Valore generato" aria-roledescription="slide" aria-label="Slide 4 di 4: Valore generato e prossimi sviluppi" inert>
+    <div class="slide-inner">
+      <div class="slide-head">
+        <div>
+          <p class="eyebrow">Conclusione &amp; Roadmap</p>
+          <h1 class="title">Valore Generato &amp; Prossimi Sviluppi</h1>
+        </div>
+        <span class="pill">Sintesi Finale</span>
+      </div>
+      <div class="slide-body">
+        <div class="close-grid">
+          <div>
+            <div class="values">
+              <article class="value">
+                <h2>Tracciabilità Immediata</h2>
+                <p>Riconciliazione immediata tra dati logistici e indicatori d'impatto ecologico.</p>
+              </article>
+              <article class="value">
+                <h2>Scalabilità Futura</h2>
+                <p>Piattaforma modulare predisposta per l'integrazione di nuove sorgenti dati e flotte aziendali.</p>
+              </article>
+            </div>
+          </div>
+          <figure class="photo">
+            <img src="./assets/presentazione-flotta.png" width="559" height="318" alt="Tre camion con rimorchio bianco e motrice verde su un'autostrada tra le colline." loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bar" aria-label="Navigazione slide">
+  <div class="bar-left">
+    <p class="where" aria-live="polite"><b id="cur">01</b> <span>/ 04</span><span class="name" id="name">Chi siamo</span></p>
+  </div>
+  <ol class="progress" id="progress">
+    <li><button type="button" aria-label="Vai alla slide 1: Chi siamo" aria-current="step"><i></i></button></li>
+    <li><button type="button" aria-label="Vai alla slide 2: Contesto strategico"><i></i></button></li>
+    <li><button type="button" aria-label="Vai alla slide 3: Output di progetto"><i></i></button></li>
+    <li><button type="button" aria-label="Vai alla slide 4: Valore generato"><i></i></button></li>
+  </ol>
+  <div class="bar-right">
+    <a class="ctl skip" href="./" id="skip">Vai al sito</a>
+    <button class="ctl" type="button" id="prev" aria-label="Slide precedente" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button class="ctl primary" type="button" id="next"><span id="next-lbl"><span class="lbl-long">Avanti</span><span class="sr"> slide successiva</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var dots = Array.prototype.slice.call(document.querySelectorAll("#progress button"));
+  var prev = document.getElementById("prev"), next = document.getElementById("next"), nextLbl = document.getElementById("next-lbl");
+  var cur = document.getElementById("cur"), name = document.getElementById("name"), skip = document.getElementById("skip");
+  var total = slides.length, index = -1;
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+  function go(n) {
+    n = Math.max(0, Math.min(total - 1, n));
+    if (n === index) return;
+    slides.forEach(function (s, k) {
+      var on = k === n;
+      // la slide che entra arriva dal lato verso cui si va, quella che esce va dall'altro
+      s.style.setProperty("--from", (k > n ? 28 : -28) + "px");
+      s.classList.toggle("is-active", on);
+      if (on) { s.removeAttribute("inert"); s.scrollTop = 0; } else s.setAttribute("inert", "");
+    });
+    dots.forEach(function (d, k) {
+      if (k === n) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+      d.classList.toggle("done", k < n);
+    });
+    index = n;
+    var s = slides[n];
+    document.body.setAttribute("data-tone", s.getAttribute("data-tone"));
+    cur.textContent = pad(n + 1);
+    name.textContent = s.getAttribute("data-name");
+    prev.disabled = n === 0;
+    var last = n === total - 1;
+    nextLbl.innerHTML = last ? 'Entra nel sito' : '<span class="lbl-long">Avanti</span><span class="sr"> slide successiva</span>';
+    next.setAttribute("aria-label", last ? "Entra nel sito" : "Slide successiva");
+    skip.hidden = last;
+    document.title = "Presentazione " + (n + 1) + "/" + total + " · " + s.getAttribute("data-name") + " | GreenLog";
+    if (history.replaceState) history.replaceState(null, "", "#" + (n + 1));
+  }
+
+  function forward() { if (index === total - 1) location.href = "./"; else go(index + 1); }
+
+  next.addEventListener("click", forward);
+  prev.addEventListener("click", function () { go(index - 1); });
+  dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); }); });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var onControl = e.target.closest && e.target.closest("button, a");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": go(index + 1); break;
+      case "ArrowLeft": case "PageUp": go(index - 1); break;
+      case " ": if (onControl) return; if (e.shiftKey) go(index - 1); else go(index + 1); break;
+      case "Home": go(0); break;
+      case "End": go(total - 1); break;
+      default: return;
+    }
+    e.preventDefault();
+  });
+
+  // scorrimento orizzontale col dito sui telefoni
+  var sx = 0, sy = 0, tracking = false;
+  document.getElementById("deck").addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    tracking = true; sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, { passive: true });
+  document.getElementById("deck").addEventListener("touchend", function (e) {
+    if (!tracking) return; tracking = false;
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  var start = parseInt((location.hash || "").slice(1), 10);
+  go(start >= 1 && start <= total ? start - 1 : 0);
+  window.addEventListener("hashchange", function () {
+    var h = parseInt(location.hash.slice(1), 10);
+    if (h >= 1 && h <= total) go(h - 1);
+  });
+})();
+</script>
+</body>
+</html>
