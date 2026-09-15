@@ -28,7 +28,7 @@ Non copiare `support.js` in un progetto React: è il runtime del prototipo. In u
 
 ## Screens / Views
 
-Quattro schede in una singola pagina, commutate da stato client (`state.tab`), senza routing. Header sticky, barra filtri sotto l'header, footer con conteggi.
+Quattro schede in una singola pagina, commutate da stato client (`state.tab`), senza routing. Header sticky con il logo GreenLog (link alla home) e le schede, footer con conteggi. Il filtro marca non è globale: sta sopra ai soli grafici che filtra.
 
 ### 1. Sintesi (`tab: "sintesi"`)
 - **Purpose**: dare al direttore operativo la risposta in dieci secondi e indirizzarlo alla scheda giusta.
@@ -59,11 +59,11 @@ Quattro schede in una singola pagina, commutate da stato client (`state.tab`), s
 - **Domanda 07 — redditività clienti**: scatter 360px, assi in euro, **diagonale tratteggiata `#38505c` come parità potenziale/effettivo** (SVG `viewBox="0 0 100 100"` non-scaling). Punti 9px: rossi sotto il 100% del potenziale, verdi sopra. Sotto, due liste da 10: "Sotto potenziale" (divario in euro, rosso) e "Oltre potenziale" (% del potenziale, verde), ciascuna con nome cliente e `customer_id` in mono 11px.
 
 ## Interactions & Behavior
-- **Filtro marca**: chip nella barra filtri, mutuamente esclusivi, con conteggio mezzi. Selezionare una marca azzera il filtro mezzo.
+- **Filtro marca**: chip mutuamente esclusivi, con conteggio mezzi, ripetuti sopra ai soli grafici filtrati: dentro la card "Consumo medio della flotta" (Sintesi), in cima alla scheda Flotta (grafici 01 e 02 e dettaglio mezzo), sopra il grafico 03 (Costi). KPI, stato flotta, simulatore e scheda Clienti non sono filtrati e non hanno il filtro. Lo stato è unico: una marca scelta in una scheda resta attiva nelle altre. Selezionare una marca azzera il filtro mezzo.
 - **Filtro mezzo**: si attiva cliccando una barra della Domanda 01, un punto dello scatter o una barra della Domanda 03; è **cross-filter globale** — modifica il trend della Sintesi, entrambi i grafici Flotta e apre la card di dettaglio. Chip di rimozione `TRK00042 ✕`; bottone `AZZERA` se c'è almeno un filtro.
 - **Hover**: ogni serie ha il suo stato hover in `state` (`hTrend`, `hScatter`, `hQ3`, `hBar`, `hFac`, `hCust`) — niente hover condiviso, così due grafici non si spengono a vicenda.
 - **Cambio scheda**: azzera tutti gli stati di hover, conserva i filtri.
-- **Loading**: testo mono centrato "Carico le view dal database…" mentre i dieci fetch sono in volo; la barra filtri e il footer compaiono solo a dati pronti.
+- **Loading**: testo mono centrato "Carico le view dal database…" mentre i dieci fetch sono in volo; filtri e footer compaiono solo a dati pronti.
 - **Errore**: card rossa `#1d1214` bordo `#6b3a3a` con il nome del file mancante e il promemoria che `data/` deve stare accanto al file HTML. È lo stato che vedi se apri l'HTML con `file://` invece che da un server.
 - **Responsive**: tutte le griglie sono `auto-fit`/`minmax`, il contenuto è `max-width: 1280px` centrato con padding 24px. I grafici sono a larghezza fluida e altezza fissa. Testato fino a ~360px di larghezza.
 - Nessuna animazione oltre le transizioni implicite di hover: scelta deliberata per un cruscotto operativo.
@@ -90,7 +90,7 @@ Data fetching: dieci `fetch("./data/<nome>.json")` in `Promise.all` al mount, ne
 | --- | --- |
 | Fondo pagina | `#0d1317` |
 | Fondo card | `#151e24` |
-| Fondo barra filtri / footer / card interne | `#111a1f` |
+| Fondo box filtro / footer / card interne | `#111a1f` |
 | Fondo riga lista | `#121b21` (hover `#16222a`) |
 | Fondo tooltip | `#0b1114` |
 | Bordo standard | `#223038` |
@@ -125,7 +125,7 @@ Nessuna immagine, nessuna icona, nessun SVG decorativo. I soli asset esterni son
 Le view fanno tutto il calcolo lato database; la dashboard non ricalcola KPI, li aggrega solo per i filtri.
 
 - `pipeline/export_views.py` si collega al MySQL Aiven, scopre tutte le view `vw_*` via `information_schema`, le esporta in `data/<nome>.json` (prefisso `vw_` rimosso) e scrive `data/manifest.json` con timestamp, database, righe per file ed eventuali errori. Aggiunge due dataset non-view: `utilizzo_mensile` (serie mensile per mezzo, dalla tabella `truck_utilization_metrics`) e `prezzo_carburante` (prezzo medio al litro).
-- L'header della dashboard mostra `AGGIORNATO gg/mm/aaaa` leggendo `manifest.generato_il`: è la prova visibile della freschezza del dato.
+- `manifest.generato_il` non è più mostrato nell'header della dashboard (rimosso su richiesta); la data di aggiornamento resta visibile nel footer della home.
 - Credenziali: `.env` (`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SSL_CA`) oppure prompt interattivo con la Service URI di Aiven. **Mai committare `.env` né `ca.pem`.**
 - Aggiungere una view a `greenlog_kpi.py` non richiede modifiche allo script: la scopre da sola. Richiede però di leggerla nella dashboard (array `FILES` e `renderVals`).
 

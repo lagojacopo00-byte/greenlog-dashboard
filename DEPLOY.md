@@ -88,5 +88,5 @@ Con Netlify o Vercel collegati al repo, il commit dei JSON fa da trigger al rede
 - [ ] `.env` e `ca.pem` in `.gitignore`, mai committati
 - [ ] Deciso cosa fare dei nomi cliente nei JSON pubblici
 - [ ] Sito protetto da password, se i dati restano reali
-- [ ] Verificato che l'header mostri la data attesa (`manifest.generato_il`)
+- [ ] Verificato che il footer della home mostri la data attesa (`manifest.generato_il`)
 - [ ] Provata la pagina a ~360px di larghezza, se qualcuno la aprirà da telefono
