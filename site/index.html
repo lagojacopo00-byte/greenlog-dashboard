@@ -118,9 +118,9 @@
               <div style="position:absolute;left:0;top:-5px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ trendMax }}</div>
               <div style="position:absolute;left:0;bottom:-5px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">{{ trendMin }}</div>
             </div>
-            <div style="display:flex;justify-content:space-between;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d">
+            <div style="position:relative;height:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:14px;color:#7f939d">
               <sc-for list="{{ trendLabels }}" as="l" hint-placeholder-count="0">
-                <span style="white-space:nowrap">{{ l.label }}</span>
+                <span style="position:absolute;top:0;left:{{ l.left }};transform:translateX({{ l.tx }});white-space:nowrap">{{ l.label }}</span>
               </sc-for>
             </div>
           </div>
@@ -486,10 +486,12 @@ class Component extends DCLogic {
     d: null, err: null, tab: "sintesi",
     make: null, truck: null,
     hTrend: null, hScatter: null, hQ3: null, hBar: null, hFac: null, hCust: null,
-    simCop: null, simPrezzo: null
+    simCop: null, simPrezzo: null,
+    narrow: window.matchMedia("(max-width: 520px)").matches
   };
 
   componentDidMount() {
+    window.matchMedia("(max-width: 520px)").addEventListener("change", e => this.setState({ narrow: e.matches }));
     Promise.all(FILES.map(f =>
       fetch("./data/" + f + ".json").then(r => {
         if (!r.ok) throw new Error(f + ".json: HTTP " + r.status);
@@ -602,8 +604,12 @@ class Component extends DCLogic {
       onEnter: () => this.setState({ hTrend: i }), onLeave: () => this.setState({ hTrend: null })
     }));
     const ht = s.hTrend != null ? serie[s.hTrend] : null;
-    const step = Math.max(1, Math.ceil(serie.length / 8));
-    const trendLabels = serie.filter((p, i) => i % step === 0).map(p => ({ label: this.mese(p.month) }));
+    // Sotto i 520px 8 etichette non ci stanno: ne mostro 4, ognuna sotto il suo punto
+    const step = Math.max(1, Math.ceil(serie.length / (s.narrow ? 4 : 8)));
+    const trendLabels = serie.map((p, i) => ({ p, i })).filter(o => o.i % step === 0).map(({ p, i }) => {
+      const x = px(i) / 10;
+      return { label: this.mese(p.month), left: x.toFixed(2) + "%", tx: x < 8 ? "0" : x > 92 ? "-100%" : "-50%" };
+    });
 
     // --- stato flotta ---
     const statoMap = { Active: { label: "In servizio", color: GREEN }, Maintenance: { label: "In manutenzione", color: AMBER }, Inactive: { label: "Fermi", color: RED } };
