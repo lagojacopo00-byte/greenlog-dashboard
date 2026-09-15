@@ -13,10 +13,12 @@ La dashboard (`site/dashboard.html`) **non segue ancora questo sistema**: usa il
 
 ## Logo
 
-- File: `site/assets/greenlog-logo.png` (351×216, trasparente), ritagliato senza modifiche da `Image20260914174435.png`.
-- Si usa così com'è, solo su fondo chiaro. Vietato deformarlo, ricolorarlo, metterlo su fondi scuri o sopra immagini.
-- Area di rispetto: l'altezza della scritta GREENLOG su ogni lato.
-- Larghezza minima 160px: sotto il payoff non si legge. Per favicon e icone solo il camion (`favicon-64.png`, `apple-touch-icon.png`).
+- Marchio: camion stilizzato con le scie di velocità disegnate come barre di un grafico (dati + logistica). Lockup orizzontale camion + scritta "GreenLog" in Plus Jakarta Sans ExtraBold convertita in tracciati: "Green" `#238A51`, "Log" `#17201B`.
+- File in `site/assets/`: `greenlog-logo.svg` (463×72, fonte di riferimento), `greenlog-logo.png` (1389×216, trasparente), `greenlog-logo-dark.svg` ("Log" `#E8EEF0`, solo per la dashboard a tema scuro), `greenlog-mark.svg` / `greenlog-mark.png` (solo camion).
+- Si usa così com'è, su fondo chiaro. Vietato deformarlo, ricolorarlo o metterlo sopra immagini; su fondo scuro solo la versione `-dark`.
+- Area di rispetto: l'altezza del camion su ogni lato.
+- Larghezza minima 120px. Per favicon e icone solo il camion bianco su verde (`favicon.svg`, `favicon-64.png`, `apple-touch-icon.png`).
+- Il logo precedente (camion con scritta GREENLOG e payoff) è nella storia git e in `Image20260914174435.png` nella cartella superiore.
 
 ## Colore
 

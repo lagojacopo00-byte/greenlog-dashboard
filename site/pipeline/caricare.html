@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Caricare i dati | GreenLog</title>
-<meta name="description" content="Come i dati puliti sono stati caricati in un database MySQL su Aiven: ordine delle dipendenze, credenziali nel file .env e inserimenti a blocchi.">
+<meta name="description" content="Come i dati puliti sono stati caricati in un database MySQL su Aiven: ordine delle dipendenze e inserimenti a blocchi.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="icon" type="image/png" href="../assets/favicon-64.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,12 +54,6 @@
     .batch-row { grid-template-columns: minmax(0, 1fr) auto; }
     .batch-row .bar { grid-column: 1 / -1; grid-row: 2; }
   }
-
-  .loaded { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-  .loaded li { border-top: 2px solid var(--ink); padding-top: 14px; }
-  .loaded .display-num { display: block; font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
-  .loaded code { font: 13px/1.4 var(--mono); color: var(--ink-2); }
-  @media (max-width: 760px) { .loaded { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 24px; } }
 </style>
 </head>
 <body>
@@ -66,7 +61,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a href="../" aria-label="GreenLog, torna alla presentazione"><img src="../assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <a href="../" aria-label="GreenLog, torna alla presentazione"><img src="../assets/greenlog-logo.svg" alt="GreenLog" width="463" height="72"></a>
     <nav aria-label="Principale">
       <a class="back" href="../#pipeline"><span aria-hidden="true">←</span> La pipeline</a>
       <a class="back deck-link" href="../presentazione.html" aria-label="Presentazione"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M12 17v4M8 21h8"/></svg><span>Presentazione</span></a>
@@ -189,36 +184,6 @@ conn.commit()</pre>
           <p style="margin:0">Il risultato è un processo automatico, ordinato e ripetibile, che regge anche quando i dati crescono.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="p-section band" aria-labelledby="credenziali">
-    <div class="wrap">
-      <div class="p-head">
-        <h2 id="credenziali">Le credenziali restano fuori dal codice</h2>
-        <p>Lo script non contiene password: le legge all'avvio da un file <code>.env</code> che non finisce nel repository.</p>
-      </div>
-      <ol class="flow">
-        <li class="reveal"><b>File <code>.env</code></b><span>Host, utente, password, nome del database e porta.</span></li>
-        <li class="reveal" style="--d: 60ms"><b><code>load_dotenv()</code></b><span>Porta i valori nelle variabili d'ambiente.</span></li>
-        <li class="reveal" style="--d: 120ms"><b><code>mysql.connector</code></b><span>Apre la connessione con quei valori.</span></li>
-        <li class="reveal hl" style="--d: 180ms"><b>MySQL su Aiven</b><span>Lo stesso database per tutto il team.</span></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="p-section" aria-labelledby="risultato">
-    <div class="wrap">
-      <div class="p-head">
-        <h2 id="risultato">Cosa c'è nel database</h2>
-        <p>Alcune tabelle dopo il caricamento, contate sulle esportazioni che alimentano la dashboard.</p>
-      </div>
-      <ul class="loaded">
-        <li class="reveal"><span class="display-num">120</span><code>trucks</code></li>
-        <li class="reveal" style="--d: 50ms"><span class="display-num">200</span><code>customers</code></li>
-        <li class="reveal" style="--d: 100ms"><span class="display-num">3.312</span><code>truck_utilization_metrics</code></li>
-        <li class="reveal" style="--d: 150ms"><span class="display-num">170.820</span><code>delivery_events</code></li>
-      </ul>
     </div>
   </section>
 

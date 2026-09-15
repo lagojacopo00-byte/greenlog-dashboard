@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard · GreenLog</title>
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link rel="icon" type="image/png" href="./assets/favicon-64.png">
 <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 <script src="./support.js"></script>
@@ -25,7 +26,7 @@
   /* telefono: logo più basso e schede su una riga scorrevole, così l'header fisso non ruba un quinto dello schermo */
   @media (max-width: 640px) {
     .dash-head { flex-wrap: nowrap !important; gap: 12px !important; padding: 10px 16px !important; }
-    .dash-logo { height: 40px !important; }
+    .dash-logo { height: 24px !important; }
     .dash-nav { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; min-width: 0; }
     .dash-nav::-webkit-scrollbar { display: none; }
     .dash-nav button { flex: none; white-space: nowrap; }
@@ -40,7 +41,7 @@
   <header style="position:sticky;top:0;z-index:30;background:rgba(13,19,23,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #223038">
     <div class="dash-head" style="max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
       <a href="./" title="Torna alla presentazione del progetto" style="display:block;flex:none;line-height:0">
-        <img src="./assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216" class="dash-logo" style="height:52px;width:auto;display:block">
+        <img src="./assets/greenlog-logo-dark.svg" alt="GreenLog" width="463" height="72" class="dash-logo" style="height:30px;width:auto;display:block">
       </a>
       <nav class="dash-nav" style="display:flex;flex-wrap:wrap;gap:6px">
         <button onClick="{{ goSintesi }}" style="{{ tabSintesi }}">Sintesi</button>

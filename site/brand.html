@@ -7,6 +7,7 @@
 <meta name="description" content="Logo, colori, tipografia, componenti e tono di voce di GreenLog.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FBFBFA">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link rel="icon" type="image/png" href="./assets/favicon-64.png">
 <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +18,7 @@
 <style>
   .site-header { padding-block: 14px; border-bottom: 1px solid var(--line); }
   .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-  .site-header img { height: 56px; width: auto; }
+  .site-header img { height: 32px; width: auto; }
   .site-header nav { display: flex; align-items: center; gap: 20px; }
   .back { color: var(--ink-2); text-decoration: none; font-size: 15px; white-space: nowrap; }
   .back:hover { color: var(--ink); }
@@ -37,8 +38,8 @@
   /* logo */
   .logo-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px; }
   .logo-stage { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); display: grid; place-items: center; padding: clamp(40px, 7vw, 88px) 24px; position: relative; }
-  .logo-stage img { width: min(100%, 351px); }
-  .clearspace { position: relative; padding: 28px; outline: 1px dashed #9fcbb0; outline-offset: -1px; }
+  .logo-stage img { width: min(100%, 380px); }
+  .clearspace { position: relative; padding: 48px; outline: 1px dashed #9fcbb0; outline-offset: -1px; }
   .clearspace::before { content: "x"; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); font: 12px/1 var(--mono); color: var(--brand-ink); }
   .logo-stage figcaption { position: absolute; left: 20px; bottom: 16px; font-size: 14px; color: var(--muted); }
   .logo-side { display: grid; gap: 16px; }
@@ -53,7 +54,7 @@
   .donts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
   .dont { margin: 0; }
   .dont .box { height: 148px; border: 1px solid var(--line); border-radius: var(--r-card); display: grid; place-items: center; background: var(--surface); overflow: hidden; }
-  .dont img { width: 130px; }
+  .dont img { width: 170px; }
   .dont figcaption { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
   .dont figcaption b { color: #9F2F2D; font-weight: 600; }
   .dont .stretch img { transform: scaleX(1.45); }
@@ -125,7 +126,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a href="./" aria-label="GreenLog, torna alla presentazione"><img src="./assets/greenlog-logo.png" alt="GreenLog, Data &amp; Logistics Solutions" width="351" height="216"></a>
+    <a href="./" aria-label="GreenLog, torna alla presentazione"><img src="./assets/greenlog-logo.svg" alt="GreenLog" width="463" height="72"></a>
     <nav aria-label="Principale">
       <a class="back" href="./"><span aria-hidden="true">←</span> Il progetto</a>
       <a class="back deck-link" href="./presentazione.html" aria-label="Presentazione"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M12 17v4M8 21h8"/></svg><span>Presentazione</span></a>
@@ -153,28 +154,31 @@
   <section class="block" id="logo" aria-labelledby="logo-t">
     <div class="wrap">
       <h2 id="logo-t">Logo</h2>
-      <p class="sub">Il logo si usa così com'è: camion, scritta GREENLOG con la O a ingranaggio e foglia, payoff Data &amp; Logistics Solutions. Sempre su fondo chiaro.</p>
+      <p class="sub">Il logo si usa così com'è: il camion, con le scie che diventano le barre di un grafico, e la scritta GreenLog, con "Green" in verde e "Log" in inchiostro. Sempre su fondo chiaro.</p>
 
       <div class="logo-grid">
         <figure class="logo-stage reveal">
-          <div class="clearspace"><img src="./assets/greenlog-logo.png" alt="Logo GreenLog con l'area di rispetto tratteggiata" width="351" height="216"></div>
-          <figcaption>Area di rispetto: su ogni lato, almeno l'altezza della scritta GREENLOG.</figcaption>
+          <div class="clearspace"><img src="./assets/greenlog-logo.svg" alt="Logo GreenLog con l'area di rispetto tratteggiata" width="463" height="72"></div>
+          <figcaption>Area di rispetto: su ogni lato, almeno l'altezza del camion.</figcaption>
         </figure>
         <div class="logo-side">
           <div class="fact reveal" style="--d: 60ms">
             <h3>Dimensioni</h3>
-            <p>Sotto i 160px di larghezza il payoff non si legge più. Per favicon e icone si usa solo il camion.</p>
+            <p>Sotto i 120px di larghezza la scritta non si legge più. Per favicon e icone si usa solo il camion, bianco su verde.</p>
             <div class="sizes">
-              <figure><img src="./assets/greenlog-logo.png" alt="" width="160" height="99"><figcaption>160px, minimo</figcaption></figure>
-              <figure><img src="./assets/apple-touch-icon.png" alt="" width="56" height="56" style="border:1px solid var(--line);border-radius:12px"><figcaption>icona</figcaption></figure>
-              <figure><img src="./assets/favicon-64.png" alt="" width="32" height="32"><figcaption>favicon</figcaption></figure>
+              <figure><img src="./assets/greenlog-logo.svg" alt="" width="120" height="19"><figcaption>120px, minimo</figcaption></figure>
+              <figure><img src="./assets/apple-touch-icon.png" alt="" width="56" height="56" style="border-radius:12px"><figcaption>icona</figcaption></figure>
+              <figure><img src="./assets/favicon.svg" alt="" width="32" height="32"><figcaption>favicon</figcaption></figure>
             </div>
           </div>
           <div class="fact reveal" style="--d: 120ms">
             <h3>File</h3>
-            <p>PNG con fondo trasparente, ritagliati dal logo originale.</p>
+            <p>SVG vettoriali e PNG con fondo trasparente. Per la dashboard, che ha il fondo scuro, c'è la versione con "Log" chiaro.</p>
             <div class="downloads">
+              <a class="btn btn-secondary btn-sm" href="./assets/greenlog-logo.svg" download>Logo SVG</a>
               <a class="btn btn-secondary btn-sm" href="./assets/greenlog-logo.png" download>Logo PNG</a>
+              <a class="btn btn-secondary btn-sm" href="./assets/greenlog-logo-dark.svg" download>Logo per fondo scuro</a>
+              <a class="btn btn-secondary btn-sm" href="./assets/greenlog-mark.svg" download>Solo camion</a>
               <a class="btn btn-secondary btn-sm" href="./assets/apple-touch-icon.png" download>Icona 180px</a>
             </div>
           </div>
@@ -182,10 +186,10 @@
       </div>
 
       <div class="donts">
-        <figure class="dont reveal"><div class="box stretch"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> deformarlo o cambiarne le proporzioni.</figcaption></figure>
-        <figure class="dont reveal" style="--d: 50ms"><div class="box recolor"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> ricolorarlo: il verde è parte del marchio.</figcaption></figure>
-        <figure class="dont reveal" style="--d: 100ms"><div class="box dark"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> su fondi scuri: il verde perde contrasto.</figcaption></figure>
-        <figure class="dont reveal" style="--d: 150ms"><div class="box busy"><img src="./assets/greenlog-logo.png" alt="" width="351" height="216"></div><figcaption><b>No</b> sopra immagini o grafici.</figcaption></figure>
+        <figure class="dont reveal"><div class="box stretch"><img src="./assets/greenlog-logo.svg" alt="" width="463" height="72"></div><figcaption><b>No</b> deformarlo o cambiarne le proporzioni.</figcaption></figure>
+        <figure class="dont reveal" style="--d: 50ms"><div class="box recolor"><img src="./assets/greenlog-logo.svg" alt="" width="463" height="72"></div><figcaption><b>No</b> ricolorarlo: il verde è parte del marchio.</figcaption></figure>
+        <figure class="dont reveal" style="--d: 100ms"><div class="box dark"><img src="./assets/greenlog-logo.svg" alt="" width="463" height="72"></div><figcaption><b>No</b> la versione standard su fondo scuro: "Log" sparisce.</figcaption></figure>
+        <figure class="dont reveal" style="--d: 150ms"><div class="box busy"><img src="./assets/greenlog-logo.svg" alt="" width="463" height="72"></div><figcaption><b>No</b> sopra immagini o grafici.</figcaption></figure>
       </div>
     </div>
   </section>

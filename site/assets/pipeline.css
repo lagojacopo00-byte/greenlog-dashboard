@@ -3,7 +3,7 @@
 
 .site-header { padding-block: 14px; border-bottom: 1px solid var(--line); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.site-header img { height: 56px; width: auto; }
+.site-header img { height: 32px; width: auto; }
 .site-header nav { display: flex; align-items: center; gap: 20px; }
 .back { color: var(--ink-2); text-decoration: none; font-size: 15px; white-space: nowrap; display: inline-block; padding-block: 10px; }
 .back:hover { color: var(--ink); }
@@ -136,8 +136,10 @@ html.p-slides { scroll-snap-type: y mandatory; }
 /* prima slide: header + passaggi + apertura, alti insieme una schermata */
 .p-slides .p-hero { min-height: calc(100vh - var(--top-h, 140px)); display: flex; align-items: center; padding-block: 32px; }
 .p-slides .p-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 64px; scroll-snap-align: start; }
-/* ultima slide: passaggio precedente/successivo + footer */
-.p-slides .pager { min-height: calc(100vh - var(--foot-h, 90px)); display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
+/* ultima slide: l'ultima sezione con sotto i passaggi vicini e il footer */
+.p-slides main > .p-section:last-child { min-height: calc(100vh - var(--end-h, 240px)); padding-bottom: 32px; }
+.p-slides .pager { border-top: 0; padding-block: 8px 48px; }
+.p-slides .pager.band { background: var(--band); }
 .p-slides .site-footer { scroll-snap-align: end; }
 
 .slide-dots { position: fixed; right: clamp(12px, 1.4vw, 24px); top: 50%; transform: translateY(-50%); z-index: 20; }

@@ -12,20 +12,23 @@
 
   root.classList.add("p-slides");
 
-  // la prima slide è header + passaggi + apertura; l'ultima è il passaggio successivo + footer
+  // la prima slide è header + passaggi + apertura; l'ultima è l'ultima sezione + passaggi vicini + footer
+  var sections = document.querySelectorAll("main .p-section");
+  var lastSection = sections[sections.length - 1];
+  if (pager && lastSection && lastSection.classList.contains("band")) pager.classList.add("band");
+
   function measure() {
     root.style.setProperty("--top-h", header.offsetHeight + (stepsNav ? stepsNav.offsetHeight : 0) + "px");
-    root.style.setProperty("--foot-h", (footer ? footer.offsetHeight : 0) + "px");
+    root.style.setProperty("--end-h", (pager ? pager.offsetHeight : 0) + (footer ? footer.offsetHeight : 0) + "px");
   }
   measure();
   window.addEventListener("resize", measure);
 
   var slides = [{ el: header, label: (hero.querySelector("h1") || {}).textContent || "Apertura" }];
-  document.querySelectorAll("main .p-section").forEach(function (s) {
+  sections.forEach(function (s) {
     var h = s.querySelector("h2");
     slides.push({ el: s, label: h ? h.textContent.trim() : "Sezione" });
   });
-  if (pager) slides.push({ el: pager, label: "Passaggio successivo" });
 
   var nav = document.createElement("nav");
   nav.className = "slide-dots";
@@ -50,7 +53,6 @@
 
   function topOf(i) {
     if (i === 0) return 0;
-    if (slides[i].el === pager) return document.documentElement.scrollHeight - window.innerHeight;
     return slides[i].el.getBoundingClientRect().top + window.scrollY;
   }
 
