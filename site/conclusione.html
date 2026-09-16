@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conclusione | GreenLog</title>
+<meta name="description" content="Le tre slide di chiusura del project work GreenLog: stato del progetto, messaggio finale e ringraziamenti.">
+<meta name="theme-color" content="#043D2F">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<link rel="icon" type="image/png" href="./assets/favicon-64.png">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Stessi colori e stessa navigazione di presentazione.html: le slide di apertura e di chiusura sono un unico deck. */
+  :root {
+    --deep: #043D2F;
+    --card-dark: #114739;
+    --card-dark-line: #1D5044;
+    --mint: #34D399;
+    --mint-2: #10B981;
+    --mint-pale: #A7F3D0;
+    --emerald: #059669;
+    --emerald-ink: #047857;
+    --amber-bg: #FEF3C7;
+    --amber-ink: #92400E;
+    --slate-900: #0F172A;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-400: #94A3B8;
+    --slate-300: #CBD5E1;
+    --sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --bar-h: 76px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; overflow: hidden; background: var(--deep); color: #fff;
+    font-family: var(--sans); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  p { text-wrap: pretty; margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 6px; }
+  body[data-tone="light"] :focus-visible { outline-color: var(--emerald-ink); }
+
+  /* ---------- palco ---------- */
+  .deck { position: fixed; inset: 0; }
+  .slide {
+    position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain;
+    display: flex; flex-direction: column;
+    padding: clamp(20px, 3.5vw, 44px) clamp(16px, 5vw, 64px) calc(var(--bar-h) + clamp(12px, 2vw, 24px));
+    opacity: 0; visibility: hidden;
+    transition: opacity 420ms var(--ease-out), visibility 0s linear 420ms, transform 420ms var(--ease-out);
+  }
+  .slide.is-active { opacity: 1; visibility: visible; transition: opacity 420ms var(--ease-out), visibility 0s, transform 420ms var(--ease-out); }
+  @media (prefers-reduced-motion: no-preference) {
+    .slide { transform: translateX(var(--from, 28px)); }
+    .slide.is-active { transform: none; }
+  }
+  .slide-inner { width: 100%; max-width: 1152px; margin: auto; display: flex; flex-direction: column; flex: 1; }
+  .slide-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(28px, 4vw, 48px) 0; }
+
+  .eyebrow { font-size: clamp(12px, 1.05vw, 14px); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pill {
+    flex: none; display: inline-flex; align-items: center; height: 32px; padding: 0 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 700; white-space: nowrap; border: 1px solid transparent;
+  }
+  .title { font-size: clamp(2rem, 4.2vw, 3.3rem); line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; margin-top: 10px; }
+
+  /* ---------- 1 · stato del progetto ---------- */
+  .s-status { background: #F8FAFC; color: var(--slate-700); }
+  .s-status .eyebrow { color: var(--emerald); }
+  .s-status .title { color: var(--slate-900); }
+  .s-status .pill { background: #E2E8F0; color: var(--slate-600); }
+  .status-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); }
+  .col { background: #fff; border: 1px solid var(--slate-300); border-radius: 18px; padding: clamp(20px, 2.4vw, 28px) clamp(20px, 2.6vw, 32px) clamp(8px, 1vw, 12px); }
+  .tag { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font: 500 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+  .tag-green { background: #D1FAE5; color: var(--emerald-ink); }
+  .tag-amber { background: var(--amber-bg); color: var(--amber-ink); }
+  .col ul { list-style: none; margin: 18px 0 0; padding: 0; }
+  .col li { padding: clamp(12px, 1.4vw, 16px) 0; border-top: 1px solid #E2E8F0; }
+  .col li strong { display: block; color: var(--slate-900); font-weight: 700; font-size: clamp(1rem, 1.35vw, 1.1rem); }
+  .col li span { color: var(--slate-600); font-size: clamp(0.95rem, 1.2vw, 1rem); }
+  .note { margin-top: clamp(16px, 2.2vw, 24px); padding: 16px 20px; background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; color: var(--slate-600); font-size: 15px; }
+  .note strong { color: var(--slate-900); }
+  .note a { color: var(--emerald-ink); text-underline-offset: 3px; }
+  @media (max-width: 760px) { .status-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  /* ---------- 2 · messaggio finale ---------- */
+  .s-quote { background: linear-gradient(135deg, #07573F 0%, #043D2F 48%, #002E22 100%); }
+  .s-quote .eyebrow { color: var(--mint); }
+  .s-quote .pill { background: #06563F; color: var(--mint-pale); }
+  .quote { max-width: 20ch; font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; }
+  .quote span { display: block; color: var(--mint); }
+  .quote-sub { margin-top: clamp(24px, 3.4vw, 40px); max-width: 58ch; color: var(--slate-300); font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.5; }
+  .quote-sub strong { color: #fff; font-weight: 700; }
+  .quote-rule { width: 64px; height: 4px; border-radius: 2px; background: var(--mint); margin-bottom: clamp(24px, 3vw, 36px); }
+
+  /* ---------- 3 · grazie ---------- */
+  .s-thanks { background: var(--deep); text-align: center; }
+  .s-thanks .slide-body { align-items: center; }
+  .s-thanks .logo { height: clamp(34px, 4vw, 48px); width: auto; filter: brightness(0) invert(1); opacity: 0.92; margin-bottom: clamp(32px, 5vw, 56px); }
+  .thanks { font-size: clamp(3rem, 8vw, 6.6rem); line-height: 1; letter-spacing: -0.04em; font-weight: 800; }
+  .thanks span { color: var(--mint); }
+  .thanks-sub { margin-top: 20px; color: var(--mint-pale); font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 500; }
+  .team { list-style: none; margin: clamp(36px, 5vw, 56px) 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; }
+  .team li { background: var(--card-dark); border: 1px solid var(--card-dark-line); border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 600; color: #fff; }
+  .team li small { color: var(--slate-400); font-weight: 500; font-size: 13px; margin-left: 6px; }
+
+  @media (max-height: 820px) and (min-width: 861px) {
+    .slide-body { padding-top: clamp(12px, 2vw, 20px); }
+    .title { font-size: clamp(1.9rem, 3.4vw, 2.7rem); }
+    .col li { padding: 10px 0; }
+    .note { padding: 12px 18px; }
+  }
+
+  /* ---------- barra di navigazione ---------- */
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; min-height: var(--bar-h);
+    padding: 12px clamp(16px, 5vw, 64px) calc(12px + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px;
+    color: rgba(255, 255, 255, 0.92);
+    background: linear-gradient(to top, rgba(4, 61, 47, 0.96) 55%, rgba(4, 61, 47, 0));
+    transition: color 300ms var(--ease-out), background 300ms var(--ease-out);
+    --track: rgba(255, 255, 255, 0.22); --fill: var(--mint); --btn-bg: rgba(255, 255, 255, 0.08); --btn-line: rgba(255, 255, 255, 0.2); --btn-hover: rgba(255, 255, 255, 0.16);
+    --primary-bg: var(--mint); --primary-ink: #03261D; --muted: rgba(255, 255, 255, 0.62);
+  }
+  body[data-tone="light"] .bar {
+    color: var(--slate-900);
+    background: linear-gradient(to top, rgba(248, 250, 252, 0.97) 55%, rgba(248, 250, 252, 0));
+    --track: #CBD5E1; --fill: var(--emerald); --btn-bg: #fff; --btn-line: #CBD5E1; --btn-hover: #F1F5F9;
+    --primary-bg: var(--emerald-ink); --primary-ink: #fff; --muted: var(--slate-600);
+  }
+  .bar-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .where { font: 500 13px/1.3 var(--mono); letter-spacing: 0.02em; min-width: 0; margin: 0; }
+  .where b { font-weight: 500; font-size: 15px; }
+  .where span { color: var(--muted); }
+  .where .name { display: block; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .progress { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .progress button { appearance: none; border: 0; background: none; padding: 12px 0; width: clamp(28px, 4vw, 48px); cursor: pointer; display: block; }
+  .progress button i { display: block; height: 4px; border-radius: 2px; background: var(--track); position: relative; overflow: hidden; }
+  .progress button i::after { content: ""; position: absolute; inset: 0; background: var(--fill); transform: scaleX(0); transform-origin: left; transition: transform 380ms var(--ease-out); }
+  .progress button.done i::after, .progress button[aria-current="step"] i::after { transform: scaleX(1); }
+  .progress button:hover i { background: var(--muted); }
+
+  .bar-right { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
+  .ctl {
+    appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-width: 44px; height: 44px; padding: 0 14px; border-radius: 10px;
+    border: 1px solid var(--btn-line); background: var(--btn-bg); color: inherit;
+    font: 600 15px/1 var(--sans); text-decoration: none; cursor: pointer; white-space: nowrap;
+    transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out), opacity 160ms;
+  }
+  .ctl:hover { background: var(--btn-hover); }
+  .ctl:active { transform: scale(0.96); }
+  .ctl:disabled { opacity: 0.35; cursor: default; transform: none; background: var(--btn-bg); }
+  .ctl svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .ctl.primary { background: var(--primary-bg); border-color: var(--primary-bg); color: var(--primary-ink); }
+  .ctl.primary:hover { filter: brightness(1.06); }
+  .ctl.skip { border-color: transparent; background: none; color: var(--muted); padding-inline: 8px; }
+  .ctl.skip:hover { color: inherit; background: var(--btn-hover); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 640px) {
+    :root { --bar-h: 112px; }
+    .bar { grid-template-columns: minmax(0, 1fr) auto; row-gap: 4px; }
+    .bar-left { grid-column: 1; grid-row: 1; }
+    .progress { grid-column: 1 / -1; grid-row: 2; }
+    .progress li { flex: 1; }
+    .progress button { width: 100%; }
+    .bar-right { grid-column: 2; grid-row: 1; }
+    .where .name { display: none; }
+    .ctl .lbl-long { display: none; }
+    .slide-head .pill { display: none; }
+  }
+</style>
+</head>
+<body data-tone="light">
+
+<main class="deck" id="deck" aria-roledescription="presentazione" aria-label="Conclusione del progetto GreenLog">
+
+  <!-- 1 · Stato del progetto -->
+  <section class="slide s-status is-active" data-tone="light" data-name="Stato del progetto" aria-roledescription="slide" aria-label="Slide 1 di 3: Stato del progetto">
+    <div class="slide-inner">
+      <div class="slide-head">
+        <div>
+          <p class="eyebrow">Stato del progetto</p>
+          <h1 class="title">Cosa funziona oggi e cosa manca</h1>
+        </div>
+        <span class="pill">Bilancio</span>
+      </div>
+      <div class="slide-body">
+        <div class="status-grid">
+          <article class="col">
+            <span class="tag tag-green">Pronto</span>
+            <ul>
+              <li><strong>Pulizia e caricamento</strong><span>Script Python che puliscono i CSV e li caricano rispettando le chiavi esterne.</span></li>
+              <li><strong>Database relazionale in cloud</strong><span>Schema E-R su MySQL, ospitato su Aiven e condiviso dal team.</span></li>
+              <li><strong>Sette view KPI</strong><span>Consumi, efficienza, costi, risparmio, flotta, puntualità, clienti.</span></li>
+              <li><strong>Report e dashboard</strong><span>Power BI per l'analisi, una dashboard web per consultare i risultati.</span></li>
+            </ul>
+          </article>
+          <article class="col">
+            <span class="tag tag-amber">In sviluppo</span>
+            <ul>
+              <li><strong>Digital twin di ogni camion</strong><span>Struttura su MongoDB definita. Manca l'aggiornamento automatico a ogni nuovo dato.</span></li>
+              <li><strong>Fonti esterne</strong><span>Meteo, percorsi e geocoding via API, per spiegare ritardi e consumi.</span></li>
+              <li><strong>Redditività sul margine</strong><span>Oggi il KPI clienti misura il ricavo: i costi per singolo cliente non sono nel dataset.</span></li>
+            </ul>
+          </article>
+        </div>
+        <p class="note"><strong>Progetto a scopo didattico.</strong> GreenLog, il committente FTSLog e i dati sono simulati. La base è il dataset pubblico <a href="https://www.kaggle.com/datasets/yogape/logistics-operations-database" rel="noopener">Logistics Operations Database</a> su Kaggle, riportato al sistema metrico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Messaggio finale -->
+  <section class="slide s-quote" data-tone="dark" data-name="Il messaggio" aria-roledescription="slide" aria-label="Slide 2 di 3: Il messaggio" inert>
+    <div class="slide-inner">
+      <div class="slide-head">
+        <p class="eyebrow">In una frase</p>
+        <span class="pill">Sintesi finale</span>
+      </div>
+      <div class="slide-body">
+        <div class="quote-rule" aria-hidden="true"></div>
+        <h1 class="quote">I dati c'erano già. <span>Ora dicono dove intervenire.</span></h1>
+        <p class="quote-sub">Da file CSV sparsi a una piattaforma che mostra a FTSLog dove recuperare <strong>oltre €1 milione l'anno</strong>: non nel carburante, ma nelle attese ai magazzini e nei mezzi fermi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Grazie -->
+  <section class="slide s-thanks" data-tone="dark" data-name="Grazie" aria-roledescription="slide" aria-label="Slide 3 di 3: Grazie per l'attenzione" inert>
+    <div class="slide-inner">
+      <div class="slide-body">
+        <img class="logo" src="./assets/greenlog-logo.svg" alt="GreenLog" width="463" height="72">
+        <h1 class="thanks">Grazie per <span>l'attenzione.</span></h1>
+        <p class="thanks-sub">Domande?</p>
+        <ul class="team" aria-label="Il team">
+          <li>Jacopo Lago</li>
+          <li>Valerio Trevisan</li>
+          <li>Chaimae El Guerouy</li>
+          <li>Simone Damiani</li>
+          <li>Youssef Aouidy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bar" aria-label="Navigazione slide">
+  <div class="bar-left">
+    <p class="where" aria-live="polite"><b id="cur">01</b> <span>/ 03</span><span class="name" id="name">Stato del progetto</span></p>
+  </div>
+  <ol class="progress" id="progress">
+    <li><button type="button" aria-label="Vai alla slide 1: Stato del progetto" aria-current="step"><i></i></button></li>
+    <li><button type="button" aria-label="Vai alla slide 2: Il messaggio"><i></i></button></li>
+    <li><button type="button" aria-label="Vai alla slide 3: Grazie"><i></i></button></li>
+  </ol>
+  <div class="bar-right">
+    <a class="ctl skip" href="./dashboard.html" id="skip">Apri la dashboard</a>
+    <button class="ctl" type="button" id="prev" aria-label="Slide precedente" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button class="ctl primary" type="button" id="next"><span id="next-lbl"><span class="lbl-long">Avanti</span><span class="sr"> slide successiva</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  </div>
+</nav>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var dots = Array.prototype.slice.call(document.querySelectorAll("#progress button"));
+  var prev = document.getElementById("prev"), next = document.getElementById("next"), nextLbl = document.getElementById("next-lbl");
+  var cur = document.getElementById("cur"), name = document.getElementById("name");
+  var total = slides.length, index = -1;
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+  function go(n) {
+    n = Math.max(0, Math.min(total - 1, n));
+    if (n === index) return;
+    slides.forEach(function (s, k) {
+      var on = k === n;
+      s.style.setProperty("--from", (k > n ? 28 : -28) + "px");
+      s.classList.toggle("is-active", on);
+      if (on) { s.removeAttribute("inert"); s.scrollTop = 0; } else s.setAttribute("inert", "");
+    });
+    dots.forEach(function (d, k) {
+      if (k === n) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+      d.classList.toggle("done", k < n);
+    });
+    index = n;
+    var s = slides[n];
+    document.body.setAttribute("data-tone", s.getAttribute("data-tone"));
+    cur.textContent = pad(n + 1);
+    name.textContent = s.getAttribute("data-name");
+    prev.disabled = n === 0;
+    var last = n === total - 1;
+    // dall'ultima slide si torna al sito
+    nextLbl.innerHTML = last ? 'Torna al sito' : '<span class="lbl-long">Avanti</span><span class="sr"> slide successiva</span>';
+    next.setAttribute("aria-label", last ? "Torna al sito" : "Slide successiva");
+    document.title = "Conclusione " + (n + 1) + "/" + total + " · " + s.getAttribute("data-name") + " | GreenLog";
+    if (history.replaceState) history.replaceState(null, "", "#" + (n + 1));
+  }
+
+  function forward() { if (index === total - 1) location.href = "./"; else go(index + 1); }
+
+  next.addEventListener("click", forward);
+  prev.addEventListener("click", function () { go(index - 1); });
+  dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); }); });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var onControl = e.target.closest && e.target.closest("button, a");
+    switch (e.key) {
+      case "ArrowRight": case "PageDown": go(index + 1); break;
+      case "ArrowLeft": case "PageUp": go(index - 1); break;
+      case " ": if (onControl) return; if (e.shiftKey) go(index - 1); else go(index + 1); break;
+      case "Home": go(0); break;
+      case "End": go(total - 1); break;
+      default: return;
+    }
+    e.preventDefault();
+  });
+
+  var sx = 0, sy = 0, tracking = false;
+  document.getElementById("deck").addEventListener("touchstart", function (e) {
+    if (e.touches.length !== 1) { tracking = false; return; }
+    tracking = true; sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, { passive: true });
+  document.getElementById("deck").addEventListener("touchend", function (e) {
+    if (!tracking) return; tracking = false;
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  var start = parseInt((location.hash || "").slice(1), 10);
+  go(start >= 1 && start <= total ? start - 1 : 0);
+  window.addEventListener("hashchange", function () {
+    var h = parseInt(location.hash.slice(1), 10);
+    if (h >= 1 && h <= total) go(h - 1);
+  });
+})();
+</script>
+</body>
+</html>
