@@ -3,7 +3,7 @@
 
 .site-header { padding-block: 14px; border-bottom: 1px solid var(--line); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.site-header img { height: 32px; width: auto; }
+.site-header img { height: 28px; width: auto; translate: 0 2px; }
 .site-header nav { display: flex; align-items: center; gap: 20px; }
 .back { color: var(--ink-2); text-decoration: none; font-size: 15px; white-space: nowrap; display: inline-block; padding-block: 10px; }
 .back:hover { color: var(--ink); }

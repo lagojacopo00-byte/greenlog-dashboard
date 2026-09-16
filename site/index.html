@@ -32,7 +32,8 @@
   .site-header { padding-block: 14px; }
   .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .brand-link { display: block; flex: none; line-height: 0; }
-  .brand-link img { height: 34px; width: auto; }
+  /* la "g" scende sotto la riga: 2px più in basso il camion e la scritta stanno al centro dell'header */
+  .brand-link img { height: 28px; width: auto; translate: 0 2px; }
   .nav { display: flex; align-items: center; gap: 28px; }
   .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
   .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 15px; }
@@ -40,7 +41,7 @@
   @media (max-width: 880px) { .nav-links { display: none; } .nav { gap: 10px; } }
   .nav .lbl-short { display: none; }
   @media (max-width: 520px) {
-    .brand-link img { height: 28px; }
+    .brand-link img { height: 24px; }
     .nav .lbl-long { display: none; }
     .nav .lbl-short { display: inline; }
   }
@@ -153,7 +154,7 @@
 
   .site-footer { border-top: 1px solid var(--line); padding-block: 40px 48px; font-size: 14px; color: var(--muted); }
   .site-footer .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 32px; align-items: start; }
-  .site-footer img { height: 30px; width: auto; }
+  .site-footer img { height: 26px; width: auto; }
   .site-footer p { margin: 0; max-width: 58ch; }
   .site-footer ul { list-style: none; margin: -10px 0 0; padding: 0; display: grid; }
   .site-footer li a { display: inline-block; padding-block: 10px; }
@@ -186,9 +187,9 @@
   <section class="hero" aria-labelledby="titolo">
     <div class="wrap">
       <div class="hero-copy">
-        <p class="eyebrow">Academy Data Engineering</p>
+        <p class="eyebrow">Data Engineering</p>
         <h1 id="titolo">Dati di flotta che diventano decisioni.</h1>
-        <p class="lead">Una piattaforma dati per ItalLogistic: <span data-live="mezzi">120</span> camion, tre anni di viaggi e sette domande a cui ora rispondono i numeri.</p>
+        <p class="lead">Una piattaforma dati per FTSLog: <span data-live="mezzi">120</span> camion, tre anni di viaggi e sette domande a cui ora rispondono i numeri.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="./dashboard.html">Apri la dashboard <span aria-hidden="true">→</span></a>
           <a class="btn btn-secondary" href="#pipeline">Come è fatta</a>
@@ -327,7 +328,7 @@
           </ul>
         </div>
       </div>
-      <p class="note reveal"><strong>Progetto a scopo didattico.</strong> GreenLog, il committente ItalLogistic e i dati sono simulati. La base è il dataset pubblico <a href="https://www.kaggle.com/datasets/yogape/logistics-operations-database" rel="noopener">Logistics Operations Database</a> su Kaggle, riportato al sistema metrico.</p>
+      <p class="note reveal"><strong>Progetto a scopo didattico.</strong> GreenLog, il committente FTSLog e i dati sono simulati. La base è il dataset pubblico <a href="https://www.kaggle.com/datasets/yogape/logistics-operations-database" rel="noopener">Logistics Operations Database</a> su Kaggle, riportato al sistema metrico.</p>
     </div>
   </section>
 
@@ -343,7 +344,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <img src="./assets/greenlog-logo.svg" alt="GreenLog" width="463" height="72" loading="lazy">
-    <p>Project work dell'Academy Data Engineering. Dati aggiornati al <span data-live="aggiornato">14/09/2026</span>.</p>
+    <p>Project work di Data Engineering. Dati aggiornati al <span data-live="aggiornato">14/09/2026</span>.</p>
     <ul>
       <li><a href="./presentazione.html">Rivedi la presentazione</a></li>
       <li><a href="./brand.html">Identità visiva</a></li>

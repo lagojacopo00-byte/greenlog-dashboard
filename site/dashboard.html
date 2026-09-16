@@ -41,7 +41,7 @@
   <header style="position:sticky;top:0;z-index:30;background:rgba(13,19,23,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #223038">
     <div class="dash-head" style="max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
       <a href="./" title="Torna alla presentazione del progetto" style="display:block;flex:none;line-height:0">
-        <img src="./assets/greenlog-logo-dark.svg" alt="GreenLog" width="463" height="72" class="dash-logo" style="height:30px;width:auto;display:block">
+        <img src="./assets/greenlog-logo-dark.svg" alt="GreenLog" width="463" height="72" class="dash-logo" style="height:26px;width:auto;display:block;translate:0 2px">
       </a>
       <nav class="dash-nav" style="display:flex;flex-wrap:wrap;gap:6px">
         <button onClick="{{ goSintesi }}" style="{{ tabSintesi }}">Sintesi</button>
@@ -71,8 +71,7 @@
     <sc-if value="{{ isSintesi }}" hint-placeholder-val="{{ false }}">
       <section data-screen-label="Sintesi">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em;margin-bottom:14px">{{ periodo }}</div>
-        <h1 style="margin:0 0 14px;font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-0.02em;max-width:26ch">{{ titolo }}</h1>
-        <p style="margin:0 0 30px;color:#b6c4ca;font-size:17px;max-width:70ch">{{ sommario }}</p>
+        <h1 style="margin:0 0 30px;font-size:32px;line-height:1.15;font-weight:700;letter-spacing:-0.02em;max-width:26ch">{{ titolo }}</h1>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:34px">
           <sc-for list="{{ kpiCards }}" as="c" hint-placeholder-count="4">
@@ -791,10 +790,6 @@ class Component extends DCLogic {
 
       periodo: mesi.length ? this.mese(mesi[0]).toUpperCase() + " – " + this.mese(mesi[mesi.length - 1]).toUpperCase() + " · " + totMezzi + " MEZZI" : "",
       titolo: "Il risparmio non è nel carburante: è nelle attese e nei mezzi fermi.",
-      sommario: "Portando ogni mezzo alla media della sua marca si recuperano " + this.eur(risp.litri_risparmiabili * prezzoReale / anni) +
-        " all'anno, il " + this.n(risp.litri_risparmiabili * prezzoReale / costoTot * 100, 1) + "% del costo operativo. È poco perché la flotta consuma già in modo omogeneo. " +
-        "Le due voci grosse sono altrove: " + fermi + " mezzi su " + totMezzi + " non sono in servizio, e solo il " +
-        this.n(puntMedia, 0) + "% delle consegne arriva in orario con " + this.n(attesaMedia, 0) + " minuti di attesa media al carico.",
 
       kpiCards: [
         { label: "Risparmio carburante / anno", value: this.eur(risp.litri_risparmiabili * prezzoReale / anni), color: GREEN, note: this.n(risp.litri_risparmiabili) + " litri e " + this.n(risp.co2_risparmiabile_kg / 1000, 1) + " t CO₂ sui " + mesiArchivio + " mesi" },

@@ -1,7 +1,7 @@
 # Handoff: GreenLog — Dashboard logistica su strada
 
 ## Overview
-Dashboard web per GreenLog (trasporto merci su strada, committente ItalLogistic). Risponde a sette domande di business con grafici interattivi calcolati dalle view `vw_*` del database MySQL:
+Dashboard web per GreenLog (trasporto merci su strada, committente FTSLog). Risponde a sette domande di business con grafici interattivi calcolati dalle view `vw_*` del database MySQL:
 
 1. Quali mezzi consumano più del previsto? (`vw_consumo_previsto`)
 2. Dove perdiamo efficienza? (`vw_efficienza_flotta`)
