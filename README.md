@@ -58,6 +58,15 @@ Quattro schede in una singola pagina, commutate da stato client (`state.tab`), s
 - **Domanda 06 — puntualità**: 3 KPI mini + istogramma di 50 magazzini ordinati dal peggiore al migliore, barre `flex: 1 1 0` gap 3px altezza 170px (25–100% normalizzata), rosso sotto la media ponderata, verde sopra. Tooltip con id magazzino, % puntualità, minuti di attesa medi. Le medie sono **ponderate sul numero di eventi**, non medie di percentuali.
 - **Domanda 07 — redditività clienti**: scatter 360px, assi in euro, **diagonale tratteggiata `#38505c` come parità potenziale/effettivo** (SVG `viewBox="0 0 100 100"` non-scaling). Punti 9px: rossi sotto il 100% del potenziale, verdi sopra. Sotto, due liste da 10: "Sotto potenziale" (divario in euro, rosso) e "Oltre potenziale" (% del potenziale, verde), ciascuna con nome cliente e `customer_id` in mono 11px.
 
+### 5. Piano di efficientamento (`tab: "piano"`)
+- **Purpose**: chiudere la presentazione al cliente con quanto vale all'anno intervenire sui punti emersi, con ipotesi modificabili in diretta.
+- **Riepilogo**: chip scenario Prudente / Realistico / Ambizioso (compare "personalizzato" se un cursore esce dai preset) e bottone `RIPRISTINA IPOTESI`; 4 KPI (risparmio annuo, % sul costo operativo, ore di attesa recuperate, CO₂ evitata); barra impilata con il peso di ogni leva.
+- **Tre leve**, una card ciascuna con cursori, risparmio annuo e azione consigliata:
+  - *Attese al carico*: ore/anno = consegne × attesa media ponderata / 60 / anni. Cursori: riduzione % (0–60), costo orario €/h (ipotesi, default 35), consumo a motore acceso L/h (ipotesi, default 0 = escluso).
+  - *Mezzi fermi*: mezzi recuperati (0–fermi) × costo fisso annuo per mezzo (ipotesi, default €15k).
+  - *Carburante*: % dei mezzi portati alla media di marca, su `vw_risparmio_potenziale` annualizzata e prezzo medio reale.
+- I preset cambiano solo le percentuali (`PIANO_SCENARI`); i costi unitari (`PIANO_IPOTESI`) restano quelli scelti. I clienti sotto potenziale sono esclusi di proposito: sono ricavo, non risparmio.
+
 ## Interactions & Behavior
 - **Filtro marca**: chip mutuamente esclusivi, con conteggio mezzi, ripetuti sopra ai soli grafici filtrati: dentro la card "Consumo medio della flotta" (Sintesi), in cima alla scheda Flotta (grafici 01 e 02 e dettaglio mezzo), sopra il grafico 03 (Costi). KPI, stato flotta, simulatore e scheda Clienti non sono filtrati e non hanno il filtro. Lo stato è unico: una marca scelta in una scheda resta attiva nelle altre. Selezionare una marca azzera il filtro mezzo.
 - **Filtro mezzo**: si attiva cliccando una barra della Domanda 01, un punto dello scatter o una barra della Domanda 03; è **cross-filter globale** — modifica il trend della Sintesi, entrambi i grafici Flotta e apre la card di dettaglio. Chip di rimozione `TRK00042 ✕`; bottone `AZZERA` se c'è almeno un filtro.

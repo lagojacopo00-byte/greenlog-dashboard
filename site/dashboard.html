@@ -48,6 +48,7 @@
         <button onClick="{{ goFlotta }}" style="{{ tabFlotta }}">Flotta</button>
         <button onClick="{{ goCosti }}" style="{{ tabCosti }}">Costi &amp; Risparmi</button>
         <button onClick="{{ goClienti }}" style="{{ tabClienti }}">Clienti &amp; Consegne</button>
+        <button onClick="{{ goPiano }}" style="{{ tabPiano }}">Piano di efficientamento</button>
       </nav>
       <a href="./presentazione.html" class="dash-deck" aria-label="Presentazione" style="display:inline-flex;align-items:center;gap:7px;flex:none;border:1px solid #2a3b44;border-radius:8px;padding:8px 14px;font-size:14px;color:#4fc98c;white-space:nowrap">
         <svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M12 17v4M8 21h8"/></svg><span class="dash-deck-lbl">Presentazione</span>
@@ -494,6 +495,98 @@
       </section>
     </sc-if>
 
+    <sc-if value="{{ isPiano }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Piano di efficientamento">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4fc98c;letter-spacing:0.08em;margin-bottom:14px">SCENARIO · VALORI ANNUI</div>
+        <h1 style="margin:0 0 8px;font-size:29px;font-weight:700;letter-spacing:-0.02em">Piano di efficientamento</h1>
+        <p style="margin:0 0 30px;color:#93a4ad;max-width:74ch">{{ pianoNota }}</p>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:24px;margin-bottom:18px">
+          <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-bottom:22px">
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;letter-spacing:0.08em;margin-right:4px">SCENARIO</span>
+              <sc-for list="{{ pianoPreset }}" as="p" hint-placeholder-count="3">
+                <button onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</button>
+              </sc-for>
+              <sc-if value="{{ pianoCustom }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#e0a458;margin-left:4px">personalizzato</span>
+              </sc-if>
+            </div>
+            <button onClick="{{ pianoReset }}" style="background:none;border:1px solid #38505c;color:#93a4ad;border-radius:7px;padding:7px 13px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer">RIPRISTINA IPOTESI</button>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:24px">
+            <sc-for list="{{ pianoKpi }}" as="k" hint-placeholder-count="4">
+              <div style="background:#111a1f;border:1px solid #223038;border-radius:8px;padding:18px">
+                <div style="color:#93a4ad;font-size:14px;margin-bottom:8px">{{ k.label }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:{{ k.size }};font-weight:500;letter-spacing:-0.02em;color:{{ k.color }}">{{ k.value }}</div>
+                <div style="color:#7f939d;font-size:13px;margin-top:4px">{{ k.note }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;height:16px;border-radius:8px;overflow:hidden;gap:2px;background:#0d1317;margin-bottom:14px">
+            <sc-for list="{{ pianoSegs }}" as="s" hint-placeholder-count="3">
+              <div style="width:{{ s.w }};background:{{ s.color }}"></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px 26px">
+            <sc-for list="{{ pianoSegs }}" as="s" hint-placeholder-count="3">
+              <span style="display:flex;align-items:center;gap:8px;font-size:14px;color:#cfdadf">
+                <span style="width:10px;height:10px;border-radius:2px;background:{{ s.color }}"></span>{{ s.label }}
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#7f939d">{{ s.pct }}</span>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px;margin-bottom:18px">
+          <sc-for list="{{ leve }}" as="l" hint-placeholder-count="3">
+            <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{ l.color }};letter-spacing:0.08em">{{ l.tag }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7f939d">{{ l.rank }}</span>
+              </div>
+              <h2 style="margin:0 0 6px;font-size:20px;font-weight:600">{{ l.titolo }}</h2>
+              <p style="margin:0 0 22px;color:#93a4ad;font-size:14px">{{ l.dato }}</p>
+
+              <div style="display:grid;gap:20px;margin-bottom:22px">
+                <sc-for list="{{ l.sliders }}" as="c" hint-placeholder-count="2">
+                  <div>
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px">
+                      <label for="{{ c.id }}" style="font-size:14px;color:#cfdadf">{{ c.label }}</label>
+                      <span style="font-family:'IBM Plex Mono',monospace;font-size:16px;color:{{ c.valColor }};white-space:nowrap">{{ c.valLabel }}</span>
+                    </div>
+                    <input id="{{ c.id }}" type="range" min="{{ c.min }}" max="{{ c.max }}" step="{{ c.step }}" value="{{ c.value }}" onChange="{{ c.onInput }}" onInput="{{ c.onInput }}" />
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;margin-top:5px">{{ c.hint }}</div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="margin-top:auto;background:#111a1f;border:1px solid #223038;border-radius:8px;padding:16px 18px">
+                <div style="color:#93a4ad;font-size:13px;margin-bottom:6px">Risparmio annuo</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:27px;letter-spacing:-0.02em;color:#4fc98c">{{ l.valore }}</div>
+                <div style="color:#7f939d;font-size:13px;margin-top:4px">{{ l.dettaglio }}</div>
+              </div>
+              <div style="margin-top:16px;padding-top:14px;border-top:1px solid #223038;font-size:14px;color:#b6c4ca"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7f939d;letter-spacing:0.08em;margin-right:8px">AZIONE</span>{{ l.azione }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:#151e24;border:1px solid #223038;border-radius:10px;padding:22px">
+          <h2 style="margin:0 0 16px;font-size:19px;font-weight:600">Ipotesi e metodo</h2>
+          <div style="display:grid;gap:1px;background:#223038;border:1px solid #223038;border-radius:8px;overflow:hidden">
+            <sc-for list="{{ ipotesi }}" as="i" hint-placeholder-count="5">
+              <div style="background:#121b21;padding:13px 18px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:baseline">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{ i.color }};letter-spacing:0.06em">{{ i.tag }}</span>
+                <span style="font-size:14px;color:#cfdadf">{{ i.testo }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
   </main>
 
   <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
@@ -513,14 +606,23 @@ const FILES = ["consumo_previsto","efficienza_flotta","priorita_interventi","pun
 const MESI = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
 const GREEN = "#4fc98c", AMBER = "#e0a458", RED = "#e07a7a", DIM = "#7f939d";
 
+// Piano di efficientamento: le percentuali cambiano con lo scenario, i costi unitari sono ipotesi e restano fermi.
+const PIANO_IPOTESI = { costoOra: 35, costoMezzo: 15, idle: 0 };
+const PIANO_SCENARI = [
+  { key: "prudente", label: "Prudente", att: 15, mezzi: 5, carb: 50 },
+  { key: "realistico", label: "Realistico", att: 30, mezzi: 10, carb: 100 },
+  { key: "ambizioso", label: "Ambizioso", att: 45, mezzi: 15, carb: 100 }
+];
+
 class Component extends DCLogic {
   state = {
     d: null, err: null,
     // dashboard.html#costi apre direttamente la scheda: la home linka così le singole domande
-    tab: ["sintesi", "flotta", "costi", "clienti"].indexOf(location.hash.slice(1)) >= 0 ? location.hash.slice(1) : "sintesi",
+    tab: ["sintesi", "flotta", "costi", "clienti", "piano"].indexOf(location.hash.slice(1)) >= 0 ? location.hash.slice(1) : "sintesi",
     make: null, truck: null,
     hTrend: null, hScatter: null, hQ3: null, hBar: null, hFac: null, hCust: null,
     simCop: null, simPrezzo: null,
+    piano: Object.assign({}, PIANO_SCENARI[1], PIANO_IPOTESI),
     narrow: window.matchMedia("(max-width: 520px)").matches
   };
 
@@ -588,10 +690,10 @@ class Component extends DCLogic {
     const base = {
       loading: !s.d && !s.err, err: s.err, ready: !!s.d,
       isSintesi: !!s.d && s.tab === "sintesi", isFlotta: !!s.d && s.tab === "flotta",
-      isCosti: !!s.d && s.tab === "costi", isClienti: !!s.d && s.tab === "clienti",
-      goSintesi: go("sintesi"), goFlotta: go("flotta"), goCosti: go("costi"), goClienti: go("clienti"),
+      isCosti: !!s.d && s.tab === "costi", isClienti: !!s.d && s.tab === "clienti", isPiano: !!s.d && s.tab === "piano",
+      goSintesi: go("sintesi"), goFlotta: go("flotta"), goCosti: go("costi"), goClienti: go("clienti"), goPiano: go("piano"),
       tabSintesi: this.tabStyle("sintesi"), tabFlotta: this.tabStyle("flotta"),
-      tabCosti: this.tabStyle("costi"), tabClienti: this.tabStyle("clienti")
+      tabCosti: this.tabStyle("costi"), tabClienti: this.tabStyle("clienti"), tabPiano: this.tabStyle("piano")
     };
     if (!s.d) return base;
 
@@ -783,6 +885,34 @@ class Component extends DCLogic {
     const worst = cust.slice().sort((a, b) => a.pct_del_potenziale - b.pct_del_potenziale).slice(0, 10);
     const best = cust.slice().sort((a, b) => b.pct_del_potenziale - a.pct_del_potenziale).slice(0, 10);
 
+    // --- piano di efficientamento ---
+    // tre leve, tutte annue: attese al carico, mezzi fermi, carburante. I clienti restano fuori: il loro "potenziale" non è un risparmio.
+    const pp = s.piano;
+    const setP = k => e => this.setState({ piano: Object.assign({}, this.state.piano, { [k]: Number(e.target.value) }) });
+    const costoAnno = costoTot / anni;
+    const oreAttesaAnno = eventiTot * attesaMedia / 60 / anni;
+    const oreLiberate = oreAttesaAnno * pp.att / 100;
+    const idleL = pp.idle / 10;
+    const litriIdle = oreLiberate * idleL;
+    const eurAtt = oreLiberate * pp.costoOra + litriIdle * prezzoReale;
+    const mezziN = Math.min(pp.mezzi, fermi);
+    const eurMezzi = mezziN * pp.costoMezzo * 1000;
+    const litriCarb = (risp.litri_risparmiabili || 0) / anni * pp.carb / 100;
+    const eurCarb = litriCarb * prezzoReale;
+    const co2Carb = (risp.co2_risparmiabile_kg || 0) / anni * pp.carb / 100;
+    const litriTot = litriCarb + litriIdle;
+    const co2Tot = co2Carb + litriIdle * 2.68;
+    const eurTot = eurAtt + eurMezzi + eurCarb;
+    const scen = PIANO_SCENARI.find(p => p.att === pp.att && p.mezzi === pp.mezzi && p.carb === pp.carb);
+    const leveVal = [
+      { key: "att", label: "Attese al carico", color: GREEN, eur: eurAtt },
+      { key: "mezzi", label: "Mezzi fermi", color: AMBER, eur: eurMezzi },
+      { key: "carb", label: "Carburante", color: "#6fa8c9", eur: eurCarb }
+    ];
+    const ordine = leveVal.slice().sort((a, b) => b.eur - a.eur).map(l => l.key);
+    const rank = k => (ordine.indexOf(k) + 1) + "ª leva per valore";
+    const colorOf = k => leveVal.find(l => l.key === k).color;
+
     return Object.assign(base, {
       makeChips, truckSel: s.truck, anyFilter: !!(s.make || s.truck),
       clearTruck: () => this.setState({ truck: null }),
@@ -888,6 +1018,78 @@ class Component extends DCLogic {
       custTipTop: hc ? (100 - hc.ricavo_effettivo / axHi * 100).toFixed(2) + "%" : "0",
       custWorst: worst.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.n(r.pct_del_potenziale, 1) + "%" })),
       custBest: best.map(r => ({ nome: r.customer_name, id: r.customer_id, val: this.n(r.pct_del_potenziale, 0) + "%" })),
+
+      pianoNota: "Quanto vale all'anno intervenire sui tre punti emersi dall'analisi. Il punto di partenza sono i dati reali di " + mesiArchivio +
+        " mesi; percentuali e costi unitari sono ipotesi da concordare, e ogni cursore ricalcola il risultato.",
+      pianoPreset: PIANO_SCENARI.map(p => {
+        const on = scen && scen.key === p.key;
+        return {
+          label: p.label,
+          onClick: () => this.setState({ piano: Object.assign({}, this.state.piano, { att: p.att, mezzi: p.mezzi, carb: p.carb }) }),
+          style: "background:" + (on ? "#1c2b33" : "#141f25") + ";border:1px solid " + (on ? GREEN : "#2a3b44") +
+            ";color:" + (on ? "#e8eef0" : "#93a4ad") + ";border-radius:20px;padding:6px 14px;font-size:13px;font-family:inherit;cursor:pointer"
+        };
+      }),
+      pianoCustom: !scen,
+      pianoReset: () => this.setState({ piano: Object.assign({}, PIANO_SCENARI[1], PIANO_IPOTESI) }),
+      pianoKpi: [
+        { label: "Risparmio stimato / anno", value: this.eur(eurTot), size: "32px", color: GREEN, note: scen ? "scenario " + scen.label.toLowerCase() : "scenario personalizzato" },
+        { label: "Sul costo operativo", value: this.n(eurTot / costoAnno * 100, 1) + "%", size: "27px", color: "#e8eef0", note: "su " + this.eur(costoAnno) + " l'anno tra carburante e manutenzione" },
+        { label: "Ore di attesa recuperate", value: this.n(oreLiberate) + " h", size: "27px", color: "#e8eef0", note: "circa " + this.n(oreLiberate / 8) + " giornate di lavoro di un autista" },
+        { label: "CO₂ evitata / anno", value: this.n(co2Tot / 1000, 1) + " t", size: "27px", color: GREEN, note: this.n(litriTot) + " litri di gasolio non bruciati" }
+      ],
+      pianoSegs: leveVal.map(l => ({
+        label: l.label, color: l.color,
+        w: (eurTot ? l.eur / eurTot * 100 : 0).toFixed(2) + "%",
+        pct: this.eur(l.eur) + " · " + this.n(eurTot ? l.eur / eurTot * 100 : 0, 0) + "%"
+      })),
+
+      leve: [
+        {
+          tag: "LEVA 01", color: colorOf("att"), rank: rank("att"),
+          titolo: "Ridurre le attese al carico",
+          dato: "Oggi " + this.n(attesaMedia, 0) + " minuti di attesa media su " + this.n(eventiTot / anni) + " consegne l'anno: " + this.n(oreAttesaAnno) + " ore di autisti e mezzi fermi ai magazzini.",
+          sliders: [
+            { id: "p-att", label: "Riduzione delle attese", min: 0, max: 60, step: 5, value: pp.att, valLabel: pp.att + "%", valColor: GREEN, hint: "da " + this.n(attesaMedia, 0) + " a " + this.n(attesaMedia * (1 - pp.att / 100), 0) + " minuti per consegna", onInput: setP("att") },
+            { id: "p-ora", label: "Costo di un'ora di attesa", min: 15, max: 80, step: 1, value: pp.costoOra, valLabel: "€" + pp.costoOra + "/h", valColor: AMBER, hint: "ipotesi: autista e costo orario del mezzo", onInput: setP("costoOra") },
+            { id: "p-idle", label: "Motore acceso durante l'attesa", min: 0, max: 30, step: 5, value: pp.idle, valLabel: pp.idle ? this.n(idleL, 1) + " L/h" : "escluso", valColor: AMBER, hint: pp.idle ? "ipotesi: " + this.n(litriIdle) + " litri l'anno non bruciati" : "ipotesi: il dato non è registrato, a 0 non viene contato", onInput: setP("idle") }
+          ],
+          valore: this.eur(eurAtt),
+          dettaglio: this.n(oreLiberate) + " ore recuperate" + (litriIdle ? " · " + this.eur(litriIdle * prezzoReale) + " di gasolio" : ""),
+          azione: "Prenotazione degli slot di carico con i magazzini e priorità alle sedi con l'attesa più lunga."
+        },
+        {
+          tag: "LEVA 02", color: colorOf("mezzi"), rank: rank("mezzi"),
+          titolo: "Recuperare i mezzi fermi",
+          dato: fermi + " mezzi su " + totMezzi + " non sono operativi (" + this.n(fermi / totMezzi * 100, 1) + "% della flotta): costano ogni anno senza produrre chilometri.",
+          sliders: [
+            { id: "p-mezzi", label: "Mezzi rimessi in servizio o dismessi", min: 0, max: fermi, step: 1, value: mezziN, valLabel: mezziN + " / " + fermi, valColor: GREEN, hint: this.n(mezziN / fermi * 100, 0) + "% dei mezzi oggi non operativi", onInput: setP("mezzi") },
+            { id: "p-costo-mezzo", label: "Costo fisso annuo per mezzo", min: 5, max: 40, step: 1, value: pp.costoMezzo, valLabel: "€" + pp.costoMezzo + "k", valColor: AMBER, hint: "ipotesi: leasing, assicurazione, bollo, rimessaggio", onInput: setP("costoMezzo") }
+          ],
+          valore: this.eur(eurMezzi),
+          dettaglio: mezziN + " mezzi × " + this.eur(pp.costoMezzo * 1000) + " di costi fissi evitati",
+          azione: "Rivedere i tempi di manutenzione e dismettere i mezzi inattivi che non rientreranno in servizio."
+        },
+        {
+          tag: "LEVA 03", color: colorOf("carb"), rank: rank("carb"),
+          titolo: "Allineare i consumi",
+          dato: "Il consumo è già omogeneo (scostamento massimo " + this.n(q1sorted.length ? q1sorted[0].scostamento_pct : 0, 1) + "%). Il margine è piccolo ma certo: è calcolato interamente dai dati.",
+          sliders: [
+            { id: "p-carb", label: "Mezzi portati alla media di marca", min: 0, max: 100, step: 10, value: pp.carb, valLabel: pp.carb + "%", valColor: GREEN, hint: "gasolio a " + this.n(prezzoReale, 3).replace(".", ",") + " €/L, il prezzo medio pagato", onInput: setP("carb") }
+          ],
+          valore: this.eur(eurCarb),
+          dettaglio: this.n(litriCarb) + " litri · " + this.n(co2Carb / 1000, 1) + " t CO₂",
+          azione: "Monitorare i mezzi sopra la media della loro marca e formare gli autisti alla guida efficiente."
+        }
+      ],
+
+      ipotesi: [
+        { tag: "DATI", color: GREEN, testo: "Archivio di " + mesiArchivio + " mesi (" + (mesi.length ? this.mese(mesi[0]) + " – " + this.mese(mesi[mesi.length - 1]) : "") + "), " + totMezzi + " mezzi, " + this.n(eventiTot) + " consegne. Tutti i valori sono divisi per " + this.n(anni, 0) + " per ottenere la media annua." },
+        { tag: "DATI", color: GREEN, testo: "Attesa media ponderata sul numero di consegne per magazzino; litri risparmiabili da vw_risparmio_potenziale; CO₂ a 2,68 kg per litro di gasolio." },
+        { tag: "IPOTESI", color: AMBER, testo: "Costo orario dell'attesa, costo fisso per mezzo e consumo a motore acceso non sono nel database: sono valori di riferimento da validare con il cliente." },
+        { tag: "IPOTESI", color: AMBER, testo: "Le leve sono indipendenti e si sommano; non si considerano i costi degli interventi, quindi il valore è un risparmio lordo." },
+        { tag: "ESCLUSO", color: DIM, testo: "Il fatturato dei clienti sotto potenziale non è conteggiato: è un ricavo da conquistare, non un costo da tagliare, e il potenziale in anagrafica va prima verificato." }
+      ],
 
       footLeft: "GreenLog · " + totMezzi + " mezzi · " + cust.length + " clienti · " + fac.length + " magazzini",
       footRight: "8 view da " + d.manifest.database + " · " + this.n(d.utilizzo_mensile.length) + " righe mensili"
